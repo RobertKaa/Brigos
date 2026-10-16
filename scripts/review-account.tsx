@@ -8,6 +8,7 @@ import {
   CONFIRMATION_MESSAGE,
   RESET_MESSAGE,
   SIGNUP_MESSAGE,
+  authErrorMessage,
 } from "../src/auth/actions";
 import { AccountContent } from "../src/components/AccountPanel";
 import { Modal } from "../src/components/Modal";
@@ -35,6 +36,7 @@ const scenarios = [
   "recovery",
   "unconfigured",
   "error",
+  "email-limit",
   "busy",
 ] as const;
 type Scenario = (typeof scenarios)[number];
@@ -47,6 +49,7 @@ const labels: Record<Scenario, string> = {
   recovery: "Nouveau mot de passe",
   unconfigured: "Non configuré",
   error: "Erreur réseau",
+  "email-limit": "Envoi des emails limité",
   busy: "En cours",
 };
 const requested = new URLSearchParams(location.search).get("state");
@@ -72,7 +75,12 @@ function ReviewAccount() {
     error:
       scenario === "error"
         ? "La connexion est indisponible. Vérifiez votre accès Internet puis réessayez."
-        : null,
+        : scenario === "email-limit"
+          ? authErrorMessage({
+              code: "over_email_send_rate_limit",
+              status: 429,
+            })
+          : null,
     busy: scenario === "busy",
     clearError: () => undefined,
     signUp: async () => result(SIGNUP_MESSAGE),
@@ -155,11 +163,13 @@ function ReviewAccount() {
             key={scenario}
             auth={auth}
             initialMode={
-              scenario === "signup" ||
-              scenario === "reset" ||
-              scenario === "confirm"
-                ? scenario
-                : "login"
+              scenario === "email-limit"
+                ? "signup"
+                : scenario === "signup" ||
+                    scenario === "reset" ||
+                    scenario === "confirm"
+                  ? scenario
+                  : "login"
             }
             onClose={() => setClosed(true)}
           />

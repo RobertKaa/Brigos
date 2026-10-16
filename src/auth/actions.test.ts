@@ -192,20 +192,45 @@ describe("comptes : actions Auth", () => {
     ).toBe(false);
     expect(auth.resend).not.toHaveBeenCalled();
   });
-  it("affiche une attente quand le renvoi de confirmation est limité", async () => {
-    const { client } = mockClient({
-      code: "over_email_send_rate_limit",
-      message: "internal-sensitive-data",
-    });
-    const result = await createAuthActions(
-      client,
-      redirect,
-    ).sendConfirmationEmail("a@example.test");
-    expect(result).toEqual({
-      ok: false,
-      message:
-        "Trop de tentatives. Patientez quelques minutes avant de réessayer.",
-    });
+  it.each(["signUp", "sendConfirmationEmail", "sendPasswordReset"] as const)(
+    "signale un refus d’envoi sans annoncer de succès : %s",
+    async (operation) => {
+      for (const [code, message] of [
+        [
+          "over_email_send_rate_limit",
+          "L’envoi des emails est temporairement limité. Réessayez plus tard. Répéter la demande maintenant ne débloquera pas l’envoi.",
+        ],
+        [
+          "email_address_not_authorized",
+          "L’envoi des emails n’est pas encore disponible pour cette adresse sur cet environnement de test.",
+        ],
+      ]) {
+        const { client } = mockClient({
+          code,
+          status: 429,
+          message: "secret-token https://internal.example a@example.test",
+        });
+        const actions = createAuthActions(client, redirect);
+        const result =
+          operation === "signUp"
+            ? await actions.signUp("a@example.test", "une phrase unique Brigo")
+            : await actions[operation]("a@example.test");
+        expect(result).toEqual({ ok: false, message });
+        expect(result.message).not.toContain(code);
+        expect(result.message).not.toContain("secret-token");
+        expect(result.message).not.toContain("https://");
+        expect(result.message).not.toContain("a@example.test");
+      }
+    },
+  );
+  it.each([
+    { code: "over_request_rate_limit" },
+    { status: 429 },
+    { code: "unknown_provider_error", status: 429 },
+  ])("ne donne pas de délai inventé pour une limite générale : %j", (error) => {
+    expect(authErrorMessage(error)).toBe(
+      "Trop de tentatives. Réessayez plus tard.",
+    );
   });
   it("la récupération envoie le nouveau mot de passe uniquement à Auth", async () => {
     const { client, auth } = mockClient();

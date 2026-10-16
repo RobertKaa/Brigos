@@ -37,13 +37,12 @@ export function authErrorMessage(error: unknown): string {
     error && typeof error === "object"
       ? (error as { code?: unknown; status?: unknown; name?: unknown })
       : {};
-  if (
-    detail.status === 429 ||
-    ["over_request_rate_limit", "over_email_send_rate_limit"].includes(
-      String(detail.code),
-    )
-  )
-    return "Trop de tentatives. Patientez quelques minutes avant de réessayer.";
+  if (detail.code === "over_email_send_rate_limit")
+    return "L’envoi des emails est temporairement limité. Réessayez plus tard. Répéter la demande maintenant ne débloquera pas l’envoi.";
+  if (detail.code === "email_address_not_authorized")
+    return "L’envoi des emails n’est pas encore disponible pour cette adresse sur cet environnement de test.";
+  if (detail.status === 429 || detail.code === "over_request_rate_limit")
+    return "Trop de tentatives. Réessayez plus tard.";
   if (
     ["invalid_credentials", "email_not_confirmed", "user_not_found"].includes(
       String(detail.code),
