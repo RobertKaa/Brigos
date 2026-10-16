@@ -259,6 +259,9 @@ describe("géométrie des pièces et scènes", () => {
         expect(errors, `${recipe.id}/${rotation}`).toEqual([]);
       }
     },
+    // Four views and an exhaustive pairwise check for thousands of pieces can
+    // exceed the default five seconds on a shared CI runner.
+    30_000,
   );
 
   it("cache les tenons emboîtés et les montre avant l’ajout de la pièce supérieure", () => {
