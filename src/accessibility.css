@@ -1,0 +1,669 @@
+/* Shared reading comfort and contrast. */
+html {
+  scrollbar-gutter: stable;
+}
+body:has(dialog[open]) {
+  overflow: hidden;
+}
+.history-list > div > span:first-child {
+  flex-wrap: wrap;
+  row-gap: 6px;
+}
+.history-list .history-test {
+  color: var(--studio-accent);
+  background: var(--studio-surface-alt);
+  padding: 3px 6px;
+  border-radius: 5px;
+}
+.page-intro p,
+.pack-copy p,
+.section-heading p,
+.box-option-info p,
+.home-note p,
+.first-build p,
+.recipe-card-content p,
+.help-content li p,
+.admin-card p,
+.admin-scope p,
+.odds-content > p,
+.reveal-instruction {
+  font-size: 0.875rem;
+  line-height: 1.7;
+}
+.page-intro p,
+.section-heading p,
+.box-option-info p,
+.home-note p,
+.first-build p,
+.recipe-card-content p,
+.help-content li p,
+.admin-card p,
+.admin-scope p,
+.odds-content > p,
+.reveal-instruction,
+.workshop-note p,
+.confirmation-content p {
+  color: var(--muted);
+}
+.pack-copy p,
+.pack-eyebrow,
+.five-pieces,
+.pack-stock > div > span {
+  color: var(--studio-accent);
+}
+.pack-workshop .pack-copy p,
+.pack-workshop .pack-eyebrow {
+  color: var(--muted);
+}
+.pack-prism .pack-copy p,
+.pack-prism .pack-eyebrow {
+  color: var(--muted);
+}
+.eyebrow,
+.quiet-label,
+.catalog-number,
+.piece-color,
+.mini-stats span,
+.collection-meter p,
+.collection-totals > span,
+.goal-count,
+.inventory-overview,
+.inventory-overview p,
+.results-label,
+.pagination,
+.recipe-piece-count,
+.recipe-progress,
+.site-footer,
+.save-status,
+.stock-overview > span,
+.piece-specs dt,
+.piece-specs dd,
+.detail-variants > span,
+.recipe-detail-art p,
+.recipe-detail-art > span,
+.requirement-row strong,
+.requirement-row > div > span,
+.requirement-amount,
+.preferences small,
+.preferences strong,
+.admin-stats,
+.admin-stats strong,
+.admin-card label,
+.history-list > div,
+.history-list strong,
+.history-list small {
+  color: var(--muted);
+}
+.form-help {
+  color: var(--muted) !important;
+}
+.rarity-common {
+  --rarity-color: #667587;
+}
+.rarity-uncommon {
+  --rarity-color: #29745e;
+}
+.rarity-rare {
+  --rarity-color: #3d6ba7;
+}
+.rarity-epic {
+  --rarity-color: #815ca4;
+}
+.rarity-legendary {
+  --rarity-color: #96700f;
+}
+.text-link,
+.home-note a,
+.odds-link,
+.box-price > span,
+.modal-actions > span {
+  color: var(--muted);
+}
+.collection-meter .text-link {
+  color: var(--studio-danger);
+}
+.modal-actions > span {
+  font-size: 0.75rem;
+}
+.brigo-card-content > strong,
+.button,
+.main-nav a,
+.view-tabs > button,
+.filter-tabs button,
+.admin-card label {
+  font-size: 0.875rem;
+}
+.quantity,
+.difficulty-badge,
+.built-badge,
+.goal-count {
+  font-size: 0.75rem;
+}
+.admin-card input,
+.admin-card select {
+  color: var(--muted);
+}
+.main-content {
+  scroll-margin-top: 90px;
+}
+.collection-meter {
+  position: relative;
+}
+.modal .icon-button {
+  min-width: 40px;
+  min-height: 40px;
+}
+.color-swatch {
+  min-height: 36px;
+  width: 28px;
+  min-width: 28px;
+}
+.color-swatch::before {
+  width: 18px;
+  height: 18px;
+}
+@media (max-width: 960px) {
+  .box-select {
+    align-items: flex-start;
+  }
+  .box-option-info p {
+    font-size: 0.8125rem;
+  }
+  .box-price > span {
+    display: none;
+  }
+  .filter-tabs button {
+    font-size: 0.8125rem;
+  }
+  .first-build h3 {
+    font-size: 1rem;
+  }
+  .first-build p {
+    font-size: 0.8125rem;
+  }
+  .first-build > .construction-art {
+    opacity: 0.8;
+  }
+}
+@media (max-width: 760px) {
+  .pack-stage {
+    min-height: 390px;
+  }
+  .pack-copy {
+    width: 58%;
+  }
+  .pack-copy p {
+    max-width: 230px;
+  }
+  .box-option-info p {
+    min-height: 58px;
+  }
+  .home-aside {
+    grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+  }
+  .first-build {
+    min-height: 245px;
+  }
+  .first-build p {
+    max-width: 180px;
+  }
+  .goal-progress {
+    width: 120px;
+  }
+  .first-build > .construction-art {
+    width: 108px;
+    height: 118px;
+    bottom: -15px;
+  }
+  .first-build .goal-count {
+    margin-top: 9px;
+    gap: 10px;
+  }
+  .color-swatch {
+    width: 28px;
+    min-width: 28px;
+  }
+  .color-filters {
+    gap: 8px;
+  }
+  .inventory-overview,
+  .recipe-card-content p,
+  .recipe-piece-count,
+  .recipe-progress,
+  .requirement-row strong,
+  .requirement-row > div > span {
+    font-size: 0.8125rem;
+  }
+  .reveal-card.is-revealed > .rarity-label {
+    font-size: 0.75rem;
+  }
+  .reveal-card.is-revealed > strong {
+    font-size: 0.8125rem;
+  }
+}
+@media (max-width: 480px) {
+  .header-tools .sound-button {
+    display: none;
+  }
+  .header-tools .help-button {
+    display: flex;
+  }
+  .brand small {
+    font-size: 0.5rem;
+  }
+  .admin-toggle {
+    font-size: 0.8125rem;
+  }
+  .page-intro h1 {
+    font-size: 1.8rem;
+  }
+  .page-intro p {
+    font-size: 0.875rem;
+  }
+  .page-intro .eyebrow {
+    font-size: 0.6875rem;
+  }
+  .pack-stage {
+    min-height: 435px;
+  }
+  .pack-copy {
+    width: 66%;
+    padding-left: 20px;
+  }
+  .pack-copy h2 {
+    font-size: 1.9rem;
+  }
+  .pack-copy p {
+    font-size: 0.8125rem;
+    max-width: 188px;
+  }
+  .pack-illustration {
+    top: 115px;
+    right: -9%;
+    width: 61%;
+    height: 190px;
+  }
+  .five-pieces {
+    font-size: 0.75rem;
+    gap: 5px;
+    flex-wrap: wrap;
+    max-width: 175px;
+  }
+  .pack-eyebrow {
+    font-size: 0.6875rem;
+    line-height: 1.6;
+  }
+  .pack-bottom {
+    padding: 16px 18px;
+  }
+  .pack-stock strong {
+    font-size: 0.875rem;
+  }
+  .pack-stock > div > span {
+    font-size: 0.75rem;
+  }
+  .pack-bottom .button {
+    font-size: 0.875rem;
+  }
+  .collection-summary {
+    padding: 16px 13px;
+  }
+  .section-title h2 {
+    font-size: 1rem;
+    white-space: normal;
+  }
+  .collection-meter {
+    margin-top: 18px;
+  }
+  .collection-meter > div:last-child > strong {
+    font-size: 1.3rem;
+  }
+  .collection-meter strong > span {
+    font-size: 0.75rem;
+  }
+  .collection-meter p {
+    font-size: 0.75rem;
+    max-width: 78px;
+  }
+  .collection-meter .text-link {
+    font-size: 0.75rem;
+    line-height: 1.6;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    max-width: 125px;
+  }
+  .progress-ring {
+    width: 48px;
+    height: 48px;
+    right: 0;
+    top: 6px;
+  }
+  .progress-ring strong {
+    font-size: 1rem;
+  }
+  .progress-ring small {
+    font-size: 0.625rem;
+  }
+  .mini-stats strong {
+    font-size: 1rem;
+  }
+  .mini-stats span {
+    font-size: 0.6875rem;
+  }
+  .mini-stats {
+    gap: 5px;
+  }
+  .first-build {
+    padding: 17px 13px;
+    min-height: 285px;
+  }
+  .first-build .eyebrow {
+    font-size: 0.625rem;
+  }
+  .first-build h3 {
+    font-size: 1rem;
+    line-height: 1.3;
+  }
+  .first-build p {
+    font-size: 0.75rem;
+    max-width: 145px;
+  }
+  .first-build .goal-progress {
+    width: 88px;
+    margin-top: 17px;
+  }
+  .first-build .goal-count {
+    font-size: 0.75rem;
+    display: block;
+  }
+  .first-build > .construction-art {
+    right: -13px;
+    bottom: -12px;
+    width: 94px;
+    height: 103px;
+  }
+  .section-heading h2 {
+    font-size: 1.3rem;
+  }
+  .section-heading p {
+    font-size: 0.8125rem;
+    max-width: 245px;
+  }
+  .section-heading > .quiet-label {
+    display: none;
+  }
+  .box-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+  .box-select {
+    flex-direction: row;
+    align-items: center;
+    padding: 15px;
+    gap: 17px;
+  }
+  .box-thumb {
+    width: 90px;
+    height: 90px;
+    flex-shrink: 0;
+  }
+  .box-thumb > .box-art {
+    width: 119px;
+  }
+  .box-name h3 {
+    font-size: 1.2rem;
+  }
+  .box-option-info p {
+    font-size: 0.8125rem;
+    min-height: 0;
+    max-width: 200px;
+  }
+  .box-price {
+    font-size: 0.875rem;
+  }
+  .box-price > span {
+    display: inline;
+    font-size: 0.75rem;
+    margin-left: 5px;
+  }
+  .box-price svg {
+    width: 14px;
+  }
+  .odds-link {
+    padding: 11px 15px;
+    min-height: 41px;
+    font-size: 0.8125rem;
+  }
+  .odds-link svg {
+    width: 14px;
+  }
+  .brigo-card-content > strong {
+    font-size: 0.875rem;
+  }
+  .piece-color,
+  .rarity-label,
+  .catalog-number {
+    font-size: 0.75rem;
+  }
+  .home-note p,
+  .home-note a,
+  .site-footer,
+  .save-status,
+  .site-footer .save-status {
+    font-size: 0.75rem;
+  }
+  .site-footer > span {
+    line-height: 1.6;
+  }
+  .collection-totals {
+    display: none;
+  }
+  .inventory-overview {
+    font-size: 0.8125rem;
+    line-height: 1.5;
+    gap: 12px;
+  }
+  .inventory-overview p {
+    font-size: 0.75rem;
+  }
+  .catalog-filter-row {
+    padding: 13px;
+  }
+  .catalog-filter-row input,
+  .catalog-filter-row select,
+  .admin-card input,
+  .admin-card select,
+  .confirmation-content input {
+    font-size: 1rem;
+  }
+  .catalog-filter-row .select-field {
+    flex-basis: 100%;
+  }
+  .catalog-filter-row select {
+    padding-left: 13px;
+  }
+  .catalog-filter-row .select-field > svg + select {
+    padding-left: 35px;
+  }
+  .filter-tabs {
+    flex-wrap: wrap;
+    gap: 5px;
+    justify-content: flex-start;
+  }
+  .filter-tabs button {
+    font-size: 0.8125rem;
+    padding: 9px 10px;
+    min-height: 38px;
+  }
+  .filter-tabs button > span {
+    font-size: 0.75rem;
+  }
+  .color-filters {
+    gap: 3px;
+    justify-content: space-between;
+  }
+  .color-all {
+    font-size: 0.75rem;
+    margin-right: 1px;
+    min-height: 36px;
+    padding: 5px;
+  }
+  .color-swatch {
+    min-width: 26px;
+    width: 26px;
+    min-height: 36px;
+  }
+  .color-swatch::before {
+    height: 17px;
+    width: 17px;
+  }
+  .results-label,
+  .results-label .text-link,
+  .pagination {
+    font-size: 0.75rem;
+  }
+  .view-tabs > button {
+    font-size: 0.875rem;
+  }
+  .standalone-select {
+    font-size: 1rem;
+    min-height: 44px;
+  }
+  .recipe-grid {
+    grid-template-columns: 1fr;
+  }
+  .recipe-art-button {
+    height: 225px;
+  }
+  .recipe-art-button > .construction-art {
+    width: 85%;
+    max-height: 220px;
+  }
+  .difficulty-badge,
+  .built-badge {
+    font-size: 0.75rem;
+    padding: 5px 8px;
+    left: 14px;
+    top: 14px;
+  }
+  .built-badge {
+    left: auto;
+    right: 14px;
+  }
+  .recipe-card-content {
+    padding: 19px;
+  }
+  .recipe-card-content h2 {
+    font-size: 1.4rem;
+  }
+  .recipe-card-content p {
+    font-size: 0.875rem;
+    min-height: 0;
+    margin-bottom: 19px;
+  }
+  .recipe-card-content > .button {
+    font-size: 0.875rem;
+    min-height: 44px;
+    padding: 12px 15px;
+  }
+  .recipe-piece-count,
+  .recipe-progress,
+  .workshop-note p {
+    font-size: 0.8125rem;
+  }
+  .workshop-note strong {
+    font-size: 0.875rem;
+  }
+  .modal-header .eyebrow {
+    font-size: 0.6875rem;
+    line-height: 1.7;
+  }
+  .modal-actions > .button,
+  .reveal-actions .action-group > .button,
+  .admin-card .button {
+    font-size: 0.875rem;
+    min-height: 44px;
+  }
+  .reveal-instruction,
+  .admin-scope > p,
+  .admin-stats,
+  .history-list > div,
+  .history-list small {
+    font-size: 0.8125rem;
+  }
+  .reveal-card.is-revealed > .rarity-label,
+  .reveal-card .piece-color {
+    font-size: 0.75rem;
+  }
+  .reveal-card.is-revealed > strong {
+    font-size: 0.875rem;
+  }
+  .drop-label {
+    font-size: 0.625rem;
+  }
+  .piece-specs dt {
+    font-size: 0.75rem;
+  }
+  .piece-specs dd {
+    font-size: 0.8125rem;
+  }
+  .stock-overview > span {
+    font-size: 0.8125rem;
+  }
+  .detail-variants > span {
+    font-size: 0.8125rem;
+  }
+  .stock-overview {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .stock-overview > span + span {
+    border: 0;
+    padding-left: 0;
+  }
+  .recipe-detail-art > p,
+  .requirement-row > div > span,
+  .requirement-amount {
+    font-size: 0.8125rem;
+  }
+  .requirement-row strong {
+    font-size: 0.875rem;
+  }
+  .recipe-requirements > .button {
+    font-size: 0.875rem;
+  }
+  .recipe-detail-layout + .modal-actions > span {
+    font-size: 0.8125rem;
+  }
+  .recipe-detail-layout + .modal-actions > .button {
+    font-size: 0.875rem;
+  }
+  .admin-tabs > button {
+    font-size: 0.875rem;
+  }
+  .admin-card p,
+  .admin-card label,
+  .rates-total,
+  .forced-notice {
+    font-size: 0.875rem;
+  }
+  .admin-card h3 {
+    font-size: 1.1rem;
+  }
+  .history-list strong {
+    font-size: 0.875rem;
+  }
+  .toast p {
+    font-size: 0.875rem;
+  }
+  .preferences strong {
+    font-size: 0.875rem;
+  }
+  .preferences small {
+    font-size: 0.8125rem;
+  }
+  .form-help {
+    font-size: 0.75rem !important;
+  }
+}

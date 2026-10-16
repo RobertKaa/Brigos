@@ -1,0 +1,1575 @@
+.opening-modal {
+  --opening-navy: var(--ink, #242320);
+  --opening-muted: var(--muted, #716b60);
+  --opening-cream: var(--studio-surface, #fffcf3);
+  max-width: min(1060px, calc(100vw - 40px));
+  background: var(--opening-cream);
+  border: 2px solid var(--opening-navy);
+  border-radius: 10px 10px 20px 10px;
+  color: var(--opening-navy);
+}
+.opening-modal .modal-header {
+  padding: 22px 28px;
+  background: var(--opening-cream);
+  border-bottom-color: var(--line, #d2cbbc);
+}
+.opening-modal .modal-header .eyebrow {
+  color: var(--opening-muted);
+  font-size: 0.625rem;
+  letter-spacing: 0.13em;
+}
+.opening-modal .modal-header h2 {
+  font-size: clamp(1.2rem, 2.5vw, 1.65rem);
+  font-weight: 750;
+}
+.opening-modal .modal-header .icon-button {
+  background: var(--studio-surface-alt, #e9e3d5);
+  color: var(--opening-navy);
+  width: 40px;
+  height: 40px;
+}
+.opening-modal .reveal-stage {
+  min-height: 380px;
+  padding: 23px 26px;
+  background:
+    radial-gradient(
+        circle at 1px 1px,
+        color-mix(in srgb, var(--opening-navy), transparent 93%) 0.7px,
+        transparent 0.9px
+      )
+      0 0 / 6px 6px,
+    var(--studio-paper, #f2eddf);
+  isolation: isolate;
+}
+.opening-modal .reveal-stage.is-unsealing {
+  padding: 0;
+  background: radial-gradient(ellipse at 50% 42%, #434035, #242320 67%);
+  color: #fffaf0;
+}
+.opening-modal .opening-unseal {
+  position: relative;
+  min-height: 430px;
+  text-align: center;
+  overflow: hidden;
+}
+.opening-modal .opening-stage-kicker {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding-top: 25px;
+  font-size: 0.625rem;
+  letter-spacing: 0.17em;
+  font-weight: 650;
+  color: #f4d381;
+}
+.opening-modal .opening-unseal-caption {
+  position: relative;
+  z-index: 2;
+  margin-top: 8px;
+  padding: 0 20px 16px;
+}
+.opening-modal .opening-unseal-caption > strong {
+  font-family: var(--heading);
+  font-size: 1.375rem;
+  font-weight: 550;
+  letter-spacing: -0.03em;
+}
+.opening-modal .opening-unseal-caption p {
+  margin: 8px 0 3px;
+  font-size: 0.8125rem;
+  color: #d3dedf;
+  line-height: 1.5;
+}
+.opening-modal .opening-skip {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  min-height: 44px;
+  padding: 10px 14px;
+  margin-top: 3px;
+  background: transparent;
+  border: 0;
+  border-radius: 8px;
+  color: #f5d485;
+  font-size: 0.75rem;
+  font-weight: 550;
+}
+.opening-modal .opening-skip:hover {
+  background: #ffffff12;
+}
+
+/* The box has genuine CSS volumes, including a hinged lid and an illuminated interior. */
+.opening-modal .opening-theatre {
+  position: relative;
+  /* Reserve headroom for the lid once it rises above the rear hinge. */
+  height: 360px;
+  perspective: 850px;
+  overflow: visible;
+}
+.opening-modal .chest-world {
+  position: absolute;
+  left: 50%;
+  top: 68%;
+  width: 190px;
+  height: 136px;
+  margin: -68px 0 0 -95px;
+  transform-style: preserve-3d;
+  /* Opacity/filter animations on this shared 3D ancestor flatten its faces. */
+  transform: rotateX(-16deg) rotateY(-28deg);
+  animation: opening-chest-world 2.8s both;
+}
+.opening-modal .chest-cube {
+  position: absolute;
+  inset: 0;
+  transform-style: preserve-3d;
+}
+.opening-modal .chest-face {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 190px;
+  height: 136px;
+  background: var(--chest-color);
+  border: 2px solid #242320;
+  backface-visibility: hidden;
+}
+.opening-modal .chest-face-front {
+  transform: translate(-50%, -50%) translateZ(75px);
+  background: linear-gradient(125deg, #ffffff35, #0000000b), var(--chest-color);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #242320;
+  box-shadow:
+    inset 0 0 0 6px color-mix(in srgb, var(--chest-trim) 65%, transparent),
+    inset 0 0 0 7px #24232050;
+}
+.opening-modal .chest-brand .brigo-logo {
+  width: 104px;
+  height: 46px;
+}
+.opening-modal .chest-edition {
+  margin: 5px 0 12px;
+  font-size: 0.65rem;
+  font-weight: 650;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+.opening-modal .chest-stamp {
+  font-size: 0.5rem;
+  letter-spacing: 0.15em;
+  font-weight: 750;
+  padding: 5px 9px;
+  border: 1px solid #142c3b60;
+  border-radius: 20px;
+}
+.opening-modal .chest-face-back {
+  transform: translate(-50%, -50%) rotateY(180deg) translateZ(75px);
+  background: var(--chest-shadow);
+}
+.opening-modal .chest-face-left,
+.opening-modal .chest-face-right {
+  width: 150px;
+  background: var(--chest-shadow);
+}
+.opening-modal .chest-face-left {
+  transform: translate(-50%, -50%) rotateY(-90deg) translateZ(95px);
+}
+.opening-modal .chest-face-right {
+  transform: translate(-50%, -50%) rotateY(90deg) translateZ(95px);
+  display: grid;
+  place-items: center;
+  color: #ffffff90;
+}
+.opening-modal .chest-face-bottom {
+  height: 150px;
+  transform: translate(-50%, -50%) rotateX(-90deg) translateZ(68px);
+}
+.opening-modal .chest-interior {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 188px;
+  height: 148px;
+  transform: translate(-50%, -50%) translateY(-67px) rotateX(90deg);
+  background: radial-gradient(
+    ellipse,
+    #fffaf0,
+    var(--chest-light) 45%,
+    var(--chest-shadow)
+  );
+  box-shadow: 0 0 40px color-mix(in srgb, var(--chest-light) 50%, transparent);
+}
+.opening-modal .chest-lid {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 194px;
+  height: 0;
+  transform: translate(-50%, -50%) translateY(-68px);
+  transform-style: preserve-3d;
+  transform-origin: 50% 50% -75px;
+  animation: opening-chest-lid 2.8s cubic-bezier(0.25, 0.7, 0.25, 1) both;
+}
+.opening-modal .chest-lid-top,
+.opening-modal .chest-lid-under {
+  position: absolute;
+  left: 0;
+  top: -77px;
+  width: 194px;
+  height: 154px;
+  background: var(--chest-color);
+  backface-visibility: hidden;
+}
+.opening-modal .chest-lid-top {
+  /* The lid is a closed volume: its top is 15px above the rim, its underside at the rim. */
+  transform: rotateX(90deg) translateZ(15px);
+  background: var(--chest-light);
+  display: grid;
+  place-items: center;
+  border: 2px solid #242320;
+  border-radius: 2px;
+}
+.opening-modal .chest-paper-band {
+  position: absolute;
+  inset: 0 68px;
+  background: var(--chest-trim);
+  border-inline: 1px dashed #24232080;
+}
+.opening-modal .chest-lid-top .card-back-art {
+  position: relative;
+  width: 62px;
+  height: 66px;
+  color: #242320;
+  --card-back-ink: #fffcf3;
+  padding: 3px;
+  background: #fffcf3;
+  border: 1px solid #242320;
+  transform: rotate(-7deg);
+}
+.opening-modal .chest-lid-under {
+  transform: rotateX(-90deg);
+  background: var(--chest-shadow);
+}
+.opening-modal .chest-lid-front,
+.opening-modal .chest-lid-back {
+  position: absolute;
+  left: 0;
+  top: -15px;
+  width: 194px;
+  height: 15px;
+  background: var(--chest-trim);
+  border-bottom: 2px solid #142c3b20;
+  backface-visibility: hidden;
+}
+.opening-modal .chest-lid-front {
+  transform: translateZ(77px);
+}
+.opening-modal .chest-lid-back {
+  transform: rotateY(180deg) translateZ(77px);
+}
+.opening-modal .chest-lid-side,
+.opening-modal .chest-lid-left {
+  position: absolute;
+  left: 20px;
+  top: -15px;
+  width: 154px;
+  height: 15px;
+  background: var(--chest-trim);
+  backface-visibility: hidden;
+}
+.opening-modal .chest-lid-side {
+  transform: rotateY(90deg) translateZ(97px);
+}
+.opening-modal .chest-lid-left {
+  transform: rotateY(-90deg) translateZ(97px);
+}
+.opening-modal .chest-shadow {
+  position: absolute;
+  left: -25px;
+  bottom: -55px;
+  width: 250px;
+  height: 65px;
+  border-radius: 50%;
+  background: #06141d70;
+  filter: blur(13px);
+  transform: rotateX(90deg);
+}
+.opening-modal .chest-floor-light {
+  position: absolute;
+  width: 340px;
+  height: 100px;
+  left: 50%;
+  top: 295px;
+  margin-left: -170px;
+  border-radius: 50%;
+  background: radial-gradient(
+    ellipse,
+    color-mix(in srgb, var(--chest-color) 24%, transparent),
+    transparent 70%
+  );
+}
+.opening-modal .chest-light-column {
+  position: absolute;
+  width: 300px;
+  height: 230px;
+  bottom: 75px;
+  left: 50%;
+  margin-left: -150px;
+  background: conic-gradient(
+    from -35deg at 50% 100%,
+    transparent,
+    color-mix(in srgb, var(--chest-light) 32%, transparent) 24deg,
+    color-mix(in srgb, var(--chest-light) 56%, transparent) 35deg,
+    color-mix(in srgb, var(--chest-light) 20%, transparent) 60deg,
+    transparent 70deg
+  );
+  filter: blur(5px);
+  transform-origin: 50% 100%;
+  animation: opening-chest-light 2.8s both;
+}
+.opening-modal .chest-orbit {
+  position: absolute;
+  left: 50%;
+  top: 62%;
+  border: 1px solid #d8e9e314;
+  border-radius: 50%;
+  transform: translate(-50%, -50%) rotate(-12deg);
+  width: 350px;
+  height: 150px;
+}
+.opening-modal .chest-orbit-two {
+  width: 440px;
+  height: 230px;
+  transform: translate(-50%, -50%) rotate(18deg);
+  border-style: dashed;
+}
+.opening-modal .chest-dust {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+.opening-modal .chest-dust > i {
+  position: absolute;
+  left: 50%;
+  top: 45%;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--chest-light);
+  --flight-x: calc((var(--spark-index) - 8.5) * 21px);
+  --flight-y: calc(-155px + mod(var(--spark-index), 4) * 35px);
+  animation: opening-flying-piece 1.05s ease-out both;
+  animation-delay: calc(1.38s + var(--spark-index) * 20ms);
+}
+
+.opening-modal .opening-progress {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin: 0 0 8px;
+}
+.opening-modal .opening-progress > span {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 0.625rem;
+  font-weight: 750;
+  letter-spacing: 0.1em;
+}
+.opening-modal .opening-progress > strong {
+  margin-left: auto;
+  font-size: 1.125rem;
+  font-weight: 750;
+  font-variant-numeric: tabular-nums;
+}
+.opening-modal .opening-progress small {
+  color: #5c6c75;
+  font-size: 0.8125rem;
+  font-weight: 550;
+}
+.opening-modal .opening-progress-dots {
+  display: flex;
+  gap: 4px;
+}
+.opening-modal .opening-progress-dots > i {
+  display: block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #d6d9d4;
+  transition:
+    background 0.2s,
+    transform 0.2s;
+}
+.opening-modal .opening-progress-dots > i.is-filled {
+  background: #287563;
+  transform: scale(1.2);
+}
+.opening-modal .reveal-instruction {
+  margin: 0 0 18px;
+  text-align: left;
+  color: #526473;
+  font-size: 0.8125rem;
+  line-height: 1.6;
+}
+.opening-modal .reveal-grid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 12px;
+  overflow: visible;
+}
+.opening-modal .opening-findings {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 9px 24px;
+  margin-top: 17px;
+  font-size: 0.75rem;
+  color: #3d5863;
+}
+.opening-modal .opening-findings > span {
+  display: inline-flex;
+  gap: 5px;
+  align-items: center;
+}
+.opening-modal .opening-findings > span:first-child > svg {
+  color: #287563;
+}
+.opening-modal .opening-best {
+  margin-left: auto;
+  color: #374e60;
+}
+.opening-modal .opening-best.rarity-legendary {
+  color: #835b0d;
+}
+.opening-modal .opening-best.rarity-epic {
+  color: #7950a3;
+}
+
+.opening-modal .opening-goal {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 15px 26px;
+  background: #eaf0e8;
+  border-top: 1px solid #dbe3d9;
+}
+.opening-modal .opening-goal > div {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  min-width: 0;
+}
+.opening-modal .opening-goal-icon {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 42px;
+  height: 42px;
+  border-radius: 10px;
+  color: #396957;
+  background: #d8e7d8;
+}
+.opening-modal .opening-goal small {
+  display: block;
+  margin-bottom: 4px;
+  font-size: 0.5625rem;
+  letter-spacing: 0.1em;
+  font-weight: 700;
+  color: #466953;
+}
+.opening-modal .opening-goal strong {
+  display: block;
+  font-family: var(--heading);
+  font-size: 0.9375rem;
+  line-height: 1.35;
+}
+.opening-modal .opening-goal p {
+  margin: 3px 0 0;
+  color: #456456;
+  font-size: 0.6875rem;
+}
+.opening-modal .opening-goal .text-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  flex-shrink: 0;
+  min-height: 44px;
+  background: none;
+  border: 0;
+  color: #315d4c;
+  font-size: 0.75rem;
+  font-weight: 650;
+}
+.opening-modal .opening-next {
+  border-top: 1px solid #e1ded1;
+  background: #faf7ef;
+  padding: 21px 26px;
+}
+.opening-modal .opening-next-heading,
+.opening-modal .opening-next-heading > div,
+.opening-modal .opening-next-heading > span {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.opening-modal .opening-next-heading {
+  justify-content: space-between;
+  margin-bottom: 14px;
+  gap: 10px;
+}
+.opening-modal .opening-next-heading h3 {
+  font-family: var(--heading);
+  font-size: 1.0625rem;
+  font-weight: 600;
+  margin: 0;
+  letter-spacing: -0.025em;
+}
+.opening-modal .opening-next-heading > span {
+  color: #4d626d;
+  font-size: 0.75rem;
+  font-variant-numeric: tabular-nums;
+}
+.opening-modal .opening-next-types {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+}
+.opening-modal .opening-next-types > button {
+  position: relative;
+  display: grid;
+  grid-template-columns: 28px minmax(0, 1fr);
+  gap: 4px 10px;
+  text-align: left;
+  padding: 12px 30px 12px 13px;
+  min-height: 65px;
+  border: 1px solid #d8dcd5;
+  border-radius: 10px;
+  background: #fffdf7;
+  color: #193543;
+}
+.opening-modal .opening-next-types > button.is-selected {
+  border-color: var(--box-outline);
+  box-shadow: inset 0 0 0 1px var(--box-outline);
+  background: color-mix(in srgb, var(--box-accent) 14%, var(--opening-cream));
+}
+.opening-modal .opening-next-types > button:hover:not(:disabled) {
+  border-color: #527778;
+}
+.opening-modal .opening-next-types i {
+  grid-row: 1 / 3;
+  align-self: center;
+  width: 26px;
+  height: 26px;
+  border-radius: 6px;
+  background: var(--box-accent);
+  border: 1px solid color-mix(in srgb, var(--box-outline), transparent 30%);
+  box-shadow: inset 0 -4px 0 #142c3b15;
+}
+.opening-modal .opening-next-types strong {
+  font-size: 0.8125rem;
+  font-weight: 700;
+}
+.opening-modal .opening-next-types span {
+  color: #526473;
+  font-size: 0.6875rem;
+}
+.opening-modal .opening-next-check {
+  position: absolute;
+  right: 11px;
+  top: 13px;
+  color: var(--opening-navy);
+}
+.opening-modal .opening-next-action {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+  margin-top: 15px;
+}
+.opening-modal .opening-next-action p {
+  font-size: 0.6875rem;
+  line-height: 1.65;
+  color: #526473;
+  margin: 0;
+}
+.opening-modal .opening-next-action p > strong {
+  color: #193543;
+  font-size: 0.75rem;
+  font-weight: 650;
+}
+.opening-modal .opening-next-action .button {
+  min-height: 46px;
+  flex-shrink: 0;
+}
+.opening-modal .reveal-actions {
+  padding: 15px 26px;
+  background: #f2efe6;
+  border-top-color: #e1ded1;
+  border-radius: 0 0 24px 24px;
+}
+.opening-modal .reveal-actions > span {
+  color: #526473;
+  font-size: 0.6875rem;
+}
+.opening-modal .reveal-actions > span > svg {
+  color: #4b7568;
+}
+.opening-modal .opening-reveal-buttons,
+.opening-modal .opening-footer-buttons {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 8px;
+}
+.opening-modal .opening-reveal-toolbar {
+  display: flex;
+  justify-content: flex-end;
+  margin: -2px 0 15px;
+  position: relative;
+  z-index: 2;
+}
+.opening-modal .button {
+  min-height: 44px;
+}
+.opening-modal .button-primary {
+  background: #183d48;
+  color: #fffaf0;
+  border-color: #183d48;
+}
+.opening-modal .button-primary:hover:not(:disabled) {
+  background: #245660;
+  border-color: #245660;
+}
+.opening-modal .button-secondary {
+  background: #fffdf8;
+  border-color: #cbd4cd;
+  color: #27464f;
+}
+.opening-modal .button-secondary:hover:not(:disabled) {
+  background: #e8eee6;
+}
+.opening-modal button:focus-visible {
+  outline: 3px solid #e6ad36;
+  outline-offset: 3px;
+}
+.opening-modal .opening-reduced-motion *,
+.opening-modal.opening-reduced-motion *,
+.opening-modal.opening-reduced-motion *::before,
+.opening-modal.opening-reduced-motion *::after {
+  animation: none !important;
+  transition: none !important;
+  scroll-behavior: auto !important;
+}
+
+@keyframes opening-chest-world {
+  0% {
+    transform: rotateX(-16deg) rotateY(-42deg) translateY(25px) scale(0.85);
+  }
+  20%,
+  34% {
+    transform: rotateX(-16deg) rotateY(-28deg) translateY(0) scale(1);
+  }
+  38% {
+    transform: rotateX(-16deg) rotateY(-30deg) translateX(-3px);
+  }
+  42% {
+    transform: rotateX(-16deg) rotateY(-26deg) translateX(3px);
+  }
+  48%,
+  100% {
+    transform: rotateX(-16deg) rotateY(-28deg) translateY(0);
+  }
+}
+@keyframes opening-chest-lid {
+  0%,
+  43% {
+    transform: translate(-50%, -50%) translateY(-68px) rotateX(0);
+  }
+  70%,
+  100% {
+    /* Positive rotation lifts the front edge around the rear hinge at z = -75px. */
+    transform: translate(-50%, -50%) translateY(-68px) rotateX(112deg);
+  }
+}
+@keyframes opening-chest-light {
+  0%,
+  44% {
+    opacity: 0;
+    transform: scaleY(0.2) scaleX(0.7);
+  }
+  63% {
+    opacity: 1;
+    transform: scaleY(1) scaleX(1);
+  }
+  100% {
+    opacity: 0.45;
+    transform: scaleY(1.12) scaleX(1.1);
+  }
+}
+@keyframes opening-flying-piece {
+  0% {
+    opacity: 0;
+    transform: translate(0, 0) scale(0.1) rotate(-20deg);
+  }
+  15% {
+    opacity: 1;
+  }
+  65% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translate(var(--flight-x), var(--flight-y)) scale(0.85)
+      rotate(calc(var(--spark-index) * 35deg));
+  }
+}
+@keyframes opening-card-arrive {
+  from {
+    opacity: 0;
+    transform: translateY(20px) rotate(-3deg) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@media (max-width: 760px) {
+  .opening-modal {
+    max-width: calc(100vw - 24px);
+    border-radius: 18px;
+  }
+  .opening-modal .modal-header {
+    padding: 18px 20px;
+  }
+  .opening-modal .modal-header .eyebrow {
+    font-size: 0.5625rem;
+    letter-spacing: 0.08em;
+  }
+  .opening-modal .reveal-stage {
+    padding: 20px;
+  }
+  .opening-modal .reveal-grid {
+    gap: 9px;
+  }
+  .opening-modal .opening-findings {
+    align-items: flex-start;
+    gap: 9px;
+    font-size: 0.6875rem;
+    margin-top: 14px;
+  }
+  .opening-modal .opening-best {
+    margin-left: 0;
+  }
+  .opening-modal .opening-goal {
+    padding: 13px;
+    gap: 6px;
+  }
+  .opening-modal .opening-goal > div {
+    gap: 8px;
+  }
+  .opening-modal .opening-goal-icon {
+    width: 32px;
+    height: 36px;
+    border-radius: 8px;
+  }
+  .opening-modal .opening-goal strong {
+    font-size: 0.8125rem;
+  }
+  .opening-modal .opening-goal small {
+    font-size: 0.5rem;
+  }
+  .opening-modal .opening-goal .text-link {
+    max-width: 95px;
+    flex-shrink: 1;
+    font-size: 0.6875rem;
+    text-align: left;
+  }
+  .opening-modal .opening-next {
+    padding: 17px 13px;
+  }
+  .opening-modal .opening-next-heading {
+    gap: 7px;
+  }
+  .opening-modal .opening-next-heading > div {
+    gap: 5px;
+  }
+  .opening-modal .opening-next-heading h3 {
+    font-size: 0.9375rem;
+  }
+  .opening-modal .opening-next-heading > span {
+    font-size: 0.6875rem;
+    gap: 4px;
+  }
+  .opening-modal .opening-next-types {
+    gap: 6px;
+  }
+  .opening-modal .opening-next-types > button {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding: 12px 8px 10px;
+    min-height: 88px;
+  }
+  .opening-modal .opening-next-types i {
+    width: 20px;
+    height: 20px;
+    align-self: flex-start;
+    border-radius: 5px;
+  }
+  .opening-modal .opening-next-types strong {
+    font-size: 0.75rem;
+  }
+  .opening-modal .opening-next-types span {
+    font-size: 0.625rem;
+    line-height: 1.4;
+  }
+  .opening-modal .opening-next-check {
+    right: 7px;
+    top: 14px;
+  }
+  .opening-modal .opening-next-action {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 11px;
+  }
+  .opening-modal .opening-next-action .button {
+    width: 100%;
+  }
+  .opening-modal .reveal-actions {
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 12px 13px;
+    border-radius: 0 0 18px 18px;
+  }
+  .opening-modal .reveal-actions > span {
+    flex-basis: 100%;
+    justify-content: center;
+    font-size: 0.625rem;
+  }
+  .opening-modal .opening-reveal-buttons,
+  .opening-modal .opening-footer-buttons {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    width: 100%;
+    gap: 8px;
+  }
+  .opening-modal .opening-reveal-toolbar {
+    display: block;
+    margin: 0 0 13px;
+  }
+  .opening-modal .opening-reveal-buttons > .button:only-child {
+    grid-column: 1 / -1;
+  }
+  .opening-modal .opening-reveal-buttons > .button,
+  .opening-modal .opening-footer-buttons > .button {
+    min-width: 0;
+    padding: 10px 5px;
+    font-size: 0.75rem;
+    gap: 5px;
+    margin: 0;
+  }
+}
+@media (max-width: 360px) {
+  .opening-modal .opening-progress-dots {
+    display: none;
+  }
+  .opening-modal .opening-progress > strong {
+    margin-left: auto;
+  }
+  .opening-modal .opening-next-heading {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+  .opening-modal .opening-next-types strong {
+    font-size: 0.6875rem;
+  }
+  .opening-modal .opening-goal {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+  .opening-modal .opening-goal .text-link {
+    max-width: none;
+    min-height: 36px;
+    margin-left: 38px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .opening-modal *,
+  .opening-modal *::before,
+  .opening-modal *::after {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* A printed, two-sided card. Colour is always paired with a named rarity and symbol. */
+.opening-modal .rarity-common {
+  --opening-glow: #8c9baf;
+  --opening-strength: 16%;
+}
+.opening-modal .rarity-uncommon {
+  --opening-glow: #42b792;
+  --opening-strength: 25%;
+}
+.opening-modal .rarity-rare {
+  --opening-glow: #579aef;
+  --opening-strength: 34%;
+}
+.opening-modal .rarity-epic {
+  --opening-glow: #bb7aee;
+  --opening-strength: 42%;
+}
+.opening-modal .rarity-legendary {
+  --opening-glow: #f2bf3f;
+  --opening-strength: 55%;
+}
+.opening-modal .opening-rarity-guide {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 15px;
+  margin: -6px 0 16px;
+  color: var(--opening-muted);
+  font-size: 0.625rem;
+  font-weight: 650;
+}
+.opening-modal .opening-rarity-guide > span {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.opening-modal .opening-rarity-guide b {
+  display: grid;
+  place-items: center;
+  width: 17px;
+  height: 17px;
+  background: #262527;
+  color: var(--opening-glow);
+  border-radius: 3px;
+  font-size: 0.7rem;
+}
+.opening-modal .reveal-grid {
+  gap: 18px 16px;
+  padding-block: 7px 10px;
+}
+.opening-modal .reveal-card,
+.opening-modal .reveal-grid > .reveal-card:last-child,
+.opening-modal .reveal-grid > .reveal-card:nth-child(4) {
+  position: relative;
+  isolation: isolate;
+  display: block;
+  width: 100%;
+  min-width: 0;
+  min-height: 224px;
+  aspect-ratio: 0.71;
+  margin: 0;
+  padding: 0;
+  grid-column: auto;
+  overflow: visible;
+  border: 0;
+  border-radius: 8px;
+  background: transparent;
+  perspective: 1000px;
+  box-shadow:
+    0 0 0 1px color-mix(in srgb, var(--opening-glow), transparent 20%),
+    0 3px 7px #17151020,
+    0 0 22px 4px
+      color-mix(
+        in srgb,
+        var(--opening-glow) var(--opening-strength),
+        transparent
+      );
+  transition:
+    transform 180ms ease,
+    box-shadow 180ms ease;
+  animation: opening-card-arrive 420ms both;
+  animation-delay: calc(var(--card-index) * 38ms);
+}
+.opening-modal .reveal-card.is-hidden::before {
+  content: "";
+  position: absolute;
+  inset: -4px;
+  z-index: -1;
+  border: 1px solid color-mix(in srgb, var(--opening-glow), transparent 62%);
+  border-radius: 11px;
+  pointer-events: none;
+}
+.opening-modal .reveal-card.is-hidden.rarity-epic::before {
+  inset: -5px;
+  border-style: dashed;
+}
+.opening-modal .reveal-card.is-hidden.rarity-legendary::before {
+  inset: -5px;
+  border: 3px double color-mix(in srgb, var(--opening-glow), transparent 18%);
+}
+.opening-modal .reveal-card.is-hidden:hover {
+  background: transparent;
+  transform: translateY(-6px) rotate(-1deg);
+  box-shadow:
+    0 6px 8px #17151020,
+    0 0 26px 6px color-mix(in srgb, var(--opening-glow) 50%, transparent);
+}
+.opening-modal .reveal-card.is-hidden:active {
+  transform: translateY(-1px) scale(0.98);
+}
+.opening-modal .reveal-card[aria-disabled="true"] {
+  cursor: default;
+}
+.opening-modal .opening-card-flipper {
+  position: absolute;
+  inset: 0;
+  display: block;
+  border-radius: inherit;
+  transform-style: preserve-3d;
+  transition: transform 650ms cubic-bezier(0.2, 0.65, 0.2, 1);
+}
+.opening-modal .reveal-card.is-revealed .opening-card-flipper {
+  transform: rotateY(180deg);
+}
+.opening-modal .opening-card-face {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: hidden;
+  border: 1.5px solid #292726;
+  border-radius: inherit;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+.opening-modal .opening-card-back {
+  --card-back-ink: #262527;
+  color: var(--opening-glow);
+  justify-content: center;
+  padding: 26px 11px 13px;
+  background:
+    repeating-linear-gradient(135deg, transparent 0 5px, #f2eddf07 5px 6px),
+    #262527;
+  box-shadow:
+    inset 0 0 0 5px #262527,
+    inset 0 0 0 6px currentColor;
+}
+.opening-modal .opening-card-back::after {
+  content: "";
+  position: absolute;
+  width: 22%;
+  height: 160%;
+  left: -50%;
+  top: -30%;
+  transform: rotate(25deg);
+  background: linear-gradient(90deg, transparent, #fff9e519, transparent);
+  pointer-events: none;
+}
+.opening-modal .reveal-card.is-hidden:hover .opening-card-back::after {
+  animation: opening-back-sheen 750ms both;
+}
+.opening-modal .opening-card-topline {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: absolute;
+  top: 12px;
+  inset-inline: 13px;
+  font-size: 0.625rem;
+  font-weight: 750;
+  letter-spacing: 0.04em;
+  line-height: 1;
+}
+.opening-modal .opening-card-topline b {
+  font-size: 1rem;
+}
+.opening-modal .opening-card-brand {
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+  margin: 0 0 7px;
+  font-family: var(--heading);
+  font-size: 0.85rem;
+  font-weight: 850;
+  color: #f7f0db;
+  letter-spacing: 0.14em;
+  line-height: 1.2;
+}
+.opening-modal .opening-card-brand > span {
+  font-size: 0.45rem;
+  letter-spacing: 0.1em;
+}
+.opening-modal .opening-card-back .card-back-art {
+  width: 72px;
+  height: 80px;
+  margin: 0 0 9px;
+}
+.opening-modal .opening-back-rarity {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  min-height: 22px;
+  border-block: 1px solid color-mix(in srgb, currentColor, transparent 60%);
+  padding: 4px 3px;
+  font-size: 0.59rem;
+  font-weight: 750;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+.opening-modal .opening-card-prompt {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 9px;
+  font-size: 0.58rem;
+  color: #f2eddf;
+}
+.opening-modal .opening-card-front {
+  justify-content: flex-start;
+  padding: 31px 10px 9px;
+  transform: rotateY(180deg);
+  background: var(--opening-cream);
+  color: var(--opening-navy);
+  border-color: var(--opening-navy);
+  box-shadow:
+    inset 0 0 0 4px var(--opening-cream),
+    inset 0 0 0 5px color-mix(in srgb, var(--opening-glow), transparent 45%);
+}
+.opening-modal .opening-card-front .opening-card-topline {
+  color: var(--opening-muted);
+  top: 13px;
+}
+.opening-modal .opening-card-front .opening-card-topline b {
+  color: color-mix(in srgb, var(--opening-glow), var(--opening-navy) 25%);
+}
+.opening-modal .opening-card-illustration {
+  display: grid;
+  place-items: center;
+  width: 100%;
+  min-height: 80px;
+  height: 42%;
+  margin-bottom: 8px;
+  border-bottom: 1px solid var(--line, #d2cbbc);
+  background:
+    radial-gradient(
+        circle at 1px 1px,
+        color-mix(in srgb, var(--opening-navy), transparent 89%) 0.7px,
+        transparent 1px
+      )
+      0 0 / 4px 4px,
+    radial-gradient(
+      ellipse at center,
+      color-mix(in srgb, var(--opening-glow), transparent 80%),
+      transparent 70%
+    );
+}
+.opening-modal .opening-card-illustration .brigo-art {
+  width: 100%;
+  height: 100%;
+  max-height: 95px;
+}
+.opening-modal .opening-card-front .rarity-label {
+  margin-bottom: 5px;
+  color: color-mix(in srgb, var(--opening-glow), var(--opening-navy) 38%);
+  font-size: 0.625rem;
+  line-height: 1.2;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  font-weight: 850;
+}
+.opening-modal .opening-card-front > strong {
+  font-size: 0.8rem;
+  font-weight: 750;
+  line-height: 1.35;
+  overflow-wrap: anywhere;
+}
+.opening-modal .opening-card-front .piece-color {
+  margin-top: 4px;
+  font-size: 0.6875rem;
+  color: var(--opening-muted);
+}
+.opening-modal .opening-card-front .piece-color > i {
+  width: 7px;
+  height: 7px;
+  border-radius: 1px;
+  border: 1px solid #24232040;
+}
+.opening-modal .opening-card-edition {
+  margin-top: auto;
+  padding-top: 7px;
+  color: var(--opening-muted);
+  font-size: 0.35rem;
+  font-weight: 650;
+  letter-spacing: 0.075em;
+}
+.opening-modal .opening-card-front .drop-label {
+  position: static;
+  justify-content: center;
+  flex-shrink: 0;
+  order: 1;
+  min-height: 19px;
+  margin-top: 6px;
+  padding: 3px 6px;
+  border-radius: 2px;
+  background: var(--studio-surface-alt, #e9e3d5);
+  color: var(--opening-muted);
+  font-size: 0.5rem;
+  line-height: 1.2;
+}
+.opening-modal .opening-card-front .drop-label.new {
+  color: #262527;
+  background: #e4eb56;
+}
+.opening-modal .reveal-card.rarity-legendary .opening-card-front {
+  background:
+    linear-gradient(
+      135deg,
+      #f2bf3f14,
+      transparent 40%,
+      #f2bf3f18 75%,
+      transparent
+    ),
+    var(--opening-cream);
+  box-shadow:
+    inset 0 0 0 3px var(--opening-cream),
+    inset 0 0 0 5px #bf8b29;
+}
+.opening-modal .chest-flying-cards {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+.opening-modal .chest-flying-cards > i {
+  position: absolute;
+  left: 50%;
+  top: 47%;
+  display: grid;
+  place-items: center;
+  width: 33px;
+  height: 46px;
+  margin-left: -17px;
+  color: var(--opening-glow);
+  background: #262527;
+  border: 1px solid var(--opening-glow);
+  border-radius: 3px;
+  box-shadow: 0 0 18px 3px
+    color-mix(in srgb, var(--opening-glow), transparent 50%);
+  opacity: 0;
+  --flight-x: calc((var(--spark-index) - (var(--flight-count) - 1) / 2) * 36px);
+  --flight-y: calc(-135px + var(--spark-index) * 7px);
+  animation: opening-flying-piece 1.12s cubic-bezier(0.15, 0.65, 0.3, 1) both;
+  animation-delay: calc(1.4s + var(--spark-index) * 45ms);
+}
+.opening-modal .chest-flying-cards .card-back-art {
+  width: 23px;
+  height: 26px;
+}
+.opening-modal .opening-progress small,
+.opening-modal .reveal-instruction,
+.opening-modal .opening-findings,
+.opening-modal .opening-best,
+.opening-modal .opening-next-heading > span,
+.opening-modal .opening-next-types span,
+.opening-modal .opening-next-action p,
+.opening-modal .reveal-actions > span {
+  color: var(--opening-muted);
+}
+.opening-modal .opening-progress-dots > i {
+  background: var(--line, #d2cbbc);
+  border-radius: 1px;
+}
+.opening-modal .opening-progress-dots > i.is-filled {
+  background: var(--studio-accent, #cb4d37);
+}
+.opening-modal .opening-best.rarity-legendary {
+  color: color-mix(in srgb, #bd8514, var(--opening-navy) 25%);
+}
+.opening-modal .opening-best.rarity-epic {
+  color: color-mix(in srgb, #b770e5, var(--opening-navy) 25%);
+}
+.opening-modal .opening-goal {
+  background: var(--studio-surface-alt, #e9e3d5);
+  border-color: var(--line, #d2cbbc);
+}
+.opening-modal .opening-goal-icon {
+  color: var(--opening-navy);
+  background: var(--opening-cream);
+  border: 1px solid var(--line, #d2cbbc);
+  border-radius: 3px;
+}
+.opening-modal .opening-goal small,
+.opening-modal .opening-goal p {
+  color: var(--opening-muted);
+}
+.opening-modal .opening-goal .text-link {
+  color: var(--opening-navy);
+}
+.opening-modal .opening-next {
+  background: var(--opening-cream);
+  border-color: var(--line, #d2cbbc);
+}
+.opening-modal .opening-next-types > button {
+  color: var(--opening-navy);
+  background: var(--opening-cream);
+  border-color: var(--line, #d2cbbc);
+  border-radius: 4px;
+}
+.opening-modal .opening-next-types > button.is-selected {
+  background: color-mix(in srgb, var(--box-accent) 14%, var(--opening-cream));
+  border-color: var(--box-outline);
+  box-shadow: inset 0 0 0 1px var(--box-outline);
+}
+.opening-modal .opening-next-types > button:hover:not(:disabled) {
+  border-color: var(--opening-navy);
+}
+.opening-modal .opening-next-check {
+  color: var(--opening-navy);
+}
+.opening-modal .opening-next-action p > strong {
+  color: var(--opening-navy);
+}
+.opening-modal .reveal-actions {
+  background: var(--studio-surface-alt, #e9e3d5);
+  border-color: var(--line, #d2cbbc);
+  border-radius: 0 0 18px 8px;
+}
+.opening-modal .reveal-actions > span > svg {
+  color: var(--opening-muted);
+}
+.opening-modal .button-primary {
+  background: var(--studio-accent, #cb4d37);
+  border-color: var(--studio-accent, #cb4d37);
+  color: #fff9ed;
+  border-radius: 4px;
+}
+.opening-modal .button-primary:hover:not(:disabled) {
+  background: color-mix(in srgb, var(--studio-accent, #cb4d37), #242320 14%);
+  border-color: transparent;
+}
+.opening-modal .button-secondary {
+  background: var(--opening-cream);
+  border-color: var(--line, #d2cbbc);
+  color: var(--opening-navy);
+  border-radius: 4px;
+}
+.opening-modal .button-secondary:hover:not(:disabled) {
+  background: var(--studio-surface-alt, #e9e3d5);
+}
+.opening-modal button:focus-visible {
+  outline-color: var(--studio-accent, #cb4d37);
+}
+[data-theme="dark"] .opening-modal .button-primary {
+  color: #242320;
+}
+[data-theme="dark"] .opening-modal .rarity-common {
+  --opening-glow: #b5bdc9;
+}
+[data-theme="dark"] .opening-modal .rarity-uncommon {
+  --opening-glow: #68d5b3;
+}
+[data-theme="dark"] .opening-modal .rarity-rare {
+  --opening-glow: #83baff;
+}
+[data-theme="dark"] .opening-modal .rarity-epic {
+  --opening-glow: #d2a1f7;
+}
+[data-theme="dark"] .opening-modal .rarity-legendary {
+  --opening-glow: #ffcf66;
+}
+[data-theme="dark"] .opening-modal .reveal-card {
+  box-shadow:
+    0 0 0 1px var(--opening-glow),
+    0 6px 10px #0003,
+    0 0 24px 4px
+      color-mix(
+        in srgb,
+        var(--opening-glow) var(--opening-strength),
+        transparent
+      );
+}
+@keyframes opening-back-sheen {
+  from {
+    left: -50%;
+  }
+  to {
+    left: 140%;
+  }
+}
+@media (max-width: 760px) {
+  .opening-modal .reveal-grid {
+    gap: 16px 12px;
+  }
+  .opening-modal .reveal-card,
+  .opening-modal .reveal-grid > .reveal-card:last-child,
+  .opening-modal .reveal-grid > .reveal-card:nth-child(4) {
+    min-height: 214px;
+  }
+}
+@media (min-width: 621px) and (max-width: 850px) {
+  .opening-modal .reveal-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 18px 14px;
+  }
+  .opening-modal .opening-card-front {
+    padding-inline: 7px;
+  }
+  .opening-modal .opening-card-front > strong {
+    font-size: 0.68rem;
+  }
+  .opening-modal .opening-card-front .piece-color {
+    font-size: 0.6rem;
+  }
+  .opening-modal .opening-card-back .card-back-art {
+    width: 60px;
+    height: 70px;
+  }
+  .opening-modal .opening-card-brand {
+    font-size: 0.7rem;
+  }
+  .opening-modal .opening-back-rarity {
+    font-size: 0.5rem;
+    letter-spacing: 0;
+  }
+}
+@media (max-width: 620px) {
+  .opening-modal {
+    max-width: calc(100vw - 16px);
+    max-height: calc(100dvh - 24px);
+  }
+  .opening-modal .modal-header {
+    padding: 16px 15px;
+    gap: 9px;
+  }
+  .opening-modal .modal-header h2 {
+    font-size: 1.2rem;
+    line-height: 1.3;
+  }
+  .opening-modal .modal-header .eyebrow {
+    font-size: 0.5rem;
+    line-height: 1.6;
+    letter-spacing: 0.05em;
+  }
+  .opening-modal .modal-header .icon-button {
+    width: 36px;
+    height: 36px;
+    min-width: 36px;
+  }
+  .opening-modal .reveal-stage {
+    padding: 16px 13px;
+  }
+  .opening-modal .reveal-stage.is-unsealing {
+    padding: 0;
+  }
+  .opening-modal .opening-unseal {
+    min-height: 405px;
+  }
+  .opening-modal .opening-theatre {
+    height: 340px;
+  }
+  .opening-modal .opening-stage-kicker {
+    padding-top: 22px;
+    font-size: 0.5625rem;
+  }
+  .opening-modal .opening-unseal-caption > strong {
+    font-size: 1.25rem;
+  }
+  .opening-modal .opening-unseal-caption p {
+    font-size: 0.75rem;
+  }
+  .opening-modal .chest-world {
+    top: 66%;
+    scale: 0.9;
+  }
+  .opening-modal .chest-floor-light {
+    top: 250px;
+  }
+  .opening-modal .opening-progress {
+    gap: 8px;
+  }
+  .opening-modal .opening-progress > span {
+    font-size: 0.5625rem;
+    letter-spacing: 0.04em;
+    gap: 5px;
+  }
+  .opening-modal .opening-progress-dots {
+    margin-left: auto;
+    gap: 3px;
+  }
+  .opening-modal .opening-progress-dots > i {
+    width: 4px;
+    height: 4px;
+  }
+  .opening-modal .opening-progress > strong {
+    margin-left: 0;
+    font-size: 1rem;
+  }
+  .opening-modal .opening-progress small {
+    font-size: 0.6875rem;
+  }
+  .opening-modal .reveal-instruction {
+    font-size: 0.75rem;
+    margin-bottom: 13px;
+  }
+  .opening-modal .reveal-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px 14px;
+    padding: 7px 4px 9px;
+    overflow: visible;
+    margin: 0;
+    scroll-snap-type: none;
+  }
+  .opening-modal .reveal-card,
+  .opening-modal .reveal-grid > .reveal-card:last-child,
+  .opening-modal .reveal-grid > .reveal-card:nth-child(4) {
+    min-height: 226px;
+    aspect-ratio: 0.7;
+  }
+  .opening-modal .opening-rarity-guide {
+    gap: 7px 10px;
+    font-size: 0.5625rem;
+    margin: 0 0 17px;
+  }
+  .opening-modal .opening-rarity-guide b {
+    width: 15px;
+    height: 15px;
+  }
+  .opening-modal .opening-card-front > strong {
+    font-size: 0.75rem;
+  }
+  .opening-modal .opening-card-front .rarity-label {
+    font-size: 0.6rem;
+  }
+  .opening-modal .opening-card-front .piece-color {
+    font-size: 0.65rem;
+  }
+  .opening-modal .opening-card-edition {
+    font-size: 0.32rem;
+    letter-spacing: 0.03em;
+  }
+}
+@media (max-width: 360px) {
+  .opening-modal .reveal-grid {
+    gap: 16px 12px;
+    padding-inline: 2px;
+  }
+  .opening-modal .reveal-card,
+  .opening-modal .reveal-grid > .reveal-card:last-child,
+  .opening-modal .reveal-grid > .reveal-card:nth-child(4) {
+    min-height: 213px;
+  }
+  .opening-modal .opening-card-back .card-back-art {
+    width: 61px;
+    height: 68px;
+  }
+  .opening-modal .opening-card-brand {
+    font-size: 0.75rem;
+  }
+  .opening-modal .opening-back-rarity {
+    font-size: 0.5rem;
+  }
+}

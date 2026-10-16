@@ -1,0 +1,375 @@
+/* Brigo's five destinations stay in the same order on every screen. */
+.app-shell .header-inner {
+  gap: 22px;
+  padding-inline: 32px;
+}
+.app-shell .journey-nav {
+  gap: 2px;
+  min-width: 0;
+}
+.app-shell .journey-nav a {
+  gap: 7px;
+  padding: 12px 10px;
+  min-height: 46px;
+}
+.app-shell .header-tools {
+  margin-left: auto;
+  gap: 5px;
+  flex-shrink: 0;
+}
+.app-shell .header-tools .help-button {
+  display: inline-flex;
+  min-width: 44px;
+  min-height: 44px;
+}
+.app-shell .header-tools .theme-toggle {
+  min-width: 44px;
+  min-height: 44px;
+}
+.app-shell .header-tools .account-toggle {
+  min-width: 44px;
+  min-height: 44px;
+}
+.connection-status {
+  max-width: 1328px;
+  margin: 12px auto 0;
+  padding: 10px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  background: var(--studio-surface);
+  border-block: 1px solid var(--line);
+  font-size: 0.875rem;
+  color: var(--text);
+}
+.connection-status-error {
+  border-color: var(--coral, #b84433);
+}
+.connection-status .button {
+  flex-shrink: 0;
+  min-height: 44px;
+}
+@media (max-width: 600px) {
+  .connection-status {
+    margin-top: 0;
+    padding: 10px 16px;
+    flex-wrap: wrap;
+  }
+}
+.app-shell .brand .brigo-logo {
+  max-width: 150px;
+}
+.guide-quests-link {
+  margin: 0 27px 24px;
+}
+.help-content .guide-details {
+  margin: 16px 27px;
+  border-block: 1px solid var(--line);
+}
+.help-content .guide-details > summary {
+  min-height: 46px;
+  padding: 12px 0;
+  cursor: pointer;
+  font-size: 0.875rem;
+  font-weight: 650;
+}
+.help-content .guide-details ol {
+  padding: 16px 0 0;
+}
+.help-content .guide-details .guide-quests-link {
+  margin: 0 0 16px;
+}
+.help-content .preferences {
+  margin-top: 0;
+}
+.collection-studio .collection-overview {
+  margin-bottom: 18px;
+  border: 1px solid var(--line);
+  border-radius: 5px;
+  background: var(--studio-surface);
+}
+.collection-studio .collection-overview > summary {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  padding: 12px 16px;
+  min-height: 52px;
+  cursor: pointer;
+  list-style: none;
+}
+.collection-studio .collection-overview > summary::-webkit-details-marker {
+  display: none;
+}
+.collection-studio .collection-overview > summary > span {
+  font-size: 0.875rem;
+  font-weight: 650;
+}
+.collection-studio .collection-overview > summary > strong {
+  margin-left: auto;
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--muted);
+}
+.collection-studio .collection-overview[open] > summary {
+  border-bottom: 1px solid var(--line);
+}
+.collection-studio .collection-overview[open] > summary > svg {
+  transform: rotate(90deg);
+}
+.collection-studio .collection-overview .collection-summary {
+  border: 0;
+  border-radius: 0;
+  margin: 0;
+}
+.collection-studio .collection-overview .collection-summary > div {
+  padding: 16px;
+}
+.collection-studio .collection-search-row {
+  display: block;
+}
+.collection-studio .collection-advanced-content .collection-sort-field {
+  grid-column: 1 / -1;
+}
+.collection-studio .collection-get-pieces {
+  min-height: 44px;
+  flex-shrink: 0;
+}
+.app-shell .page-intro h1 {
+  font-size: clamp(1.8rem, 3.1vw, 2.5rem);
+}
+.recipe-dialog .recipe-next-action {
+  padding: 20px 27px;
+  border-bottom: 1px solid var(--line);
+  background: var(--studio-surface-alt);
+}
+.recipe-dialog .recipe-readiness {
+  display: grid;
+  gap: 7px;
+  margin-bottom: 14px;
+}
+.recipe-dialog .recipe-readiness > span {
+  font-size: 0.8125rem;
+  color: var(--muted);
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+.recipe-dialog .recipe-readiness > strong {
+  font-family: var(--heading);
+  font-size: 1.25rem;
+}
+.recipe-dialog .recipe-next-action > .button {
+  width: 100%;
+  min-height: 48px;
+}
+.recipe-dialog .recipe-next-action .recipe-order {
+  margin: 0;
+  padding: 14px 16px;
+  background: var(--studio-surface);
+  border-radius: 5px;
+}
+.recipe-dialog .recipe-order h3 {
+  font-size: 0.9375rem;
+}
+.recipe-dialog .recipe-order > p {
+  margin-bottom: 8px;
+  line-height: 1.5;
+}
+.recipe-dialog .recipe-order .order-price {
+  margin-block: 8px;
+}
+.recipe-dialog .recipe-order .order-quests-link {
+  min-height: 44px;
+  margin-top: 6px;
+  font-size: 0.8125rem;
+}
+.recipe-dialog .recipe-parts-details {
+  border-block: 1px solid var(--line);
+  margin-top: 16px;
+}
+.recipe-dialog .recipe-parts-details > summary {
+  min-height: 48px;
+  padding: 12px 0;
+  cursor: pointer;
+  font-weight: 650;
+  font-size: 0.875rem;
+}
+.recipe-dialog .recipe-parts-details > summary strong {
+  float: right;
+  font-size: 0.75rem;
+  color: var(--muted);
+}
+.recipe-dialog .recipe-parts-details .form-help {
+  padding-bottom: 12px;
+}
+.recipe-dialog .recipe-return-note {
+  padding: 18px 27px;
+  border-top: 1px solid var(--line);
+  font-size: 0.75rem;
+  color: var(--muted);
+}
+.recipe-dialog .recipe-return-note span {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+@media (min-width: 1051px) and (max-width: 1250px) {
+  .app-shell .header-inner {
+    padding-inline: 24px;
+    gap: 16px;
+  }
+  .app-shell .header-tools .player-level-badge {
+    display: none;
+  }
+  .app-shell .journey-nav a {
+    font-size: 0.8125rem;
+    padding-inline: 9px;
+  }
+}
+@media (max-width: 1050px) {
+  .app-shell .site-header {
+    backdrop-filter: none;
+  }
+  .app-shell .header-inner {
+    display: flex;
+    flex-wrap: nowrap;
+    min-height: 72px;
+    padding: 10px 22px;
+    gap: 12px;
+  }
+  .app-shell .journey-nav {
+    position: fixed;
+    inset: auto 0 0;
+    z-index: 30;
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    width: 100%;
+    max-width: none;
+    margin: 0;
+    padding: 6px 10px calc(6px + env(safe-area-inset-bottom, 0px));
+    gap: 3px;
+    border: 0;
+    border-top: 2px solid var(--ink);
+    border-radius: 0;
+    background: var(--studio-surface);
+    box-shadow: 0 -4px 15px var(--studio-shadow);
+    transform: none;
+  }
+  .app-shell .journey-nav a {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    min-width: 0;
+    min-height: 57px;
+    padding: 7px 1px;
+    font-size: 0.75rem;
+    line-height: 1.2;
+    border-radius: 4px;
+  }
+  .app-shell .journey-nav a svg {
+    display: block;
+    width: 20px;
+    height: 20px;
+  }
+  .app-shell .journey-nav a.active,
+  .app-shell .journey-nav a.active:hover {
+    color: #242320;
+    background: var(--studio-lemon);
+    box-shadow: inset 0 -2px 0 #242320;
+  }
+  .app-shell .main-content {
+    padding-bottom: calc(106px + env(safe-area-inset-bottom, 0px));
+  }
+  .app-shell .site-footer {
+    margin-bottom: calc(79px + env(safe-area-inset-bottom, 0px));
+  }
+  .app-shell .toast {
+    bottom: calc(90px + env(safe-area-inset-bottom, 0px));
+  }
+}
+@media (max-width: 600px) {
+  .app-shell .header-inner {
+    padding: 9px 16px;
+    min-height: 68px;
+  }
+  .app-shell .header-tools .player-level-badge,
+  .app-shell .header-tools .theme-toggle,
+  .app-shell .header-tools .admin-toggle {
+    display: none;
+  }
+  .app-shell .brand .brigo-logo {
+    width: 120px;
+    max-width: 120px;
+    height: auto;
+  }
+  .app-shell .header-tools .wallet {
+    padding: 6px 8px;
+    margin-right: 0;
+    min-height: 44px;
+    gap: 6px;
+  }
+  .app-shell .wallet strong {
+    font-size: 0.875rem;
+  }
+  .app-shell .wallet > span {
+    width: 24px;
+    height: 24px;
+  }
+  .app-shell .journey-nav {
+    padding-inline: 5px;
+    gap: 2px;
+  }
+  .app-shell .journey-nav a {
+    font-size: 0.6875rem;
+  }
+  .app-shell .main-content {
+    padding-top: 20px;
+  }
+  .app-shell .page-intro {
+    margin-bottom: 20px;
+    gap: 12px;
+  }
+  .app-shell .page-intro h1 {
+    margin-top: 7px;
+    margin-bottom: 8px;
+  }
+  .guide-quests-link {
+    margin-inline: 18px;
+    width: calc(100% - 36px);
+  }
+  .help-content .guide-details {
+    margin-inline: 18px;
+  }
+  .recipe-dialog .recipe-next-action {
+    padding: 16px 18px;
+  }
+  .recipe-dialog .recipe-return-note {
+    padding-inline: 18px;
+  }
+  .app-shell .collection-studio .page-intro {
+    gap: 4px;
+    margin-bottom: 10px;
+  }
+  .collection-studio .collection-get-pieces {
+    align-self: flex-start;
+  }
+  .collection-studio .collection-overview {
+    margin-bottom: 12px;
+  }
+}
+@media (max-width: 360px) {
+  .app-shell .header-inner {
+    padding-inline: 12px;
+    gap: 6px;
+  }
+  .app-shell .brand .brigo-logo {
+    width: 104px;
+    max-width: 104px;
+  }
+  .app-shell .header-tools {
+    gap: 3px;
+  }
+}

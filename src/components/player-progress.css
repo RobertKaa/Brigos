@@ -1,0 +1,692 @@
+.player-progress {
+  margin: 34px 0;
+  color: var(--ink);
+}
+.player-progress .section-heading {
+  margin-bottom: 20px;
+}
+.player-progress .section-heading h2 {
+  font-size: 1.7rem;
+}
+.player-progress .section-heading p {
+  font-size: 0.9375rem;
+  color: var(--muted);
+  margin-top: 7px;
+}
+.player-progress-overview {
+  display: grid;
+  grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+  gap: 20px;
+}
+.player-progress-overview.player-progress-gallery-only {
+  grid-template-columns: minmax(0, 1fr);
+}
+.player-progress .player-xp-card {
+  display: flex;
+  gap: 24px;
+  align-items: center;
+  background: var(--studio-inverse);
+  color: var(--studio-on-dark);
+  border-radius: 20px;
+  padding: 28px;
+  min-width: 0;
+  position: relative;
+  overflow: hidden;
+}
+.player-xp-card::after {
+  content: "";
+  position: absolute;
+  right: -40px;
+  top: -80px;
+  width: 230px;
+  height: 230px;
+  border: 36px solid color-mix(in srgb, var(--line) 2%, transparent);
+  border-radius: 50%;
+  pointer-events: none;
+}
+.player-level-medal {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 90px;
+  height: 100px;
+  border-radius: 22px;
+  color: var(--ink);
+  background: var(--studio-surface-alt);
+  box-shadow: inset 0 0 0 1px #ffde89;
+}
+.player-level-medal > span {
+  font-size: 0.6875rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+}
+.player-level-medal > strong {
+  font-family: var(--heading);
+  font-size: 2.8rem;
+  line-height: 1.2;
+  font-weight: 650;
+}
+.player-xp-content {
+  flex: 1;
+  min-width: 0;
+  position: relative;
+  z-index: 1;
+}
+.player-progress-eyebrow {
+  display: block;
+  font-size: 0.6875rem;
+  letter-spacing: 0.09em;
+  font-weight: 750;
+  line-height: 1.6;
+}
+.player-xp-content > .player-progress-eyebrow {
+  color: var(--muted);
+}
+.player-xp-content h3 {
+  font-size: 1.6rem;
+  margin: 5px 0 12px;
+  line-height: 1.15;
+  letter-spacing: -0.015em;
+}
+.player-xp-line {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 6px 14px;
+}
+.player-xp-line > strong {
+  color: var(--studio-lemon);
+  font-size: 1.0625rem;
+  font-variant-numeric: tabular-nums;
+}
+.player-xp-line > span {
+  color: var(--muted);
+  font-size: 0.8125rem;
+}
+.player-xp-track {
+  height: 8px;
+  margin-top: 18px;
+  border-radius: 20px;
+  overflow: hidden;
+  background: var(--studio-surface-alt);
+}
+.player-xp-track > span {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  background: var(--studio-surface-alt);
+  transition: width 0.3s ease;
+}
+.player-next-level {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 5px 12px;
+  color: var(--muted);
+  margin-top: 9px;
+  font-size: 0.8125rem;
+  line-height: 1.5;
+  font-variant-numeric: tabular-nums;
+}
+.player-next-level > span:last-child {
+  color: var(--studio-lemon);
+  font-weight: 650;
+}
+.player-progress .player-visit-card {
+  background: var(--studio-surface-alt);
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  min-width: 0;
+}
+.player-visit-card.is-ready {
+  border-color: var(--line);
+}
+.player-visit-heading {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  min-width: 0;
+}
+.player-visit-icon {
+  display: grid;
+  place-items: center;
+  width: 46px;
+  height: 46px;
+  border-radius: 13px;
+  color: var(--studio-accent);
+  background: var(--studio-surface-alt);
+  flex-shrink: 0;
+}
+.player-visit-heading .player-progress-eyebrow {
+  color: var(--muted);
+}
+.player-visit-heading h3 {
+  font-size: 1.3rem;
+  line-height: 1.25;
+  margin-top: 4px;
+  color: var(--ink);
+}
+.player-visit-card > p {
+  font-size: 0.875rem;
+  line-height: 1.55;
+  color: var(--muted);
+  margin-top: 13px;
+}
+.player-visit-reward {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  color: var(--ink);
+  font-size: 0.875rem;
+  font-weight: 700;
+  line-height: 1.5;
+  margin: 16px 0 20px;
+}
+.player-visit-card > .button {
+  margin-top: auto;
+  width: 100%;
+  min-height: 48px;
+  font-size: 0.875rem;
+}
+.player-visit-card > .button:disabled {
+  opacity: 1;
+  color: var(--muted);
+  border-color: var(--line);
+  background: color-mix(in srgb, var(--studio-surface) 56%, transparent);
+}
+.player-visit-card > .button-primary:disabled {
+  opacity: 0.65;
+}
+.player-visit-card > .player-clock-note {
+  font-size: 0.8125rem;
+  margin-top: 10px;
+}
+.player-challenge > .player-capacity-note,
+.player-visit-card > .player-capacity-note {
+  flex: none;
+  margin-top: 10px;
+  color: var(--studio-danger);
+  font-size: 0.8125rem;
+  line-height: 1.6;
+}
+.player-challenges {
+  margin-top: 26px;
+}
+.player-challenges-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  margin-bottom: 16px;
+}
+.player-challenges-heading > h3 {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 1.15rem;
+  color: var(--ink);
+}
+.player-challenges-heading > h3 > svg {
+  color: var(--studio-accent);
+}
+.player-challenges-heading > span {
+  font-size: 0.8125rem;
+  color: var(--muted);
+  text-align: right;
+  line-height: 1.5;
+}
+.player-challenge-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+}
+.player-progress .player-challenge {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 22px;
+  border: 1px solid var(--line);
+  background: var(--studio-surface);
+  border-radius: 17px;
+}
+.player-progress .player-challenge.is-complete {
+  background: var(--studio-surface-alt);
+  border-color: var(--line);
+}
+.player-progress .player-challenge.is-claimed {
+  background: var(--studio-surface-alt);
+  border-color: var(--line);
+}
+.player-challenge-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.player-challenge-mark {
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  flex-shrink: 0;
+  border-radius: 9px;
+  background: var(--studio-surface-alt);
+  color: var(--muted);
+  font-family: var(--heading);
+  font-weight: 650;
+  font-size: 0.9375rem;
+}
+.is-complete .player-challenge-mark {
+  background: var(--studio-surface-alt);
+  color: var(--ink);
+}
+.is-claimed .player-challenge-mark {
+  background: var(--studio-surface-alt);
+  color: var(--studio-accent);
+}
+.player-challenge-title > h4 {
+  margin: 0;
+  font-family: var(--heading);
+  font-size: 1.05rem;
+  font-weight: 650;
+  letter-spacing: -0.015em;
+  line-height: 1.3;
+}
+.player-challenge > p {
+  margin-top: 12px;
+  color: var(--muted);
+  font-size: 0.875rem;
+  line-height: 1.6;
+  flex: 1;
+}
+.player-challenge-progress {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 18px 0 13px;
+}
+.player-challenge-progress > span {
+  flex: 1;
+  height: 7px;
+  overflow: hidden;
+  background: var(--studio-surface-alt);
+  border-radius: 12px;
+}
+.player-challenge-progress i {
+  display: block;
+  height: 100%;
+  background: var(--studio-solid-accent);
+  border-radius: inherit;
+}
+.is-claimed .player-challenge-progress i {
+  background: var(--studio-solid-accent);
+}
+.player-challenge-progress > strong {
+  font-size: 0.8125rem;
+  color: var(--muted);
+  font-weight: 650;
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}
+.player-challenge-reward {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  color: var(--studio-danger);
+  font-size: 0.8125rem;
+  font-weight: 700;
+  line-height: 1.5;
+  margin-bottom: 12px;
+}
+.player-challenge-link,
+.player-challenge-done {
+  min-height: 46px;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  font-size: 0.875rem;
+  font-weight: 650;
+  line-height: 1.5;
+}
+.player-challenge-link {
+  justify-content: space-between;
+  width: 100%;
+  color: var(--studio-accent);
+}
+.player-challenge-link:hover {
+  color: var(--ink);
+}
+.player-challenge-done {
+  color: var(--studio-accent);
+}
+.player-challenge > .button {
+  width: 100%;
+  min-height: 46px;
+  font-size: 0.8125rem;
+  padding: 11px 12px;
+}
+.player-level-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  padding: 0 12px;
+  min-height: 42px;
+  border: 1px solid var(--line);
+  border-radius: 11px;
+  background: var(--studio-surface-alt);
+  color: var(--ink);
+  font-size: 0.8125rem;
+  font-weight: 700;
+  white-space: nowrap;
+}
+.player-level-badge:hover {
+  background: var(--studio-tint);
+}
+.recipe-xp-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  color: var(--ink);
+  background: var(--studio-surface-alt);
+  border: 1px solid var(--line);
+  border-radius: 7px;
+  padding: 5px 7px;
+  font-size: 0.75rem;
+  font-weight: 750;
+  line-height: 1.25;
+  white-space: nowrap;
+}
+.construction-xp-note {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border: 1px solid var(--line);
+  background: var(--studio-surface-alt);
+  border-radius: 13px;
+  padding: 15px 18px;
+  margin: 19px 0;
+}
+.construction-xp-note > svg {
+  color: var(--muted);
+  flex-shrink: 0;
+}
+.construction-xp-note strong {
+  font-size: 0.875rem;
+  color: var(--ink);
+}
+.construction-xp-note p {
+  font-size: 0.8125rem;
+  color: var(--muted);
+  line-height: 1.6;
+  margin-top: 3px;
+  max-width: 900px;
+}
+.player-progress-compact {
+  margin: 20px 0;
+}
+.player-progress-compact .player-progress-overview {
+  grid-template-columns: minmax(0, 1fr);
+}
+.player-progress-compact .player-xp-card {
+  padding: 24px;
+  gap: 20px;
+}
+.player-progress-compact .player-level-medal {
+  width: 72px;
+  height: 88px;
+  border-radius: 19px;
+}
+.player-progress-compact .player-level-medal > strong {
+  font-size: 2.35rem;
+}
+.player-progress-compact .player-xp-content h3 {
+  font-size: 1.3rem;
+  margin: 4px 0 9px;
+}
+.player-progress-compact .player-xp-track {
+  margin-top: 13px;
+}
+@media (max-width: 1050px) {
+  .player-progress .player-xp-card {
+    gap: 20px;
+    padding: 24px;
+  }
+  .player-level-medal {
+    width: 76px;
+    height: 90px;
+  }
+  .player-xp-content h3 {
+    font-size: 1.4rem;
+  }
+  .player-progress .player-challenge {
+    padding: 18px;
+  }
+}
+@media (max-width: 760px) {
+  .player-progress-overview {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 15px;
+  }
+  .player-progress .player-visit-card {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: center;
+    gap: 10px 18px;
+  }
+  .player-visit-card > p {
+    grid-column: 1;
+    margin: 0;
+  }
+  .player-visit-reward {
+    grid-column: 1;
+    margin: 0;
+  }
+  .player-visit-card > .button {
+    grid-column: 2;
+    grid-row: 1 / 4;
+    margin: 0;
+    align-self: center;
+    width: auto;
+    max-width: 200px;
+  }
+  .player-visit-card > .player-clock-note,
+  .player-visit-card > .player-capacity-note {
+    grid-column: 1 / -1;
+  }
+  .player-challenge-grid {
+    gap: 12px;
+  }
+  .player-challenge-title {
+    gap: 7px;
+    align-items: flex-start;
+  }
+  .player-challenge-title > h4 {
+    font-size: 0.9375rem;
+  }
+  .player-progress .player-challenge {
+    padding: 17px;
+  }
+  .player-challenge-mark {
+    width: 25px;
+    height: 25px;
+    border-radius: 7px;
+  }
+  .player-challenge-link {
+    font-size: 0.8125rem;
+  }
+}
+@media (max-width: 540px) {
+  .player-progress {
+    margin: 28px 0;
+  }
+  .player-progress .section-heading {
+    align-items: flex-start;
+    gap: 10px;
+  }
+  .player-progress .section-heading h2 {
+    font-size: 1.5rem;
+  }
+  .player-progress .section-heading p {
+    font-size: 0.875rem;
+  }
+  .player-progress .section-heading .text-link {
+    font-size: 0.8125rem;
+    white-space: nowrap;
+  }
+  .player-progress .player-xp-card,
+  .player-progress-compact .player-xp-card {
+    padding: 22px 18px;
+    gap: 17px;
+    border-radius: 17px;
+  }
+  .player-level-medal,
+  .player-progress-compact .player-level-medal {
+    width: 64px;
+    height: 82px;
+    border-radius: 17px;
+  }
+  .player-level-medal > span {
+    font-size: 0.625rem;
+    letter-spacing: 0.06em;
+  }
+  .player-level-medal > strong,
+  .player-progress-compact .player-level-medal > strong {
+    font-size: 2.3rem;
+  }
+  .player-xp-content h3,
+  .player-progress-compact .player-xp-content h3 {
+    font-size: 1.2rem;
+    margin-bottom: 9px;
+  }
+  .player-progress-eyebrow {
+    font-size: 0.625rem;
+  }
+  .player-xp-line > strong {
+    font-size: 1rem;
+  }
+  .player-xp-line > span {
+    font-size: 0.75rem;
+  }
+  .player-xp-track {
+    margin-top: 13px;
+    height: 7px;
+  }
+  .player-next-level {
+    font-size: 0.75rem;
+    margin-top: 8px;
+    gap: 3px 8px;
+  }
+  .player-progress .player-visit-card {
+    display: flex;
+    padding: 20px;
+    gap: 0;
+    border-radius: 17px;
+  }
+  .player-visit-heading h3 {
+    font-size: 1.25rem;
+  }
+  .player-visit-card > p {
+    margin-top: 13px;
+    font-size: 0.875rem;
+  }
+  .player-visit-reward {
+    margin: 14px 0 18px;
+    font-size: 0.875rem;
+  }
+  .player-visit-card > .button {
+    width: 100%;
+    max-width: none;
+  }
+  .player-challenges-heading {
+    align-items: flex-start;
+    gap: 10px;
+  }
+  .player-challenges-heading > h3 {
+    font-size: 1.1rem;
+    line-height: 1.35;
+  }
+  .player-challenges-heading > span {
+    max-width: 120px;
+    font-size: 0.75rem;
+  }
+  .player-challenge-grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 14px;
+  }
+  .player-progress .player-challenge {
+    padding: 21px;
+    border-radius: 17px;
+  }
+  .player-challenge-title {
+    align-items: center;
+    gap: 10px;
+  }
+  .player-challenge-title > h4 {
+    font-size: 1.1rem;
+  }
+  .player-challenge-mark {
+    width: 30px;
+    height: 30px;
+    font-size: 0.9375rem;
+  }
+  .player-challenge > p,
+  .player-challenge > .button,
+  .player-challenge-link,
+  .player-challenge-done {
+    font-size: 0.875rem;
+  }
+  .player-challenge-progress > strong,
+  .player-challenge-reward {
+    font-size: 0.8125rem;
+  }
+  .player-level-badge {
+    padding: 0 9px;
+    min-height: 38px;
+    font-size: 0.75rem;
+    gap: 5px;
+  }
+  .construction-xp-note {
+    padding: 14px 15px;
+    align-items: flex-start;
+    gap: 10px;
+  }
+  .construction-xp-note > svg {
+    margin-top: 3px;
+  }
+  .construction-xp-note p {
+    font-size: 0.8125rem;
+  }
+}
+@media (max-width: 360px) {
+  .player-progress .player-xp-card,
+  .player-progress-compact .player-xp-card {
+    padding: 20px 15px;
+    gap: 12px;
+  }
+  .player-level-medal,
+  .player-progress-compact .player-level-medal {
+    width: 56px;
+    height: 76px;
+  }
+  .player-xp-content h3,
+  .player-progress-compact .player-xp-content h3 {
+    font-size: 1.1rem;
+  }
+  .player-next-level > span:last-child {
+    display: none;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .player-xp-track > span {
+    transition: none;
+  }
+}

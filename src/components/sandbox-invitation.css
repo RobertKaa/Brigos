@@ -1,0 +1,87 @@
+.sandbox-invitation {
+  display: flex;
+  gap: 22px;
+  align-items: center;
+  color: var(--ink);
+  background: var(--studio-surface);
+  border: 1.5px solid var(--ink);
+  border-radius: 6px 14px 6px 6px;
+  margin: 26px 0;
+  padding: 24px 28px;
+  box-shadow: 5px 5px 0 var(--studio-tint);
+  text-decoration: none;
+}
+.sandbox-invitation:hover {
+  background: var(--studio-surface-alt);
+}
+.sandbox-invitation-mark {
+  flex-shrink: 0;
+  color: var(--studio-accent);
+  padding: 16px;
+  border: 1px dashed var(--studio-accent);
+  transform: rotate(-5deg);
+}
+.sandbox-invitation-copy {
+  display: grid;
+  gap: 6px;
+  min-width: 0;
+}
+.sandbox-invitation-copy > span:first-child {
+  font-size: 0.65rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  color: var(--studio-accent);
+}
+.sandbox-invitation-copy > strong {
+  font-family: var(--heading);
+  font-size: 1.5rem;
+  line-height: 1.2;
+}
+.sandbox-invitation-copy > span:last-child {
+  font-size: 0.85rem;
+  line-height: 1.6;
+  color: var(--muted);
+  max-width: 600px;
+}
+.sandbox-invitation-cta {
+  margin-left: auto;
+  display: grid;
+  gap: 8px;
+  flex-shrink: 0;
+}
+.sandbox-invitation-cta > strong {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  font-size: 0.9rem;
+}
+.sandbox-invitation-cta > span {
+  font-size: 0.75rem;
+  color: var(--muted);
+}
+@media (max-width: 700px) {
+  .sandbox-invitation {
+    flex-wrap: wrap;
+    padding: 18px;
+    gap: 15px;
+  }
+  .sandbox-invitation-mark {
+    padding: 10px;
+  }
+  .sandbox-invitation-copy {
+    flex: 1;
+  }
+  .sandbox-invitation-copy > strong {
+    font-size: 1.25rem;
+  }
+  .sandbox-invitation-cta {
+    margin-left: 0;
+    width: 100%;
+    border-top: 1px dashed var(--line);
+    padding-top: 15px;
+  }
+  .sandbox-invitation-cta > strong {
+    min-height: 44px;
+    justify-content: space-between;
+  }
+}

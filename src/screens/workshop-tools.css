@@ -1,0 +1,784 @@
+/* The plan library stays first; secondary controls reveal on request. */
+.workshop-studio {
+  color: var(--ink);
+}
+.workshop-studio .page-intro,
+.app-shell .workshop-studio .page-intro {
+  align-items: center;
+  margin-bottom: 12px;
+  gap: 18px;
+}
+.workshop-studio .page-intro h1 {
+  font-size: clamp(1.8rem, 2.6vw, 2.35rem);
+  margin: 6px 0 7px;
+}
+.workshop-free-link {
+  flex-shrink: 0;
+  min-height: 44px;
+  font-size: 0.875rem;
+  color: var(--studio-accent);
+}
+.workshop-studio .workshop-toolbar {
+  margin-bottom: 10px;
+  padding-bottom: 0;
+  border-bottom: 0;
+}
+.workshop-studio .view-tabs {
+  display: flex;
+  gap: 4px;
+  padding: 4px;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: var(--studio-surface-alt);
+}
+.workshop-studio .view-tabs > button {
+  min-height: 44px;
+  padding: 9px 18px;
+  color: var(--muted);
+  font-size: 0.9375rem;
+  font-weight: 650;
+  border-radius: 4px;
+  gap: 9px;
+}
+.workshop-studio .view-tabs > button.active {
+  color: var(--ink);
+  background: var(--studio-surface);
+  box-shadow: 0 2px 4px var(--studio-shadow);
+}
+.workshop-studio .view-tabs > button > span {
+  background: color-mix(in srgb, var(--studio-inverse) 5%, transparent);
+  color: var(--muted);
+  font-size: 0.8125rem;
+  padding: 2px 6px;
+}
+.workshop-objective {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border-left: 3px solid var(--studio-accent);
+  padding: 6px 14px;
+  margin-bottom: 10px;
+  background: var(--studio-accent-wash);
+  color: var(--ink);
+}
+.workshop-objective > svg {
+  flex-shrink: 0;
+  color: var(--studio-accent);
+}
+.workshop-objective > div {
+  flex: 1;
+  min-width: 0;
+}
+.workshop-objective span {
+  font-size: 0.875rem;
+  line-height: 1.4;
+}
+.workshop-objective p {
+  color: var(--muted);
+  font-size: 0.8125rem;
+  line-height: 1.5;
+  margin: 3px 0 0;
+}
+.workshop-objective .text-link {
+  flex-shrink: 0;
+  min-height: 44px;
+  color: var(--studio-accent);
+  font-size: 0.8125rem;
+}
+.workshop-plan-controls {
+  display: grid;
+  grid-template-columns: minmax(200px, 1fr) auto;
+  align-items: start;
+  gap: 10px 16px;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: var(--studio-surface);
+  padding: 12px 16px 0;
+}
+.workshop-search-tools {
+  min-width: 0;
+}
+.workshop-studio .workshop-search {
+  display: flex;
+  min-width: 0;
+  align-items: center;
+  gap: 10px;
+  background: var(--studio-surface-alt);
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  padding: 0 12px;
+  color: var(--muted);
+}
+.workshop-search input {
+  border: 0;
+  outline: none;
+  background: transparent;
+  width: 100%;
+  min-width: 0;
+  min-height: 46px;
+  font-size: 0.9375rem;
+  color: var(--ink);
+}
+.workshop-search input::placeholder {
+  color: var(--muted);
+  opacity: 1;
+}
+.workshop-search:focus-within {
+  outline: 3px solid color-mix(in srgb, var(--studio-accent) 44%, transparent);
+  outline-offset: 2px;
+}
+.workshop-search input:focus-visible {
+  outline: none;
+  box-shadow: none;
+}
+.workshop-quick-filters {
+  display: flex;
+  gap: 7px;
+}
+.workshop-quick-filters > button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  min-height: 48px;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  padding: 8px 11px;
+  background: var(--studio-surface);
+  color: var(--muted);
+  font-size: 0.8125rem;
+  font-weight: 650;
+}
+.workshop-quick-filters > button.active {
+  color: var(--studio-on-dark);
+  border-color: var(--studio-solid-accent);
+  background: var(--studio-solid-accent);
+}
+.workshop-quick-filters > button > span {
+  background: color-mix(in srgb, var(--studio-inverse) 5%, transparent);
+  border-radius: 3px;
+  padding: 2px 5px;
+  font-size: 0.75rem;
+}
+.workshop-quick-filters > button.active > span {
+  background: color-mix(in srgb, var(--studio-surface) 15%, transparent);
+}
+.workshop-advanced-filters {
+  grid-column: 1 / -1;
+  border-top: 1px solid var(--line);
+}
+.workshop-advanced-filters > summary,
+.workshop-level-details > summary {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  list-style: none;
+  min-height: 44px;
+  color: var(--ink);
+  font-size: 0.8125rem;
+  font-weight: 650;
+  cursor: pointer;
+}
+.workshop-advanced-filters > summary::-webkit-details-marker,
+.workshop-level-details > summary::-webkit-details-marker {
+  display: none;
+}
+.workshop-advanced-filters > summary > span {
+  color: var(--muted);
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+.workshop-advanced-filters > summary > svg,
+.workshop-level-details > summary > svg {
+  margin-left: auto;
+  flex-shrink: 0;
+}
+.workshop-advanced-filters[open] > summary > svg,
+.workshop-level-details[open] > summary > svg {
+  transform: rotate(180deg);
+}
+.workshop-plan-filters {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+  padding: 8px 0 16px;
+}
+.workshop-plan-filters > label {
+  display: grid;
+  gap: 7px;
+  min-width: 0;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--muted);
+}
+.workshop-studio .standalone-select {
+  min-width: 0;
+  min-height: 46px;
+  width: 100%;
+  padding: 9px 30px 9px 12px;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  background: var(--studio-surface);
+  color: var(--ink);
+  font-size: 0.875rem;
+}
+.workshop-results {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 20px 0 12px;
+}
+.workshop-results > p {
+  color: var(--muted);
+  font-size: 0.875rem;
+  margin: 0;
+}
+.workshop-results strong {
+  color: var(--ink);
+}
+.workshop-results .text-link {
+  color: var(--studio-accent);
+  min-height: 44px;
+  font-size: 0.875rem;
+}
+.workshop-results-plans {
+  position: relative;
+  margin: 12px 0;
+  gap: 8px 16px;
+}
+.workshop-results-plans .workshop-pagination-top {
+  flex: 1;
+  padding: 0;
+}
+.workshop-results-plans .text-link {
+  font-size: 0.8125rem;
+}
+.workshop-library-heading:not(:focus) {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+.workshop-library-heading:focus {
+  flex-basis: 100%;
+  margin: 0 0 8px;
+}
+.workshop-harvest {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px 20px;
+  padding: 16px;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: var(--studio-accent-wash);
+}
+.workshop-harvest-summary {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex: 1;
+  min-width: 0;
+}
+.workshop-harvest-summary > svg {
+  flex-shrink: 0;
+  color: var(--studio-accent);
+}
+.workshop-harvest-summary strong {
+  display: block;
+  font-family: var(--heading);
+  font-size: 1.125rem;
+  line-height: 1.35;
+}
+.workshop-harvest-summary p {
+  color: var(--muted);
+  font-size: 0.8125rem;
+  line-height: 1.5;
+  margin: 3px 0 0;
+}
+.workshop-harvest > .button {
+  min-height: 46px;
+}
+.workshop-harvest-note {
+  flex-basis: 100%;
+  font-size: 0.8125rem;
+  line-height: 1.5;
+  color: var(--ink);
+  margin: 0;
+}
+.workshop-level-details {
+  margin-top: 28px;
+  padding: 0 16px;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: var(--studio-surface-alt);
+}
+.workshop-level-details > summary {
+  font-size: 0.875rem;
+  min-height: 52px;
+}
+.workshop-level-details .player-progress-compact {
+  margin: 8px 0 16px;
+}
+.workshop-level-details .construction-xp-note {
+  margin: 0 0 16px;
+}
+.workshop-studio .recipe-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 22px;
+}
+.workshop-studio .recipe-card {
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  background: var(--studio-surface);
+  box-shadow: 0 3px 0 #19293705;
+}
+.workshop-studio .recipe-card-ready {
+  border-color: var(--line);
+}
+.workshop-studio .recipe-card-followed {
+  box-shadow: 0 0 0 2px #257b7730;
+}
+.workshop-studio .recipe-card-legendary {
+  border-color: var(--line);
+  background: var(--studio-surface);
+}
+.workshop-studio .recipe-art-button {
+  height: 230px;
+  border: 0;
+}
+.workshop-studio .recipe-art-button > svg {
+  width: 92%;
+  height: 88%;
+  margin-top: 15px;
+}
+.workshop-studio .difficulty-badge {
+  left: 14px;
+  top: 13px;
+  border: 1px solid color-mix(in srgb, var(--line) 7%, transparent);
+  border-radius: 8px;
+  color: var(--ink);
+  background: color-mix(in srgb, var(--studio-surface) 94%, transparent);
+  font-size: 0.75rem;
+  font-weight: 650;
+  padding: 5px 8px;
+}
+.workshop-studio .recipe-card-legendary .difficulty-badge {
+  background: var(--studio-tint);
+  color: var(--ink);
+}
+.workshop-studio .built-badge {
+  color: var(--studio-accent);
+  background: color-mix(in srgb, var(--studio-surface) 94%, transparent);
+  font-size: 0.75rem;
+  font-weight: 650;
+  top: 13px;
+  right: 14px;
+  padding: 5px 8px;
+  border-radius: 8px;
+}
+.recipe-art-button > .recipe-xp-badge {
+  position: absolute;
+  left: 14px;
+  bottom: 14px;
+  z-index: 2;
+}
+.workshop-studio .recipe-card-content {
+  padding: 22px;
+}
+.workshop-card-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 5px;
+}
+.workshop-studio .recipe-piece-count {
+  color: var(--muted);
+  font-size: 0.875rem;
+  font-weight: 650;
+  gap: 6px;
+}
+.workshop-followed-label {
+  display: inline-flex;
+  gap: 4px;
+  align-items: center;
+  font-size: 0.75rem;
+  font-weight: 650;
+  color: var(--studio-accent);
+}
+.workshop-studio .recipe-card-content h2 {
+  color: var(--ink);
+  font-size: 1.35rem;
+  line-height: 1.2;
+  margin: 10px 0 8px;
+  letter-spacing: -0.025em;
+}
+.workshop-studio .recipe-card-content > p {
+  color: var(--muted);
+  font-size: 0.875rem;
+  line-height: 1.6;
+  margin: 0 0 20px;
+  flex: 1;
+}
+.workshop-stock-label {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 10px;
+  color: var(--muted);
+  font-size: 0.8125rem;
+  margin-top: auto;
+}
+.workshop-stock-label > strong {
+  color: var(--ink);
+  font-size: 0.875rem;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+.workshop-stock-label small {
+  color: var(--muted);
+  font-size: 0.8125rem;
+  font-weight: 500;
+}
+.workshop-studio .recipe-progress {
+  display: flex;
+  margin: 9px 0;
+}
+.workshop-studio .recipe-progress > span {
+  height: 7px;
+  background: var(--studio-surface-alt);
+}
+.workshop-studio .recipe-progress > span > span {
+  background: var(--studio-solid-accent);
+}
+.workshop-studio .recipe-progress.ready > span > span {
+  background: var(--studio-solid-accent);
+}
+.workshop-missing-label {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.8125rem;
+  color: var(--muted);
+  margin: 0 0 18px;
+}
+.workshop-missing-label.is-ready {
+  color: var(--studio-accent);
+  font-weight: 650;
+}
+.workshop-studio .recipe-card-content > .button {
+  min-height: 48px;
+  font-size: 0.875rem;
+  justify-content: space-between;
+  padding: 12px 16px;
+}
+.workshop-studio .workshop-gallery {
+  margin-top: 22px;
+}
+.workshop-dismantle-button {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  border: 0;
+  background: transparent;
+  font-size: 0.8125rem;
+  color: var(--muted);
+  width: 100%;
+  min-height: 46px;
+  padding: 12px 2px 0;
+}
+.workshop-dismantle-button > span {
+  margin-left: auto;
+  color: var(--studio-accent);
+  font-weight: 650;
+}
+.detail-variants > div {
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}
+.recipe-detail-art > .recipe-xp-explanation {
+  font-size: 0.875rem;
+  margin-top: 8px;
+  color: var(--muted);
+}
+.recipe-built-note {
+  display: grid;
+  gap: 6px;
+  padding: 15px;
+  margin: 0 0 18px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--studio-surface-alt);
+  color: var(--muted);
+  font-size: 0.875rem;
+  line-height: 1.6;
+}
+.workshop-results-title {
+  margin: 0;
+  font-family: var(--heading);
+  font-size: 1.4rem;
+  line-height: 1.35;
+  scroll-margin-top: 112px;
+  border-radius: 5px;
+}
+.workshop-results-title:focus {
+  outline: 3px solid color-mix(in srgb, var(--studio-accent) 56%, transparent);
+  outline-offset: 6px;
+}
+.workshop-pagination {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding: 0 0 18px;
+  color: var(--muted);
+}
+.workshop-pagination-bottom {
+  padding: 22px 0 0;
+}
+.workshop-pagination > p {
+  margin: 0;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  font-variant-numeric: tabular-nums;
+}
+.workshop-pagination strong {
+  color: var(--ink);
+  font-weight: 650;
+}
+.workshop-pagination nav,
+.workshop-page-numbers {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.workshop-pagination button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  min-width: 44px;
+  min-height: 44px;
+  padding: 8px 10px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: var(--studio-surface);
+  color: var(--ink);
+  font-size: 0.875rem;
+  font-weight: 650;
+}
+.workshop-pagination button[aria-current="page"] {
+  background: var(--studio-inverse);
+  border-color: var(--line);
+  color: var(--studio-on-dark);
+}
+.workshop-pagination button:disabled {
+  opacity: 0.42;
+  cursor: default;
+}
+.workshop-page-gap {
+  display: grid;
+  place-items: center;
+  min-width: 22px;
+  min-height: 44px;
+}
+.workshop-page-select {
+  display: none;
+}
+.workshop-studio .workshop-gallery {
+  margin-top: 0;
+}
+
+@media (max-width: 1050px) {
+  .workshop-studio .recipe-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .workshop-plan-filters {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .workshop-plan-controls {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .workshop-quick-filters > button {
+    flex: 1;
+  }
+}
+@media (max-width: 900px) {
+  .workshop-page-numbers {
+    display: none;
+  }
+  .workshop-page-select {
+    display: block;
+    min-width: 0;
+  }
+  .workshop-page-select select {
+    min-height: 44px;
+    max-width: 150px;
+    padding: 8px 25px 8px 11px;
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    background: var(--studio-surface);
+    color: var(--ink);
+    font-size: 0.875rem;
+  }
+}
+@media (max-width: 540px) {
+  .workshop-studio .page-intro,
+  .app-shell .workshop-studio .page-intro {
+    display: block;
+    margin-bottom: 10px;
+  }
+  .workshop-studio .workshop-free-link {
+    display: none;
+  }
+  .workshop-studio .view-tabs {
+    width: 100%;
+    gap: 3px;
+  }
+  .workshop-studio .view-tabs > button {
+    flex: 1;
+    justify-content: center;
+    padding: 10px 7px;
+    font-size: 0.8125rem;
+    gap: 5px;
+  }
+  .workshop-studio .view-tabs > button > span {
+    font-size: 0.75rem;
+  }
+  .workshop-plan-controls {
+    padding: 10px 12px 0;
+    gap: 8px;
+  }
+  .workshop-quick-filters {
+    gap: 5px;
+  }
+  .workshop-quick-filters > button {
+    gap: 4px;
+    padding: 8px 5px;
+    font-size: 0.75rem;
+    min-width: 0;
+  }
+  .workshop-quick-filters > button > svg {
+    display: none;
+  }
+  .workshop-search input {
+    font-size: 1rem;
+  }
+  .workshop-advanced-filters > summary > span {
+    font-size: 0.6875rem;
+  }
+  .workshop-studio .standalone-select {
+    font-size: 0.8125rem;
+  }
+  .workshop-objective {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 8px;
+    padding: 6px 10px;
+  }
+  .workshop-objective > svg {
+    display: none;
+  }
+  .workshop-objective > div {
+    min-width: 0;
+  }
+  .workshop-objective .text-link {
+    margin: 0;
+    padding: 0 4px;
+    gap: 3px;
+  }
+  .workshop-objective span {
+    font-size: 0.8125rem;
+  }
+  .workshop-objective p {
+    font-size: 0.75rem;
+  }
+  .workshop-harvest {
+    padding: 14px;
+    gap: 14px;
+  }
+  .workshop-harvest-summary {
+    flex-basis: 100%;
+  }
+  .workshop-harvest > .button {
+    width: 100%;
+    justify-content: center;
+  }
+  .workshop-results {
+    margin: 16px 0 10px;
+  }
+  .workshop-results-plans {
+    margin: 10px 0;
+    gap: 4px 12px;
+  }
+  .workshop-studio .workshop-pagination-top nav {
+    display: none;
+  }
+  .workshop-results-title {
+    font-size: 1.25rem;
+    scroll-margin-top: 96px;
+  }
+  .workshop-results .text-link {
+    font-size: 0.8125rem;
+  }
+  .workshop-pagination {
+    gap: 10px;
+  }
+  .workshop-pagination nav {
+    width: 100%;
+    justify-content: space-between;
+  }
+  .workshop-page-arrow > span {
+    display: none;
+  }
+  .workshop-studio .recipe-grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 20px;
+  }
+  .workshop-studio .recipe-art-button {
+    height: 235px;
+  }
+  .workshop-studio .recipe-card-content {
+    padding: 20px;
+  }
+  .workshop-studio .recipe-card-content h2 {
+    font-size: 1.4rem;
+  }
+  .workshop-stock-label,
+  .workshop-missing-label {
+    font-size: 0.875rem;
+  }
+}
+@media (max-width: 360px) {
+  .workshop-studio .view-tabs > button {
+    font-size: 0.75rem;
+    padding: 10px 4px;
+  }
+  .workshop-studio .recipe-card-content {
+    padding: 18px;
+  }
+  .workshop-quick-filters > button {
+    font-size: 0.6875rem;
+    gap: 3px;
+  }
+  .workshop-quick-filters > button > span {
+    font-size: 0.6875rem;
+  }
+  .workshop-plan-filters {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .workshop-studio .recipe-art-button > svg {
+    transition: none;
+  }
+}

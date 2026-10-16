@@ -1,0 +1,29 @@
+.brigo-logo {
+  display: block;
+  flex: 0 0 auto;
+  height: auto;
+  max-width: 100%;
+}
+.brand .brigo-logo {
+  width: 176px;
+  height: 53px;
+}
+.brand {
+  min-height: 44px;
+}
+.footer-brand .brigo-logo {
+  width: 60px;
+  height: 27px;
+}
+@media (max-width: 760px) {
+  .brand .brigo-logo {
+    width: 132px;
+    height: 40px;
+  }
+}
+@media (max-width: 360px) {
+  .brand .brigo-logo {
+    width: 116px;
+    height: 36px;
+  }
+}

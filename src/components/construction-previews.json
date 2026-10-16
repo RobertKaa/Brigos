@@ -1,0 +1,1442 @@
+{
+  "totem": {
+    "src": "/constructions/totem-9784f936b9.webp",
+    "fingerprint": "952f6b6d",
+    "framing": {
+      "minX": -61.5,
+      "minY": -118.75,
+      "width": 123,
+      "height": 182.5,
+      "viewBox": "-61.5 -118.75 123 182.5"
+    },
+    "center": [
+      0,
+      25
+    ],
+    "sceneSize": {
+      "width": 2,
+      "depth": 2
+    },
+    "placements": 5
+  },
+  "bench": {
+    "src": "/constructions/bench-b6352755d0.webp",
+    "fingerprint": "7a9714d5",
+    "framing": {
+      "minX": -61.5,
+      "minY": -83.75,
+      "width": 173,
+      "height": 172.5,
+      "viewBox": "-61.5 -83.75 173 172.5"
+    },
+    "center": [
+      25,
+      37.5
+    ],
+    "sceneSize": {
+      "width": 4,
+      "depth": 2
+    },
+    "placements": 7
+  },
+  "tree": {
+    "src": "/constructions/tree-3ca41c4af1.webp",
+    "fingerprint": "771c551e",
+    "framing": {
+      "minX": -111.5,
+      "minY": -141.726,
+      "width": 223,
+      "height": 280.476,
+      "viewBox": "-111.5 -141.726 223 280.476"
+    },
+    "center": [
+      0,
+      75
+    ],
+    "sceneSize": {
+      "width": 6,
+      "depth": 6
+    },
+    "placements": 21
+  },
+  "house": {
+    "src": "/constructions/house-fd2b247bfe.webp",
+    "fingerprint": "fa6317df",
+    "framing": {
+      "minX": -161.5,
+      "minY": -71.462,
+      "width": 323,
+      "height": 235.212,
+      "viewBox": "-161.5 -71.462 323 235.212"
+    },
+    "center": [
+      0,
+      75
+    ],
+    "sceneSize": {
+      "width": 6,
+      "depth": 6
+    },
+    "placements": 13
+  },
+  "lighthouse": {
+    "src": "/constructions/lighthouse-a702f39818.webp",
+    "fingerprint": "3ae12680",
+    "framing": {
+      "minX": -111.5,
+      "minY": -223.75,
+      "width": 223,
+      "height": 337.5,
+      "viewBox": "-111.5 -223.75 223 337.5"
+    },
+    "center": [
+      0,
+      50
+    ],
+    "sceneSize": {
+      "width": 4,
+      "depth": 4
+    },
+    "placements": 25
+  },
+  "robot": {
+    "src": "/constructions/robot-a304d70b57.webp",
+    "fingerprint": "b74cb436",
+    "framing": {
+      "minX": -61.50000000000001,
+      "minY": -152.03765877365274,
+      "width": 223,
+      "height": 240.78765877365274,
+      "viewBox": "-61.50000000000001 -152.03765877365274 223 240.78765877365274"
+    },
+    "center": [
+      50,
+      50
+    ],
+    "sceneSize": {
+      "width": 6,
+      "depth": 2
+    },
+    "placements": 16
+  },
+  "bridge": {
+    "src": "/constructions/bridge-9d692b1bd4.webp",
+    "fingerprint": "98e03e7a",
+    "framing": {
+      "minX": -111.5,
+      "minY": -85.25,
+      "width": 248,
+      "height": 211.5,
+      "viewBox": "-111.5 -85.25 248 211.5"
+    },
+    "center": [
+      12.5,
+      56.25
+    ],
+    "sceneSize": {
+      "width": 5,
+      "depth": 4
+    },
+    "placements": 10
+  },
+  "castle": {
+    "src": "/constructions/castle-87ca8a5895.webp",
+    "fingerprint": "63ce43b5",
+    "framing": {
+      "minX": -161.5,
+      "minY": -152.03765877365274,
+      "width": 323,
+      "height": 315.78765877365277,
+      "viewBox": "-161.5 -152.03765877365274 323 315.78765877365277"
+    },
+    "center": [
+      0,
+      75
+    ],
+    "sceneSize": {
+      "width": 6,
+      "depth": 6
+    },
+    "placements": 39
+  },
+  "dinosaur": {
+    "src": "/constructions/dinosaur-a31db6d472.webp",
+    "fingerprint": "d4766a4",
+    "framing": {
+      "minX": -86.5,
+      "minY": -90.962,
+      "width": 398,
+      "height": 292.212,
+      "viewBox": "-86.5 -90.962 398 292.212"
+    },
+    "center": [
+      112.5,
+      106.25
+    ],
+    "sceneSize": {
+      "width": 13,
+      "depth": 4
+    },
+    "placements": 37
+  },
+  "cafe": {
+    "src": "/constructions/cafe-15f0bac404.webp",
+    "fingerprint": "fe5c710e",
+    "framing": {
+      "minX": -161.5,
+      "minY": -97.75,
+      "width": 323,
+      "height": 261.5,
+      "viewBox": "-161.5 -97.75 323 261.5"
+    },
+    "center": [
+      0,
+      75
+    ],
+    "sceneSize": {
+      "width": 6,
+      "depth": 6
+    },
+    "placements": 25
+  },
+  "spaceship": {
+    "src": "/constructions/spaceship-b8f68f024d.webp",
+    "fingerprint": "c2659599",
+    "framing": {
+      "minX": -136.5,
+      "minY": -40.75,
+      "width": 323,
+      "height": 204.5,
+      "viewBox": "-136.5 -40.75 323 204.5"
+    },
+    "center": [
+      0,
+      100
+    ],
+    "sceneSize": {
+      "width": 8,
+      "depth": 8
+    },
+    "placements": 14
+  },
+  "mosaic": {
+    "src": "/constructions/mosaic-e6a1cf00e0.webp",
+    "fingerprint": "9648b4e",
+    "framing": {
+      "minX": -161.5,
+      "minY": -27.75,
+      "width": 323,
+      "height": 191.5,
+      "viewBox": "-161.5 -27.75 323 191.5"
+    },
+    "center": [
+      0,
+      75
+    ],
+    "sceneSize": {
+      "width": 6,
+      "depth": 6
+    },
+    "placements": 37
+  },
+  "mushroom": {
+    "src": "/constructions/mushroom-742ba6e963.webp",
+    "fingerprint": "ca244434",
+    "framing": {
+      "minX": -111.5,
+      "minY": -99.25,
+      "width": 223,
+      "height": 213,
+      "viewBox": "-111.5 -99.25 223 213"
+    },
+    "center": [
+      0,
+      50
+    ],
+    "sceneSize": {
+      "width": 4,
+      "depth": 4
+    },
+    "placements": 14
+  },
+  "flower": {
+    "src": "/constructions/flower-71a96c9764.webp",
+    "fingerprint": "bb6a276f",
+    "framing": {
+      "minX": -111.5,
+      "minY": -134.25,
+      "width": 223,
+      "height": 248,
+      "viewBox": "-111.5 -134.25 223 248"
+    },
+    "center": [
+      0,
+      50
+    ],
+    "sceneSize": {
+      "width": 4,
+      "depth": 4
+    },
+    "placements": 13
+  },
+  "penguin": {
+    "src": "/constructions/penguin-d8eaf0e6eb.webp",
+    "fingerprint": "80e18e22",
+    "framing": {
+      "minX": -161.5,
+      "minY": -137.25,
+      "width": 323,
+      "height": 301,
+      "viewBox": "-161.5 -137.25 323 301"
+    },
+    "center": [
+      0,
+      75
+    ],
+    "sceneSize": {
+      "width": 6,
+      "depth": 6
+    },
+    "placements": 28
+  },
+  "duck": {
+    "src": "/constructions/duck-70c78264e8.webp",
+    "fingerprint": "1088bf27",
+    "framing": {
+      "minX": -161.5,
+      "minY": -42.25,
+      "width": 323,
+      "height": 206,
+      "viewBox": "-161.5 -42.25 323 206"
+    },
+    "center": [
+      0,
+      75
+    ],
+    "sceneSize": {
+      "width": 6,
+      "depth": 6
+    },
+    "placements": 16
+  },
+  "turtle": {
+    "src": "/constructions/turtle-f25b2551b3.webp",
+    "fingerprint": "6372c328",
+    "framing": {
+      "minX": -186.5,
+      "minY": -30.75,
+      "width": 323,
+      "height": 207,
+      "viewBox": "-186.5 -30.75 323 207"
+    },
+    "center": [
+      -12.5,
+      81.25
+    ],
+    "sceneSize": {
+      "width": 6,
+      "depth": 7
+    },
+    "placements": 17
+  },
+  "boat": {
+    "src": "/constructions/boat-0ab8d30a88.webp",
+    "fingerprint": "d30f0cbd",
+    "framing": {
+      "minX": -161.5,
+      "minY": -60.037658773652744,
+      "width": 273,
+      "height": 186.28765877365274,
+      "viewBox": "-161.5 -60.037658773652744 273 186.28765877365274"
+    },
+    "center": [
+      -25,
+      62.5
+    ],
+    "sceneSize": {
+      "width": 4,
+      "depth": 6
+    },
+    "placements": 13
+  },
+  "airplane": {
+    "src": "/constructions/airplane-6733d23f1f.webp",
+    "fingerprint": "55cf5240",
+    "framing": {
+      "minX": -186.5,
+      "minY": -50.726,
+      "width": 323,
+      "height": 251.976,
+      "viewBox": "-186.5 -50.726 323 251.976"
+    },
+    "center": [
+      -25,
+      112.5
+    ],
+    "sceneSize": {
+      "width": 8,
+      "depth": 10
+    },
+    "placements": 18
+  },
+  "well": {
+    "src": "/constructions/well-3541d152fe.webp",
+    "fingerprint": "24c65b4d",
+    "framing": {
+      "minX": -111.5,
+      "minY": -132.75,
+      "width": 223,
+      "height": 246.5,
+      "viewBox": "-111.5 -132.75 223 246.5"
+    },
+    "center": [
+      0,
+      50
+    ],
+    "sceneSize": {
+      "width": 4,
+      "depth": 4
+    },
+    "placements": 16
+  },
+  "mailbox": {
+    "src": "/constructions/mailbox-cbad276014.webp",
+    "fingerprint": "cb15affb",
+    "framing": {
+      "minX": -111.5,
+      "minY": -132.75,
+      "width": 173,
+      "height": 221.5,
+      "viewBox": "-111.5 -132.75 173 221.5"
+    },
+    "center": [
+      -25,
+      37.5
+    ],
+    "sceneSize": {
+      "width": 2,
+      "depth": 4
+    },
+    "placements": 14
+  },
+  "hourglass": {
+    "src": "/constructions/hourglass-bf87f1b0c6.webp",
+    "fingerprint": "e2c52e48",
+    "framing": {
+      "minX": -61.5,
+      "minY": -132.75,
+      "width": 248,
+      "height": 259,
+      "viewBox": "-61.5 -132.75 248 259"
+    },
+    "center": [
+      62.5,
+      56.25
+    ],
+    "sceneSize": {
+      "width": 7,
+      "depth": 2
+    },
+    "placements": 27
+  },
+  "arcade": {
+    "src": "/constructions/arcade-fc0a8ea429.webp",
+    "fingerprint": "3126941f",
+    "framing": {
+      "minX": -111.5,
+      "minY": -142.726,
+      "width": 223,
+      "height": 256.476,
+      "viewBox": "-111.5 -142.726 223 256.476"
+    },
+    "center": [
+      0,
+      50
+    ],
+    "sceneSize": {
+      "width": 4,
+      "depth": 4
+    },
+    "placements": 19
+  },
+  "piano": {
+    "src": "/constructions/piano-9c8ba4d96d.webp",
+    "fingerprint": "ee676531",
+    "framing": {
+      "minX": -111.5,
+      "minY": -139.75,
+      "width": 273,
+      "height": 278.5,
+      "viewBox": "-111.5 -139.75 273 278.5"
+    },
+    "center": [
+      25,
+      62.5
+    ],
+    "sceneSize": {
+      "width": 6,
+      "depth": 4
+    },
+    "placements": 24
+  },
+  "library": {
+    "src": "/constructions/library-57758a765b.webp",
+    "fingerprint": "ab94d1ce",
+    "framing": {
+      "minX": -161.5,
+      "minY": -120.03765877365274,
+      "width": 323,
+      "height": 283.78765877365277,
+      "viewBox": "-161.5 -120.03765877365274 323 283.78765877365277"
+    },
+    "center": [
+      0,
+      75
+    ],
+    "sceneSize": {
+      "width": 6,
+      "depth": 6
+    },
+    "placements": 24
+  },
+  "greenhouse": {
+    "src": "/constructions/greenhouse-549f38b4aa.webp",
+    "fingerprint": "c8e54417",
+    "framing": {
+      "minX": -161.5,
+      "minY": -69.75,
+      "width": 323,
+      "height": 233.5,
+      "viewBox": "-161.5 -69.75 323 233.5"
+    },
+    "center": [
+      0,
+      75
+    ],
+    "sceneSize": {
+      "width": 6,
+      "depth": 6
+    },
+    "placements": 25
+  },
+  "pagoda": {
+    "src": "/constructions/pagoda-09744e1ed9.webp",
+    "fingerprint": "37ea458a",
+    "framing": {
+      "minX": -161.5,
+      "minY": -144.03765877365274,
+      "width": 323,
+      "height": 307.78765877365277,
+      "viewBox": "-161.5 -144.03765877365274 323 307.78765877365277"
+    },
+    "center": [
+      0,
+      75
+    ],
+    "sceneSize": {
+      "width": 6,
+      "depth": 6
+    },
+    "placements": 35
+  },
+  "chalet": {
+    "src": "/constructions/chalet-f5c1ad6650.webp",
+    "fingerprint": "5b84fc8d",
+    "framing": {
+      "minX": -161.5,
+      "minY": -62.75,
+      "width": 323,
+      "height": 226.5,
+      "viewBox": "-161.5 -62.75 323 226.5"
+    },
+    "center": [
+      0,
+      75
+    ],
+    "sceneSize": {
+      "width": 6,
+      "depth": 6
+    },
+    "placements": 18
+  },
+  "spacegate": {
+    "src": "/constructions/spacegate-afb8b8d904.webp",
+    "fingerprint": "d7534607",
+    "framing": {
+      "minX": -161.5,
+      "minY": -161.275,
+      "width": 323,
+      "height": 325.025,
+      "viewBox": "-161.5 -161.275 323 325.025"
+    },
+    "center": [
+      0,
+      75
+    ],
+    "sceneSize": {
+      "width": 6,
+      "depth": 6
+    },
+    "placements": 25
+  },
+  "armchair": {
+    "src": "/constructions/armchair-13aa658110.webp",
+    "fingerprint": "90610bd7",
+    "framing": {
+      "minX": -86.5,
+      "minY": -83.75,
+      "width": 148,
+      "height": 160,
+      "viewBox": "-86.5 -83.75 148 160"
+    },
+    "center": [
+      -12.5,
+      31.25
+    ],
+    "sceneSize": {
+      "width": 2,
+      "depth": 3
+    },
+    "placements": 8
+  },
+  "pyramid": {
+    "src": "/constructions/pyramid-44010010c7.webp",
+    "fingerprint": "a92d9723",
+    "framing": {
+      "minX": -111.5,
+      "minY": -85.25,
+      "width": 173,
+      "height": 174,
+      "viewBox": "-111.5 -85.25 173 174"
+    },
+    "center": [
+      -25,
+      37.5
+    ],
+    "sceneSize": {
+      "width": 2,
+      "depth": 4
+    },
+    "placements": 6
+  },
+  "starter-bridge": {
+    "src": "/constructions/starter-bridge-25a24348b2.webp",
+    "fingerprint": "f6fbe9b6",
+    "framing": {
+      "minX": -111.5,
+      "minY": -62.75,
+      "width": 223,
+      "height": 176.5,
+      "viewBox": "-111.5 -62.75 223 176.5"
+    },
+    "center": [
+      0,
+      50
+    ],
+    "sceneSize": {
+      "width": 4,
+      "depth": 4
+    },
+    "placements": 9
+  },
+  "cactus": {
+    "src": "/constructions/cactus-3c3660f0bb.webp",
+    "fingerprint": "b533e77b",
+    "framing": {
+      "minX": -36.5,
+      "minY": -160.53765877365274,
+      "width": 123,
+      "height": 236.78765877365274,
+      "viewBox": "-36.5 -160.53765877365274 123 236.78765877365274"
+    },
+    "center": [
+      12.5,
+      31.25
+    ],
+    "sceneSize": {
+      "width": 3,
+      "depth": 2
+    },
+    "placements": 12
+  },
+  "snowman": {
+    "src": "/constructions/snowman-fac5e6445e.webp",
+    "fingerprint": "64f5fce",
+    "framing": {
+      "minX": -111.5,
+      "minY": -158.275,
+      "width": 223,
+      "height": 272.025,
+      "viewBox": "-111.5 -158.275 223 272.025"
+    },
+    "center": [
+      0,
+      50
+    ],
+    "sceneSize": {
+      "width": 4,
+      "depth": 4
+    },
+    "placements": 17
+  },
+  "owl": {
+    "src": "/constructions/owl-f6e539a793.webp",
+    "fingerprint": "71f0d6c9",
+    "framing": {
+      "minX": -61.50000000000001,
+      "minY": -125.75,
+      "width": 223,
+      "height": 239.5,
+      "viewBox": "-61.50000000000001 -125.75 223 239.5"
+    },
+    "center": [
+      37.5,
+      56.25
+    ],
+    "sceneSize": {
+      "width": 6,
+      "depth": 3
+    },
+    "placements": 27
+  },
+  "cup": {
+    "src": "/constructions/cup-2de3bb3c50.webp",
+    "fingerprint": "b0ac8416",
+    "framing": {
+      "minX": -111.5,
+      "minY": -90.75,
+      "width": 273,
+      "height": 229.5,
+      "viewBox": "-111.5 -90.75 273 229.5"
+    },
+    "center": [
+      25,
+      62.5
+    ],
+    "sceneSize": {
+      "width": 6,
+      "depth": 4
+    },
+    "placements": 26
+  },
+  "table": {
+    "src": "/constructions/table-3c672d7d8a.webp",
+    "fingerprint": "67d0a1e2",
+    "framing": {
+      "minX": -111.5,
+      "minY": -69.75,
+      "width": 223,
+      "height": 183.5,
+      "viewBox": "-111.5 -69.75 223 183.5"
+    },
+    "center": [
+      0,
+      50
+    ],
+    "sceneSize": {
+      "width": 4,
+      "depth": 4
+    },
+    "placements": 12
+  },
+  "streetlamp": {
+    "src": "/constructions/streetlamp-333bf821be.webp",
+    "fingerprint": "fda97b5e",
+    "framing": {
+      "minX": -111.5,
+      "minY": -187.462,
+      "width": 223,
+      "height": 301.212,
+      "viewBox": "-111.5 -187.462 223 301.212"
+    },
+    "center": [
+      0,
+      50
+    ],
+    "sceneSize": {
+      "width": 4,
+      "depth": 4
+    },
+    "placements": 12
+  },
+  "torii": {
+    "src": "/constructions/torii-4c92ed60ca.webp",
+    "fingerprint": "22b08261",
+    "framing": {
+      "minX": -86.5,
+      "minY": -134.25,
+      "width": 273,
+      "height": 285.5,
+      "viewBox": "-86.5 -134.25 273 285.5"
+    },
+    "center": [
+      50,
+      75
+    ],
+    "sceneSize": {
+      "width": 8,
+      "depth": 4
+    },
+    "placements": 15
+  },
+  "fountain": {
+    "src": "/constructions/fountain-9522068310.webp",
+    "fingerprint": "3d36a230",
+    "framing": {
+      "minX": -161.5,
+      "minY": -48.75,
+      "width": 323,
+      "height": 212.5,
+      "viewBox": "-161.5 -48.75 323 212.5"
+    },
+    "center": [
+      0,
+      75
+    ],
+    "sceneSize": {
+      "width": 6,
+      "depth": 6
+    },
+    "placements": 19
+  },
+  "aqueduct": {
+    "src": "/constructions/aqueduct-6350aba4f8.webp",
+    "fingerprint": "bfef17b5",
+    "framing": {
+      "minX": -311.5,
+      "minY": -132.75,
+      "width": 423,
+      "height": 334,
+      "viewBox": "-311.5 -132.75 423 334"
+    },
+    "center": [
+      -100,
+      100
+    ],
+    "sceneSize": {
+      "width": 4,
+      "depth": 12
+    },
+    "placements": 22
+  },
+  "sailboat": {
+    "src": "/constructions/sailboat-e29e1933dd.webp",
+    "fingerprint": "6c2714eb",
+    "framing": {
+      "minX": -211.5,
+      "minY": -163.75,
+      "width": 273,
+      "height": 302.5,
+      "viewBox": "-211.5 -163.75 273 302.5"
+    },
+    "center": [
+      -75,
+      62.5
+    ],
+    "sceneSize": {
+      "width": 2,
+      "depth": 8
+    },
+    "placements": 24
+  },
+  "astreval-gardens": {
+    "src": "/constructions/astreval-gardens-e48b821968.webp",
+    "fingerprint": "73103263",
+    "framing": {
+      "minX": -1066,
+      "minY": -108.462,
+      "width": 2282,
+      "height": 1247.212,
+      "viewBox": "-1066 -108.462 2282 1247.212"
+    },
+    "center": [
+      75,
+      562.5
+    ],
+    "sceneSize": {
+      "width": 48,
+      "depth": 42
+    },
+    "placements": 915
+  },
+  "aurora-palace": {
+    "src": "/constructions/aurora-palace-b6616b9afc.webp",
+    "fingerprint": "bfbe5a30",
+    "framing": {
+      "minX": -1211.5,
+      "minY": -211.462,
+      "width": 3023,
+      "height": 1725.212,
+      "viewBox": "-1211.5 -211.462 3023 1725.212"
+    },
+    "center": [
+      300,
+      750
+    ],
+    "sceneSize": {
+      "width": 72,
+      "depth": 48
+    },
+    "placements": 2235
+  },
+  "high-citadel": {
+    "src": "/constructions/high-citadel-29bceadb15.webp",
+    "fingerprint": "c73438b7",
+    "framing": {
+      "minX": -2111.5,
+      "minY": -348.0753175473055,
+      "width": 4523,
+      "height": 2611.8253175473055,
+      "viewBox": "-2111.5 -348.0753175473055 4523 2611.8253175473055"
+    },
+    "center": [
+      150,
+      1125
+    ],
+    "sceneSize": {
+      "width": 96,
+      "depth": 84
+    },
+    "placements": 3545
+  },
+  "winter-garden": {
+    "src": "/constructions/winter-garden-6a584bb5e0.webp",
+    "fingerprint": "a1052a0e",
+    "framing": {
+      "minX": -311.5,
+      "minY": -64.75,
+      "width": 773,
+      "height": 453.5,
+      "viewBox": "-311.5 -64.75 773 453.5"
+    },
+    "center": [
+      75,
+      187.5
+    ],
+    "sceneSize": {
+      "width": 18,
+      "depth": 12
+    },
+    "placements": 62
+  },
+  "harbour-lighthouse": {
+    "src": "/constructions/harbour-lighthouse-eb2a23fcee.webp",
+    "fingerprint": "18734a88",
+    "framing": {
+      "minX": -461.5,
+      "minY": -224.462,
+      "width": 923,
+      "height": 688.212,
+      "viewBox": "-461.5 -224.462 923 688.212"
+    },
+    "center": [
+      0,
+      225
+    ],
+    "sceneSize": {
+      "width": 18,
+      "depth": 18
+    },
+    "placements": 114
+  },
+  "star-observatory": {
+    "src": "/constructions/star-observatory-fb9a5d3d68.webp",
+    "fingerprint": "3e324cd7",
+    "framing": {
+      "minX": -461.5,
+      "minY": -176.75,
+      "width": 923,
+      "height": 640.5,
+      "viewBox": "-461.5 -176.75 923 640.5"
+    },
+    "center": [
+      0,
+      225
+    ],
+    "sceneSize": {
+      "width": 18,
+      "depth": 18
+    },
+    "placements": 136
+  },
+  "travellers-station": {
+    "src": "/constructions/travellers-station-4f149fac15.webp",
+    "fingerprint": "5d0345e4",
+    "framing": {
+      "minX": -461.5,
+      "minY": -91.462,
+      "width": 1223,
+      "height": 705.212,
+      "viewBox": "-461.5 -91.462 1223 705.212"
+    },
+    "center": [
+      150,
+      300
+    ],
+    "sceneSize": {
+      "width": 30,
+      "depth": 18
+    },
+    "placements": 248
+  },
+  "arcade-bookshop": {
+    "src": "/constructions/arcade-bookshop-5c8a0800d3.webp",
+    "fingerprint": "2d5fba29",
+    "framing": {
+      "minX": -461.5,
+      "minY": -240.462,
+      "width": 1073,
+      "height": 779.212,
+      "viewBox": "-461.5 -240.462 1073 779.212"
+    },
+    "center": [
+      75,
+      262.5
+    ],
+    "sceneSize": {
+      "width": 24,
+      "depth": 18
+    },
+    "placements": 257
+  },
+  "garden-villa": {
+    "src": "/constructions/garden-villa-5b5cffaeab.webp",
+    "fingerprint": "99b7e8ac",
+    "framing": {
+      "minX": -611.5,
+      "minY": -143.462,
+      "width": 1373,
+      "height": 832.212,
+      "viewBox": "-611.5 -143.462 1373 832.212"
+    },
+    "center": [
+      75,
+      337.5
+    ],
+    "sceneSize": {
+      "width": 30,
+      "depth": 24
+    },
+    "placements": 369
+  },
+  "discovery-museum": {
+    "src": "/constructions/discovery-museum-be2e027b4d.webp",
+    "fingerprint": "efb6d96d",
+    "framing": {
+      "minX": -611.5,
+      "minY": -176.75,
+      "width": 1523,
+      "height": 940.5,
+      "viewBox": "-611.5 -176.75 1523 940.5"
+    },
+    "center": [
+      150,
+      375
+    ],
+    "sceneSize": {
+      "width": 36,
+      "depth": 24
+    },
+    "placements": 416
+  },
+  "season-gate": {
+    "src": "/constructions/season-gate-3df2e35cdd.webp",
+    "fingerprint": "ed7b721b",
+    "framing": {
+      "minX": -461.5,
+      "minY": -287.03765877365277,
+      "width": 1223,
+      "height": 900.7876587736528,
+      "viewBox": "-461.5 -287.03765877365277 1223 900.7876587736528"
+    },
+    "center": [
+      150,
+      300
+    ],
+    "sceneSize": {
+      "width": 30,
+      "depth": 18
+    },
+    "placements": 389
+  },
+  "four-seasons-theatre": {
+    "src": "/constructions/four-seasons-theatre-d201d5e62f.webp",
+    "fingerprint": "c2dadd29",
+    "framing": {
+      "minX": -611.5,
+      "minY": -325.462,
+      "width": 1523,
+      "height": 1089.212,
+      "viewBox": "-611.5 -325.462 1523 1089.212"
+    },
+    "center": [
+      150,
+      375
+    ],
+    "sceneSize": {
+      "width": 36,
+      "depth": 24
+    },
+    "placements": 794
+  },
+  "cape-fort": {
+    "src": "/constructions/cape-fort-1346842e78.webp",
+    "fingerprint": "89a5a10b",
+    "framing": {
+      "minX": -761.5,
+      "minY": -358.75,
+      "width": 1523,
+      "height": 1122.5,
+      "viewBox": "-761.5 -358.75 1523 1122.5"
+    },
+    "center": [
+      0,
+      375
+    ],
+    "sceneSize": {
+      "width": 30,
+      "depth": 30
+    },
+    "placements": 531
+  },
+  "waterlily-fountain": {
+    "src": "/constructions/waterlily-fountain-ceb9c32bf3.webp",
+    "fingerprint": "bc1158b0",
+    "framing": {
+      "minX": -311.5,
+      "minY": -30.75,
+      "width": 623,
+      "height": 344.5,
+      "viewBox": "-311.5 -30.75 623 344.5"
+    },
+    "center": [
+      0,
+      150
+    ],
+    "sceneSize": {
+      "width": 12,
+      "depth": 12
+    },
+    "placements": 70
+  },
+  "chamber-organ": {
+    "src": "/constructions/chamber-organ-c508d5701f.webp",
+    "fingerprint": "c7d441f7",
+    "framing": {
+      "minX": -211.5,
+      "minY": -99.25,
+      "width": 623,
+      "height": 413,
+      "viewBox": "-211.5 -99.25 623 413"
+    },
+    "center": [
+      100,
+      150
+    ],
+    "sceneSize": {
+      "width": 16,
+      "depth": 8
+    },
+    "placements": 129
+  },
+  "terraced-waterfall": {
+    "src": "/constructions/terraced-waterfall-19232252f1.webp",
+    "fingerprint": "6ec00873",
+    "framing": {
+      "minX": -461.5,
+      "minY": -96.962,
+      "width": 923,
+      "height": 560.712,
+      "viewBox": "-461.5 -96.962 923 560.712"
+    },
+    "center": [
+      0,
+      225
+    ],
+    "sceneSize": {
+      "width": 18,
+      "depth": 18
+    },
+    "placements": 223
+  },
+  "cargo-shuttle": {
+    "src": "/constructions/cargo-shuttle-ccf86178ca.webp",
+    "fingerprint": "fb50b90f",
+    "framing": {
+      "minX": -536.5,
+      "minY": -21.775000000000002,
+      "width": 923,
+      "height": 573.025,
+      "viewBox": "-536.5 -21.775000000000002 923 573.025"
+    },
+    "center": [
+      -100,
+      325
+    ],
+    "sceneSize": {
+      "width": 22,
+      "depth": 30
+    },
+    "placements": 128
+  },
+  "ocean-schooner": {
+    "src": "/constructions/ocean-schooner-0a559cff58.webp",
+    "fingerprint": "529663ca",
+    "framing": {
+      "minX": -711.5,
+      "minY": -234.25,
+      "width": 873,
+      "height": 698,
+      "viewBox": "-711.5 -234.25 873 698"
+    },
+    "center": [
+      -250,
+      225
+    ],
+    "sceneSize": {
+      "width": 8,
+      "depth": 28
+    },
+    "placements": 163
+  },
+  "grand-chessboard": {
+    "src": "/constructions/grand-chessboard-6484ed3d0b.webp",
+    "fingerprint": "624b9b74",
+    "framing": {
+      "minX": -511.5,
+      "minY": -61.75,
+      "width": 1023,
+      "height": 575.5,
+      "viewBox": "-511.5 -61.75 1023 575.5"
+    },
+    "center": [
+      0,
+      250
+    ],
+    "sceneSize": {
+      "width": 20,
+      "depth": 20
+    },
+    "placements": 349
+  },
+  "concert-grand-piano": {
+    "src": "/constructions/concert-grand-piano-ef00b606c8.webp",
+    "fingerprint": "952a7d40",
+    "framing": {
+      "minX": -461.5,
+      "minY": -207.25,
+      "width": 623,
+      "height": 596,
+      "viewBox": "-461.5 -207.25 623 596"
+    },
+    "center": [
+      -75,
+      187.5
+    ],
+    "sceneSize": {
+      "width": 12,
+      "depth": 18
+    },
+    "placements": 112
+  },
+  "four-seasons-garden": {
+    "src": "/constructions/four-seasons-garden-a2387684cf.webp",
+    "fingerprint": "e3117bb9",
+    "framing": {
+      "minX": -711.5,
+      "minY": -92.03765877365274,
+      "width": 1423,
+      "height": 805.7876587736528,
+      "viewBox": "-711.5 -92.03765877365274 1423 805.7876587736528"
+    },
+    "center": [
+      0,
+      350
+    ],
+    "sceneSize": {
+      "width": 28,
+      "depth": 28
+    },
+    "placements": 373
+  },
+  "cargo-harbor": {
+    "src": "/constructions/cargo-harbor-a746eb21f8.webp",
+    "fingerprint": "ed4623d5",
+    "framing": {
+      "minX": -811.5,
+      "minY": -169.75,
+      "width": 1723,
+      "height": 1033.5,
+      "viewBox": "-811.5 -169.75 1723 1033.5"
+    },
+    "center": [
+      50,
+      425
+    ],
+    "sceneSize": {
+      "width": 36,
+      "depth": 32
+    },
+    "placements": 458
+  },
+  "tropical-conservatory": {
+    "src": "/constructions/tropical-conservatory-af224b8827.webp",
+    "fingerprint": "217533c",
+    "framing": {
+      "minX": -836.5,
+      "minY": -201.462,
+      "width": 1552.5,
+      "height": 965.212,
+      "viewBox": "-836.5 -201.462 1552.5 965.212"
+    },
+    "center": [
+      -62.5,
+      381.25
+    ],
+    "sceneSize": {
+      "width": 28,
+      "depth": 33
+    },
+    "placements": 683
+  },
+  "seed-handcart": {
+    "src": "/constructions/seed-handcart-dfafa53960.webp",
+    "fingerprint": "38aaa6c3",
+    "framing": {
+      "minX": -136.5,
+      "minY": -57.25,
+      "width": 275.41518274408213,
+      "height": 175.08931562635436,
+      "viewBox": "-136.5 -57.25 275.41518274408213 175.08931562635436"
+    },
+    "center": [
+      -12.5,
+      81.25
+    ],
+    "sceneSize": {
+      "width": 6,
+      "depth": 7
+    },
+    "placements": 15
+  },
+  "dune-scout": {
+    "src": "/constructions/dune-scout-782738ffea.webp",
+    "fingerprint": "f30f4066",
+    "framing": {
+      "minX": -213.91518274408216,
+      "minY": -48.962,
+      "width": 377.8303654881643,
+      "height": 229.30131562635438,
+      "viewBox": "-213.91518274408216 -48.962 377.8303654881643 229.30131562635438"
+    },
+    "center": [
+      -25,
+      87.5
+    ],
+    "sceneSize": {
+      "width": 6,
+      "depth": 8
+    },
+    "placements": 30
+  },
+  "crystal-hauler": {
+    "src": "/constructions/crystal-hauler-f4305aabf1.webp",
+    "fingerprint": "64efe3c0",
+    "framing": {
+      "minX": -286.5,
+      "minY": -69.962,
+      "width": 450.41518274408213,
+      "height": 275.3013156263544,
+      "viewBox": "-286.5 -69.962 450.41518274408213 275.3013156263544"
+    },
+    "center": [
+      -75,
+      112.5
+    ],
+    "sceneSize": {
+      "width": 6,
+      "depth": 12
+    },
+    "placements": 46
+  },
+  "travelling-library": {
+    "src": "/constructions/travelling-library-812a829a47.webp",
+    "fingerprint": "2534a354",
+    "framing": {
+      "minX": -213.91518274408216,
+      "minY": -109.25,
+      "width": 377.8303654881643,
+      "height": 289.5893156263544,
+      "viewBox": "-213.91518274408216 -109.25 377.8303654881643 289.5893156263544"
+    },
+    "center": [
+      -25,
+      87.5
+    ],
+    "sceneSize": {
+      "width": 6,
+      "depth": 8
+    },
+    "placements": 53
+  },
+  "cartographer-chest": {
+    "src": "/constructions/cartographer-chest-d8da70a6e6.webp",
+    "fingerprint": "e7c74477",
+    "framing": {
+      "minX": -161.5,
+      "minY": -78.25,
+      "width": 323,
+      "height": 242,
+      "viewBox": "-161.5 -78.25 323 242"
+    },
+    "center": [
+      0,
+      75
+    ],
+    "sceneSize": {
+      "width": 6,
+      "depth": 6
+    },
+    "placements": 31
+  },
+  "canal-liftbridge": {
+    "src": "/constructions/canal-liftbridge-4b9ff977e0.webp",
+    "fingerprint": "164fec10",
+    "framing": {
+      "minX": -161.5,
+      "minY": -68.75,
+      "width": 473,
+      "height": 307.5,
+      "viewBox": "-161.5 -68.75 473 307.5"
+    },
+    "center": [
+      75,
+      112.5
+    ],
+    "sceneSize": {
+      "width": 6,
+      "depth": 12
+    },
+    "placements": 35
+  },
+  "articulated-chart-desk": {
+    "src": "/constructions/articulated-chart-desk-7ea38f6f3f.webp",
+    "fingerprint": "9701d892",
+    "framing": {
+      "minX": -111.5,
+      "minY": -118.75,
+      "width": 273,
+      "height": 257.5,
+      "viewBox": "-111.5 -118.75 273 257.5"
+    },
+    "center": [
+      25,
+      62.5
+    ],
+    "sceneSize": {
+      "width": 4,
+      "depth": 6
+    },
+    "placements": 28
+  }
+}

@@ -1,0 +1,87 @@
+name: Publish Brigo demo to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: github-pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      # This deployment is the guest demo. Never read account variables or secrets here.
+      VITE_SUPABASE_URL: ""
+      VITE_SUPABASE_PUBLISHABLE_KEY: ""
+      VITE_SUPABASE_ANON_KEY: ""
+      VITE_AUTH_REDIRECT_URL: ""
+      VITE_ENABLE_LOCAL_ADMIN: "false"
+    steps:
+      - name: Check out the source
+        uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6.1.0
+        with:
+          persist-credentials: false
+
+      - name: Set up Node.js
+        uses: actions/setup-node@395ad3262231945c25e8478fd5baf05154b1d79f # v6.1.0
+        with:
+          node-version: "22"
+          cache: npm
+
+      - name: Install locked dependencies
+        run: npm ci --legacy-peer-deps
+
+      - name: Run unit tests
+        run: npm test
+
+      - name: Check TypeScript
+        run: npm run check
+
+      - name: Verify the server bundle
+        run: npm run server:bundle
+
+      - name: Set the Pages base path
+        run: |
+          node --input-type=module <<'NODE'
+          import { appendFileSync } from 'node:fs';
+          const [owner, repository] = (process.env.GITHUB_REPOSITORY || '').split('/');
+          if (!owner || !repository || !/^[A-Za-z0-9._-]+$/.test(repository)) {
+            throw new Error('Invalid GitHub repository name.');
+          }
+          const basePath = `/${repository}/`;
+          appendFileSync(process.env.GITHUB_ENV, `VITE_BASE_PATH=${basePath}\n`);
+          NODE
+
+      - name: Build the static site
+        run: npm run build
+
+      - name: Upload the static Pages artifact
+        uses: actions/upload-pages-artifact@7b1f4a764d45c48632c6b24a0339c27f5614fb0b # v4
+        with:
+          path: dist
+
+  deploy:
+    if: github.ref == 'refs/heads/main'
+    needs: build
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Configure GitHub Pages
+        uses: actions/configure-pages@983d7736d9b0ae728b81ab479565c72886d7745b # v5
+
+      - name: Deploy the reviewed build
+        id: deployment
+        uses: actions/deploy-pages@d6db90164ac5ed86f2b6aed7e0febac5b3c0c03e # v4

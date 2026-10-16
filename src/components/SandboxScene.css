@@ -1,0 +1,139 @@
+.sandbox-scene {
+  --sandbox-grid: #b6ac96;
+  --sandbox-floor: #eee9dc;
+  --sandbox-edge: #7d7666;
+  --sandbox-coordinate: #5f5b53;
+  --sandbox-cursor: #226b60;
+  --sandbox-invalid: #ab3939;
+  width: 100%;
+  position: relative;
+  isolation: isolate;
+  border-radius: 12px;
+  outline-offset: -4px;
+  background: var(--studio-surface, #fffcf3);
+  touch-action: manipulation;
+}
+
+.sandbox-scene:focus-visible {
+  outline: 3px solid var(--sandbox-cursor);
+}
+
+.sandbox-scene > svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: hidden;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.sandbox-scene-instructions {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+
+.sandbox-board-surface {
+  fill: var(--sandbox-floor);
+  stroke: var(--sandbox-edge);
+  stroke-width: 2;
+}
+
+.sandbox-board-grid {
+  fill: none;
+  stroke: var(--sandbox-grid);
+  stroke-width: 0.7;
+  pointer-events: none;
+}
+
+.sandbox-elevation-plane {
+  fill: var(--sandbox-cursor);
+  fill-opacity: 0.025;
+  stroke: var(--sandbox-cursor);
+  stroke-width: 0.8;
+  stroke-dasharray: 4 5;
+  opacity: 0.38;
+}
+
+.sandbox-elevation-plane > path + path {
+  fill: none;
+  stroke-width: 0.5;
+  opacity: 0.5;
+}
+
+.sandbox-board-coordinates {
+  fill: var(--sandbox-coordinate);
+  font:
+    600 13px "DM Sans Variable",
+    sans-serif;
+  text-anchor: middle;
+  pointer-events: none;
+}
+
+.sandbox-cursor-ground {
+  fill: var(--sandbox-cursor);
+  fill-opacity: 0.24;
+  stroke: var(--sandbox-cursor);
+  stroke-width: 2;
+}
+
+.sandbox-placed-brigo {
+  cursor: pointer;
+}
+
+.sandbox-scene[data-interaction-mode="place"] .sandbox-placed-brigo {
+  cursor: crosshair;
+}
+
+.sandbox-scene[data-interaction-mode="select"]
+  .sandbox-placed-brigo:hover
+  > use {
+  opacity: 0.82;
+}
+
+.sandbox-selection-outline,
+.sandbox-candidate-outline,
+.sandbox-cursor-plane {
+  fill: none;
+  stroke: var(--sandbox-cursor);
+  stroke-width: 2;
+  stroke-dasharray: 5 3;
+  vector-effect: non-scaling-stroke;
+  stroke-linejoin: round;
+}
+
+.sandbox-selection-outline {
+  stroke: var(--ink, #293146);
+  stroke-dasharray: 2 3;
+  stroke-width: 1.5;
+}
+
+.sandbox-candidate > use {
+  opacity: 0.48;
+}
+
+.sandbox-candidate[data-valid="false"] > .sandbox-candidate-outline {
+  stroke: var(--sandbox-invalid);
+  stroke-dasharray: 2 2;
+}
+
+:root[data-theme="dark"] .sandbox-scene {
+  --sandbox-grid: #4d545d;
+  --sandbox-floor: #2d333b;
+  --sandbox-edge: #7e8997;
+  --sandbox-coordinate: #c7ced7;
+  --sandbox-cursor: #91d3b5;
+  --sandbox-invalid: #fb9c95;
+}
+
+@media (max-width: 600px) {
+  .sandbox-board-coordinates {
+    font-size: 18px;
+  }
+}

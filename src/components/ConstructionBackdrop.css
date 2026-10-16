@@ -1,0 +1,184 @@
+/* Regional inks belong to the illustration only, never to controls or text. */
+.scene-backdrop[data-scene-setting="woodland"],
+.scene-backdrop[data-scene-setting="meadow"],
+.scene-backdrop[data-scene-setting="botanical"],
+.scene-backdrop[data-scene-setting="courtyard"] {
+  --scene-sky: #e5eadd;
+  --scene-ground: #c4d6bc;
+  --scene-line: #789781;
+  --scene-sun: #d9b763;
+  --scene-ink: #566854;
+}
+.scene-backdrop[data-scene-setting="wetland"],
+.scene-backdrop[data-scene-setting="canal"] {
+  --scene-sky: #e1e9e5;
+  --scene-ground: #bdd9d5;
+  --scene-line: #6f9796;
+  --scene-sun: #d8b96f;
+  --scene-ink: #536e70;
+}
+.scene-backdrop[data-scene-setting="harbour"],
+.scene-backdrop[data-scene-setting="ocean"] {
+  --scene-sky: #e1e9ee;
+  --scene-ground: #b7d2df;
+  --scene-line: #7195ac;
+  --scene-sun: #e5b873;
+  --scene-ink: #526d83;
+}
+.scene-backdrop[data-scene-setting="polar"],
+.scene-backdrop[data-scene-setting="alpine"] {
+  --scene-sky: #cddfe9;
+  --scene-ground: #e9f3f7;
+  --scene-line: #8ca9b8;
+  --scene-sun: #dfbb76;
+  --scene-ink: #617b8c;
+}
+.scene-backdrop[data-scene-setting="desert"] {
+  --scene-sky: #f0e0c6;
+  --scene-ground: #dfbb8e;
+  --scene-line: #ba956c;
+  --scene-sun: #da9950;
+  --scene-ink: #906c4e;
+}
+.scene-backdrop[data-scene-setting="valley"] {
+  --scene-sky: #e1e6df;
+  --scene-ground: #c7cfbf;
+  --scene-line: #899882;
+  --scene-sun: #dcb56a;
+  --scene-ink: #647261;
+}
+.scene-backdrop[data-scene-setting="orbital"] {
+  --scene-sky: #dedfeb;
+  --scene-ground: #babbd0;
+  --scene-line: #8a8ea8;
+  --scene-sun: #b6a0cb;
+  --scene-ink: #686b8a;
+}
+.scene-backdrop[data-scene-setting="clouds"] {
+  --scene-sky: #dbe7ed;
+  --scene-ground: #f2f5ef;
+  --scene-line: #98acb7;
+  --scene-sun: #dfbb76;
+  --scene-ink: #6e8392;
+}
+.scene-backdrop[data-scene-setting="neighbourhood"],
+.scene-backdrop[data-scene-setting="civic"],
+.scene-backdrop[data-scene-setting="railway"] {
+  --scene-sky: #e9e3d8;
+  --scene-ground: #d8c7b6;
+  --scene-line: #a28f7d;
+  --scene-sun: #d8ad71;
+  --scene-ink: #7b6b5b;
+}
+.scene-backdrop[data-scene-setting="atelier"],
+.scene-backdrop[data-scene-setting="salon"],
+.scene-backdrop[data-scene-setting="stage"] {
+  --scene-sky: #e9e0d8;
+  --scene-ground: #d7c4b4;
+  --scene-line: #a58b76;
+  --scene-sun: #d5a66e;
+  --scene-ink: #7f6657;
+}
+.scene-backdrop[data-scene-setting="arcade-room"] {
+  --scene-sky: #e7dfeb;
+  --scene-ground: #cfc1da;
+  --scene-line: #a08ab2;
+  --scene-sun: #bb8fa8;
+  --scene-ink: #7d668e;
+}
+.scene-backdrop[data-scene-motif="aurora"] {
+  --scene-sky: #d9e4ed;
+  --scene-sun: #90c9b2;
+}
+
+:root[data-theme="dark"] .scene-backdrop[data-scene-setting="woodland"],
+:root[data-theme="dark"] .scene-backdrop[data-scene-setting="meadow"],
+:root[data-theme="dark"] .scene-backdrop[data-scene-setting="botanical"],
+:root[data-theme="dark"] .scene-backdrop[data-scene-setting="courtyard"] {
+  --scene-sky: #2b3630;
+  --scene-ground: #435744;
+  --scene-line: #87a18a;
+  --scene-sun: #c4a168;
+  --scene-ink: #a4b29a;
+}
+:root[data-theme="dark"] .scene-backdrop[data-scene-setting="wetland"],
+:root[data-theme="dark"] .scene-backdrop[data-scene-setting="canal"] {
+  --scene-sky: #293639;
+  --scene-ground: #3c5a5d;
+  --scene-line: #87a8a9;
+  --scene-sun: #bea16f;
+  --scene-ink: #a2babc;
+}
+:root[data-theme="dark"] .scene-backdrop[data-scene-setting="harbour"],
+:root[data-theme="dark"] .scene-backdrop[data-scene-setting="ocean"] {
+  --scene-sky: #293442;
+  --scene-ground: #3b586c;
+  --scene-line: #8ba9bb;
+  --scene-sun: #ccaa7b;
+  --scene-ink: #aabdc9;
+}
+:root[data-theme="dark"] .scene-backdrop[data-scene-setting="polar"],
+:root[data-theme="dark"] .scene-backdrop[data-scene-setting="alpine"] {
+  --scene-sky: #293b4b;
+  --scene-ground: #647f90;
+  --scene-line: #a4bdcb;
+  --scene-sun: #cdb78e;
+  --scene-ink: #c5d3db;
+}
+:root[data-theme="dark"] .scene-backdrop[data-scene-setting="desert"] {
+  --scene-sky: #3b322b;
+  --scene-ground: #69533d;
+  --scene-line: #b59a79;
+  --scene-sun: #c99963;
+  --scene-ink: #ccb499;
+}
+:root[data-theme="dark"] .scene-backdrop[data-scene-setting="valley"] {
+  --scene-sky: #303733;
+  --scene-ground: #4c594e;
+  --scene-line: #8eaa94;
+  --scene-sun: #c3a16d;
+  --scene-ink: #b1c1ab;
+}
+:root[data-theme="dark"] .scene-backdrop[data-scene-setting="orbital"] {
+  --scene-sky: #2d2d44;
+  --scene-ground: #444663;
+  --scene-line: #a19fbd;
+  --scene-sun: #c2aadf;
+  --scene-ink: #bfc0db;
+}
+:root[data-theme="dark"] .scene-backdrop[data-scene-setting="clouds"] {
+  --scene-sky: #2c3945;
+  --scene-ground: #627486;
+  --scene-line: #a1b4c3;
+  --scene-sun: #cfb281;
+  --scene-ink: #c0cbd4;
+}
+:root[data-theme="dark"] .scene-backdrop[data-scene-setting="neighbourhood"],
+:root[data-theme="dark"] .scene-backdrop[data-scene-setting="civic"],
+:root[data-theme="dark"] .scene-backdrop[data-scene-setting="railway"] {
+  --scene-sky: #36322f;
+  --scene-ground: #5d5045;
+  --scene-line: #aa9581;
+  --scene-sun: #cfa879;
+  --scene-ink: #c8b6a1;
+}
+:root[data-theme="dark"] .scene-backdrop[data-scene-setting="atelier"],
+:root[data-theme="dark"] .scene-backdrop[data-scene-setting="salon"],
+:root[data-theme="dark"] .scene-backdrop[data-scene-setting="stage"] {
+  --scene-sky: #39312f;
+  --scene-ground: #634d43;
+  --scene-line: #af9582;
+  --scene-sun: #cda475;
+  --scene-ink: #cab29f;
+}
+:root[data-theme="dark"] .scene-backdrop[data-scene-setting="arcade-room"] {
+  --scene-sky: #362e40;
+  --scene-ground: #584765;
+  --scene-line: #ad95c0;
+  --scene-sun: #ce9bbb;
+  --scene-ink: #c7b2d9;
+}
+:root[data-theme="dark"] .scene-backdrop[data-scene-motif="aurora"] {
+  --scene-sky: #29394a;
+  --scene-sun: #79bdad;
+}

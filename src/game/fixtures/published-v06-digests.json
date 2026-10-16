@@ -1,0 +1,362 @@
+[
+  {
+    "id": "totem",
+    "name": "Le petit totem",
+    "difficulty": "Premiers pas",
+    "count": 5,
+    "geometry": "915704ccba5dfd72fbdef9dee80de8e366550ab13e895014db240b687bb42212",
+    "materials": "18a6a9a3b99117c6f5369334775959297a2a5b83ce8d2d74242d300b5d9dcd7c"
+  },
+  {
+    "id": "bench",
+    "name": "Le banc du parc",
+    "difficulty": "Premiers pas",
+    "count": 7,
+    "geometry": "69479a7732c8f9f9acc05b47313d8302fed7c89a449b95e4d80f5efae84be6d1",
+    "materials": "552819d93826662bb3b6e3efa83e51c58036b2bdcbba42117b0eb9745c89e531"
+  },
+  {
+    "id": "tree",
+    "name": "Mon beau sapin",
+    "difficulty": "Créatif",
+    "count": 13,
+    "geometry": "4715160aa402702edab42ad541178f17c969743e0989cb1adae886e1f00697c2",
+    "materials": "ccb0a7bf6e3efe072dd6531d846ba5363c0d7f297121f8415f25e1f195814f12"
+  },
+  {
+    "id": "house",
+    "name": "La maison corail",
+    "difficulty": "Créatif",
+    "count": 13,
+    "geometry": "0d010192912e958255462c55df6a3f25cad134886379487daf438fb1305b73f4",
+    "materials": "3a17b0348f53e57a0ae016b71afd97c66c6ca8cd9e2a8a66747016643a69186d"
+  },
+  {
+    "id": "lighthouse",
+    "name": "Le phare des Brigos",
+    "difficulty": "Créatif",
+    "count": 25,
+    "geometry": "ed73fc92fffa92a03da61a0d05e8067c779a0546223086691abb52a3fb6b5b63",
+    "materials": "845fb555a5ef11997821a989a59a23da347dfb838ea4544050725df0fccd9ab3"
+  },
+  {
+    "id": "robot",
+    "name": "Brigobot",
+    "difficulty": "Créatif",
+    "count": 16,
+    "geometry": "cc4d05fb8b4e33e61ae5b80bea88b47a6a71d99c74f21ea9fa80bb91cd590fd9",
+    "materials": "3554353f03f749103a0294df5bba4eae0b3c90c228e3e61b662b65ac27531250"
+  },
+  {
+    "id": "bridge",
+    "name": "Le petit pont",
+    "difficulty": "Créatif",
+    "count": 10,
+    "geometry": "b567db17435096b27d4a4e8dd3159a50e545898d6015b33fbdf2d14c7d0f60f0",
+    "materials": "d1f56c9fb81730d74ca0a81ac29c3da000860783d7e99267943d134278555739"
+  },
+  {
+    "id": "castle",
+    "name": "Le château des nuages",
+    "difficulty": "Expert",
+    "count": 39,
+    "geometry": "8aa3617a6972eb0ae47510202b786652f6c860e3d42a3186af0b4d7062c0ec2f",
+    "materials": "430177d6045ca3f14129871b0ed554cc0a12bd1a5d04a4e00db6c0e76f30bcc0"
+  },
+  {
+    "id": "dinosaur",
+    "name": "Le Brigosaurus",
+    "difficulty": "Expert",
+    "count": 26,
+    "geometry": "ce940c91b1f96dfe08cbeb38e9980a51fbcf6893c240ecc58151c196a96d5b81",
+    "materials": "99198d8a7920bbf8ed6afe0500feae6d569d81e4a25082bb8a468db8d39c7d64"
+  },
+  {
+    "id": "cafe",
+    "name": "Le café Soleil",
+    "difficulty": "Créatif",
+    "count": 25,
+    "geometry": "4d8778071b23e5185491d4546dd49f246629659bbc2b01390b98da92606c1eef",
+    "materials": "18a58788e9f1cfd42616de4497ad47fa8e097f0094501db9b9f6c6db1d9645c3"
+  },
+  {
+    "id": "spaceship",
+    "name": "Le vaisseau d’exploration",
+    "difficulty": "Créatif",
+    "count": 18,
+    "geometry": "a5be3a1b2ae3dea033b0dae6fd423f11d000e22731d6e777acff32fca4436cfd",
+    "materials": "68fe7f93041760a852be32f68f329a33e5b049dd06565fc921a8dedab25ce882"
+  },
+  {
+    "id": "mosaic",
+    "name": "Le cœur pixel",
+    "difficulty": "Créatif",
+    "count": 37,
+    "geometry": "09e16f8b630ae9e61ecf01d0332eee75295a23b5efc9b5449164bfec8a226ed3",
+    "materials": "e4eab02770b6ce6bcfe9a73385d113f2f261d64ebd75d13fc31114e3c952ab18"
+  },
+  {
+    "id": "mushroom",
+    "name": "Le champignon des bois",
+    "difficulty": "Créatif",
+    "count": 19,
+    "geometry": "fc49f225898a319cde6b0e34ececa6bd15875c2599dafcb87d31546e78b6ea50",
+    "materials": "2a4827319918e2c0f5866a9d726f254b9e4ee05c7c0ce5fa990cc10d5177df5d"
+  },
+  {
+    "id": "flower",
+    "name": "La fleur du matin",
+    "difficulty": "Créatif",
+    "count": 13,
+    "geometry": "83ef317c3a0008319fe691aede584ed35f9542d18dfa3b5435ee13b319cad9bf",
+    "materials": "51d7c6582e0a00f7902a1ca92465d7f89b4958fe96f4c3aa20437f056c6ef4ea"
+  },
+  {
+    "id": "penguin",
+    "name": "Le manchot voyageur",
+    "difficulty": "Créatif",
+    "count": 26,
+    "geometry": "56f57ac71dc2f628e3e92afd6a65ec8a7ea0a874d53ad67a2779107a6a0b8855",
+    "materials": "3ff3dd672170072eda66ad27d2c2bb49dbcf57beb263858eff1f27fa36712328"
+  },
+  {
+    "id": "duck",
+    "name": "Le canard Soleil",
+    "difficulty": "Premiers pas",
+    "count": 12,
+    "geometry": "ff2e79dc99b76e8d6e91f618969749a88bc0474eb696a043c997c4f49c58adf4",
+    "materials": "d13e4f6882d0d97fc2f6f63bf9bbee4267988209a53946e8a8355ea05fa00880"
+  },
+  {
+    "id": "turtle",
+    "name": "La tortue des jardins",
+    "difficulty": "Créatif",
+    "count": 14,
+    "geometry": "7c3e500092d3ad0771b6c9d7f1a56f2c9cc62624fe9bec2b11aff69f677b6736",
+    "materials": "277416c8df3bd198ba19dfef89b1cca669603d0f7f95679b99ceb5c3b27071a1"
+  },
+  {
+    "id": "boat",
+    "name": "Le bateau du canal",
+    "difficulty": "Créatif",
+    "count": 13,
+    "geometry": "76c05554e993eef2732bbd14e503adf27cb7f70e373ad085723b4e1bae40c71a",
+    "materials": "3d1055d1ff9d9085c9462ceac18eb14ad3bf707862e6f464bfd19bf6fcd05a26"
+  },
+  {
+    "id": "airplane",
+    "name": "L’avion des couleurs",
+    "difficulty": "Créatif",
+    "count": 14,
+    "geometry": "93186b25d0de93e9da15bc66f87aedb362ed7e77d9ae73f7a8ebcf7a8cdc7bdc",
+    "materials": "91717918f7e729301d348ea8ec01d6dc13c05e4baaab53d0e8c85e47ec342524"
+  },
+  {
+    "id": "well",
+    "name": "Le puits du village",
+    "difficulty": "Créatif",
+    "count": 16,
+    "geometry": "2c131f78e7e9521362feb98b38dc5a001661b81533ceb1abfc951e5f95081549",
+    "materials": "e9b7da07bb3fe693b9f2e48daac54f09e102828e1ce5d70810e6e5fc57be1825"
+  },
+  {
+    "id": "mailbox",
+    "name": "La boîte aux lettres",
+    "difficulty": "Premiers pas",
+    "count": 11,
+    "geometry": "f3f1925218d1ac98232cfe59817a171cfa4ccae1a7230a242970534b7142bf81",
+    "materials": "9172b23c3e2150429dc4f1d00a94a6b2c3e8a92307a9e51b15ead693d6f78788"
+  },
+  {
+    "id": "hourglass",
+    "name": "Le sablier doré",
+    "difficulty": "Créatif",
+    "count": 20,
+    "geometry": "256963dd3c017f6043722eca474ce2cc2412c7b8bbf02315f430caba542f292b",
+    "materials": "c1c73c73a4d6d476a6e52375b41f37361ce10d7970e1812f3674c656487a94c8"
+  },
+  {
+    "id": "arcade",
+    "name": "La borne Pixel",
+    "difficulty": "Expert",
+    "count": 19,
+    "geometry": "89ec7a783f25a07edbbba7e1eb7045e31e9ac86e8c040968d0b9d0988b2d2910",
+    "materials": "4d351a198e07493471b2777c78f23779fac0517e1c7b7bf17770e95ffdbdee53"
+  },
+  {
+    "id": "piano",
+    "name": "Le piano de minuit",
+    "difficulty": "Expert",
+    "count": 19,
+    "geometry": "6e8f1c6918ed5bdf4bb6e050fb2656ddfa0f9371720adf4f4b3565efadb3b2e7",
+    "materials": "7eb5070a1b39f0e212dd59f5451a9ad0d95f8824004b2881a13025f6414216c3"
+  },
+  {
+    "id": "library",
+    "name": "La bibliothèque arc-en-ciel",
+    "difficulty": "Expert",
+    "count": 24,
+    "geometry": "2a04102cf55e1b2a23d8f69ca4e6ef261bd700be6c71ec216a84466aa3dca833",
+    "materials": "2a626abd1788431acb8c4a7af1157fdf27970b71853af930f7b78aa01b3910a1"
+  },
+  {
+    "id": "greenhouse",
+    "name": "Le jardin sous les arches",
+    "difficulty": "Expert",
+    "count": 25,
+    "geometry": "cb9babf7c62f04c97b8a479b4846b4954c9ab18c4faa9ec034c6a65ebfdd59ff",
+    "materials": "4b0b8a8c4ad7f139350c0cf45dbe276eeb70e1224ce4704494aa019a081f82a5"
+  },
+  {
+    "id": "pagoda",
+    "name": "La pagode des lanternes",
+    "difficulty": "Expert",
+    "count": 35,
+    "geometry": "d565a1c352f578d231a3f05ff4fd923c2051988d24fb420bbad92d618608e142",
+    "materials": "3999a22628c7704998419e9bb4d596e0b5a39aeb57b5e8224197cdd3f6d36647"
+  },
+  {
+    "id": "chalet",
+    "name": "Le chalet enneigé",
+    "difficulty": "Créatif",
+    "count": 18,
+    "geometry": "04c0d1fadff95d4020f8d92c06381a5d4020927daf31586b818266095e16dca5",
+    "materials": "6ba0b4138e308f0b6c9b22e6b5881526005302d7b450867da372b510e71a985c"
+  },
+  {
+    "id": "spacegate",
+    "name": "Le portail interstellaire",
+    "difficulty": "Créatif",
+    "count": 25,
+    "geometry": "5e40565b4f0f4ef9262977ed62d0f681b776ee083e686c4b8673b62118691622",
+    "materials": "b7a2c876a7d703331aee8c9b90ca0195f51220a7289502e3a3e5def12fc280c1"
+  },
+  {
+    "id": "armchair",
+    "name": "La petite chaise",
+    "difficulty": "Premiers pas",
+    "count": 8,
+    "geometry": "d49717c25abbbfd0e0a52fbe787b370e9817bc6b6985451374527968734b5a1e",
+    "materials": "ab9b005ef5ac869d7710815bc4fa7e1c48e74453a43083420f53c4167b5dc414"
+  },
+  {
+    "id": "pyramid",
+    "name": "L’escalier des débutants",
+    "difficulty": "Premiers pas",
+    "count": 6,
+    "geometry": "266d49afc1872a23f798b6cba9646e4ab5dd57f9d80c22eb2fcc00444ab16c64",
+    "materials": "2ef37dc15b2f07c8cba3a7bcb64a70fe6a5f13c29c8a7ef4422e3e2ab13e0f65"
+  },
+  {
+    "id": "starter-bridge",
+    "name": "Le pont des débutants",
+    "difficulty": "Premiers pas",
+    "count": 9,
+    "geometry": "201722695e50c2616528f9dd507c0e3ab40f32ae9662d738ccc5dfcbdc2d66b3",
+    "materials": "4bff0ac3c6ea3c060498bc8e08ba4a8b73174b648bb98db55ed57bd97901f105"
+  },
+  {
+    "id": "cactus",
+    "name": "Le cactus du désert",
+    "difficulty": "Premiers pas",
+    "count": 12,
+    "geometry": "a12380d73c738dbd8ce0e6cdb7c84b47ff7e09a9cc5078e15f6da0ec5551406e",
+    "materials": "119972454f6ca3ada80e6c18689a5770b0c17d02d7e534465b7e204e757d13cf"
+  },
+  {
+    "id": "snowman",
+    "name": "Le bonhomme de neige",
+    "difficulty": "Créatif",
+    "count": 13,
+    "geometry": "18e3cecba3bc57afb48ed1d089ce26479f04e505221bf5cc909650eb11a5642d",
+    "materials": "088f909468eeacd38ec004f899b1cb9fef4915669ad79f377ea61902f0bf7e68"
+  },
+  {
+    "id": "owl",
+    "name": "Le hibou Noisette",
+    "difficulty": "Créatif",
+    "count": 24,
+    "geometry": "d8e628e28b7941ea99ae9ba545fe1e0aac3fb88c39726a223851cd72cd0dd0e4",
+    "materials": "0220c2650cecf1df3b9a01e83ed78314ad619175b5310151e4f583f68f001cc4"
+  },
+  {
+    "id": "cup",
+    "name": "La tasse du matin",
+    "difficulty": "Créatif",
+    "count": 5,
+    "geometry": "41a074d4069e43595fba61614404cfa4f231c47fbe08973e1891563416fc4a8c",
+    "materials": "5a8fd39e1e4c7d7310e5d5a2e322d2b1eb7cfdf28c2303b256aea5e0c1171276"
+  },
+  {
+    "id": "table",
+    "name": "La table du goûter",
+    "difficulty": "Premiers pas",
+    "count": 12,
+    "geometry": "8ecbd14517085e2ce23c945a85f38c64affb1ace1c33cbe15c7106777816e17f",
+    "materials": "e6462b88d8e77f3b0c0f815ae4f38d8c94b05206fe687f31f46bce84f5c0259b"
+  },
+  {
+    "id": "streetlamp",
+    "name": "Le lampadaire du square",
+    "difficulty": "Créatif",
+    "count": 12,
+    "geometry": "0f00ff5e2b1c5827d98401490e452304aea4b0a645b0262ee9b96dda99323ac5",
+    "materials": "6469ec01ded7a0315724bc2b39676c52f66e12fdf2abb942f903e27df6d289a4"
+  },
+  {
+    "id": "torii",
+    "name": "La porte du jardin",
+    "difficulty": "Créatif",
+    "count": 15,
+    "geometry": "a4203ea366e2840b1df4482eb3b0b513c4cc161086e028759318417c14904d16",
+    "materials": "5322275bdb3d451356c0ec7bb492a914cbdeba544ccb638348de17b7cb6a798c"
+  },
+  {
+    "id": "fountain",
+    "name": "La fontaine du jardin",
+    "difficulty": "Créatif",
+    "count": 19,
+    "geometry": "0a639bc7fb60800eeed170d1c2d020c24727d3b8228e2b5e33bda069afea5a40",
+    "materials": "c69db2c8e45c2b2ecda6edec2927b2374ebaaf531bd4d5b648d545b5bac6964e"
+  },
+  {
+    "id": "aqueduct",
+    "name": "L’aqueduc des trois arches",
+    "difficulty": "Expert",
+    "count": 22,
+    "geometry": "07d6fb1b235cd896fc706804fb7dcc615723e53cc818a067decbc9f70b7756d1",
+    "materials": "94be1433816c644ba19fa742f1111d6ef5b7fbca8a8611e2ec2df98b0b9ae818"
+  },
+  {
+    "id": "sailboat",
+    "name": "Le voilier de la baie",
+    "difficulty": "Créatif",
+    "count": 16,
+    "geometry": "5cb2f9007c4cf4717ac377c9785decf2c176c7daaddd914d6fa2c083e47345ab",
+    "materials": "a355ced53467e77409a5463668440d396efe682dface1010e8cbe6cdfb35b3e2"
+  },
+  {
+    "id": "astreval-gardens",
+    "name": "Les jardins d’Astréval",
+    "difficulty": "Légendaire",
+    "count": 915,
+    "geometry": "5ae43893bf9298ad99c7e74cb4651f5d94b3773a0114e53acbd0f679d68bf3f3",
+    "materials": "bc5859f7b1920c4c521e3f19f410ed339267a5047cdf09323e8ab1dfc45511b1"
+  },
+  {
+    "id": "aurora-palace",
+    "name": "Le palais des aurores",
+    "difficulty": "Légendaire",
+    "count": 2235,
+    "geometry": "6d2ed162afa807aafa2214313b73806fe35325d950d0a86fc58c0cf6d6c058dd",
+    "materials": "482a2bf881965c85480a46579b53b37ba5c347e376e88465b4865dd72f339f87"
+  },
+  {
+    "id": "high-citadel",
+    "name": "La citadelle des huit tours",
+    "difficulty": "Légendaire",
+    "count": 3545,
+    "geometry": "dd8f78992b668206e317a4dcd6bc1ade3698c344e0a885db07ba536c9cd01fc3",
+    "materials": "0a1831a668371ef0ba238cf67df4826bf2706b969d788a9ac7d047be4fe36e59"
+  }
+]
