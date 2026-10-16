@@ -2,9 +2,11 @@ import type { SupabaseClient } from "@supabase/supabase-js";
 import { describe, expect, it, vi } from "vitest";
 import {
   authErrorMessage,
+  CONFIRMATION_MESSAGE,
   createAuthActions,
   RESET_MESSAGE,
   SIGNUP_MESSAGE,
+  validatePassword,
 } from "./actions";
 
 function mockClient(error: unknown = null) {
@@ -13,6 +15,7 @@ function mockClient(error: unknown = null) {
     signInWithPassword: vi.fn(async () => ({ error })),
     signInWithOAuth: vi.fn(async () => ({ error })),
     resetPasswordForEmail: vi.fn(async () => ({ error })),
+    resend: vi.fn(async () => ({ error })),
     updateUser: vi.fn(async () => ({ error })),
     signOut: vi.fn(async () => ({ error })),
   };
@@ -42,7 +45,7 @@ describe("comptes : actions Auth", () => {
       (await actions.signUp("invalide", "une phrase suffisamment longue")).ok,
     ).toBe(false);
     expect((await actions.signUp("a@example.test", "court")).ok).toBe(false);
-    expect((await actions.signUp("a@example.test", "x".repeat(129))).ok).toBe(
+    expect((await actions.signUp("a@example.test", "x".repeat(73))).ok).toBe(
       false,
     );
     expect(
@@ -57,6 +60,50 @@ describe("comptes : actions Auth", () => {
     expect((await actions.updateDisplayName("x".repeat(33))).ok).toBe(false);
     expect(auth.signUp).not.toHaveBeenCalled();
     expect(auth.updateUser).not.toHaveBeenCalled();
+  });
+  it.each([
+    ["ASCII", "x", 72, 73],
+    ["accents", "é", 36, 37],
+    ["emojis", "🧱", 18, 19],
+  ] as const)(
+    "respecte la limite du fournisseur sans tronquer : %s",
+    async (_kind, character, allowedCount, rejectedCount) => {
+      const { auth, client } = mockClient();
+      const actions = createAuthActions(client, redirect);
+      const allowed = character.repeat(allowedCount);
+      const rejected = character.repeat(rejectedCount);
+      expect(validatePassword(allowed)).toBeNull();
+      expect(validatePassword(rejected)).toContain("trop long");
+      expect((await actions.signUp("a@example.test", allowed)).ok).toBe(true);
+      expect(auth.signUp).toHaveBeenCalledWith(
+        expect.objectContaining({ password: allowed }),
+      );
+      expect((await actions.updatePassword(allowed)).ok).toBe(true);
+      expect(auth.updateUser).toHaveBeenCalledWith({ password: allowed });
+      auth.signUp.mockClear();
+      auth.updateUser.mockClear();
+      expect((await actions.signUp("a@example.test", rejected)).ok).toBe(false);
+      expect((await actions.updatePassword(rejected)).ok).toBe(false);
+      expect(auth.signUp).not.toHaveBeenCalled();
+      expect(auth.updateUser).not.toHaveBeenCalled();
+    },
+  );
+  it("compte les caractères Unicode entiers pour le minimum", () => {
+    expect(validatePassword("🧱".repeat(11))).toContain("au moins 12");
+    expect(validatePassword("🧱".repeat(12))).toBeNull();
+    expect(validatePassword("é".repeat(11))).toContain("au moins 12");
+    expect(validatePassword("é".repeat(12))).toBeNull();
+  });
+  it("conserve exactement la phrase saisie sans enlever les espaces ni normaliser les accents", async () => {
+    const { auth, client } = mockClient();
+    const password = "  une phrase de\u0301compose\u0301e  ";
+    const actions = createAuthActions(client, redirect);
+    expect((await actions.signUp("a@example.test", password)).ok).toBe(true);
+    expect(auth.signUp).toHaveBeenCalledWith(
+      expect.objectContaining({ password }),
+    );
+    await actions.updatePassword(password);
+    expect(auth.updateUser).toHaveBeenCalledWith({ password });
   });
   it("autorise le mot de passe existant à la connexion sans lui imposer la politique d’inscription", async () => {
     const { auth, client } = mockClient();
@@ -113,6 +160,52 @@ describe("comptes : actions Auth", () => {
     });
     await actions.signOut();
     expect(auth.signOut).toHaveBeenCalledWith({ scope: "local" });
+  });
+  it("renvoie uniquement un lien de confirmation signup, avec une réponse sans énumération de comptes", async () => {
+    for (const error of [
+      null,
+      { code: "user_not_found" },
+      { code: "email_already_confirmed" },
+    ]) {
+      const { auth, client } = mockClient(error);
+      expect(
+        await createAuthActions(client, redirect).sendConfirmationEmail(
+          " a@example.test ",
+        ),
+      ).toEqual({
+        ok: true,
+        message: CONFIRMATION_MESSAGE,
+      });
+      expect(auth.resend).toHaveBeenCalledWith({
+        type: "signup",
+        email: "a@example.test",
+        options: { emailRedirectTo: redirect },
+      });
+    }
+    const { auth, client } = mockClient();
+    expect(
+      (
+        await createAuthActions(client, redirect).sendConfirmationEmail(
+          "invalid",
+        )
+      ).ok,
+    ).toBe(false);
+    expect(auth.resend).not.toHaveBeenCalled();
+  });
+  it("affiche une attente quand le renvoi de confirmation est limité", async () => {
+    const { client } = mockClient({
+      code: "over_email_send_rate_limit",
+      message: "internal-sensitive-data",
+    });
+    const result = await createAuthActions(
+      client,
+      redirect,
+    ).sendConfirmationEmail("a@example.test");
+    expect(result).toEqual({
+      ok: false,
+      message:
+        "Trop de tentatives. Patientez quelques minutes avant de réessayer.",
+    });
   });
   it("la récupération envoie le nouveau mot de passe uniquement à Auth", async () => {
     const { client, auth } = mockClient();

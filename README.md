@@ -103,7 +103,7 @@ Les découvertes restent dans l’album après un recyclage. Achat, recyclage et
 
 ## Commandes admin
 
-Le bouton **Admin** est visible automatiquement avec `npm run dev`.
+Le bouton **Admin** est visible uniquement dans la partie invitée avec `npm run dev`, sur `localhost`, `127.0.0.1` ou `[::1]`. Il reste absent sur une adresse du réseau local et dans tous les builds de production, y compris en prévisualisation locale.
 
 | Onglet     | Commandes                                                                                                                                                               |
 | ---------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -156,7 +156,7 @@ Pour vérifier le parcours complet dans une partie de test isolée : ouvrir une 
 
 ## Limites et sécurité
 
-Cette version possède un administrateur **local de développement**, sans authentification serveur. Le panneau et les commandes de test sont désactivés par défaut dans le build de production. Pour une prévisualisation locale de ce build avec le panneau, définir `VITE_ENABLE_LOCAL_ADMIN=true` avant compilation ; ne pas activer cette option sur un déploiement public.
+Cette version possède un panneau de test **local de développement**, sans authentification personnelle. Il exige simultanément le serveur de développement, une adresse de boucle locale (`localhost`, `127.0.0.1` ou `[::1]`) et une partie invitée. Toute personne ayant accès à cette session locale peut l'utiliser. Aucun paramètre d'environnement ne permet de l'activer dans un build de production. Les comptes connectés ne proposent ni commandes admin ni import de sauvegarde, et l'API refuse ces commandes même si une requête est fabriquée manuellement.
 
 Les sauvegardes et l’horloge du mode invité restent modifiables par leur propriétaire ; ses délais ne protègent pas contre la triche. Ce mode ne rejoint jamais l’économie connectée. Pour les comptes, les tirages, soldes, inventaires, récompenses et réservations sont contrôlés par le serveur. Les écritures économiques directes depuis le navigateur sont interdites ; le commit atomique protège aussi contre les commandes répétées et les actions concurrentes. La configuration réelle Supabase, la restauration et les parcours Google/email doivent être vérifiés sur un projet de test avant ouverture publique des comptes.
 

@@ -4,7 +4,11 @@ import { createRoot } from "react-dom/client";
 import type { User } from "@supabase/supabase-js";
 import type { Auth } from "../src/auth/useAuth";
 import type { AuthResult } from "../src/auth/actions";
-import { RESET_MESSAGE, SIGNUP_MESSAGE } from "../src/auth/actions";
+import {
+  CONFIRMATION_MESSAGE,
+  RESET_MESSAGE,
+  SIGNUP_MESSAGE,
+} from "../src/auth/actions";
 import { AccountContent } from "../src/components/AccountPanel";
 import { Modal } from "../src/components/Modal";
 import "@fontsource-variable/dm-sans";
@@ -26,6 +30,7 @@ const scenarios = [
   "login",
   "signup",
   "reset",
+  "confirm",
   "connected",
   "recovery",
   "unconfigured",
@@ -37,6 +42,7 @@ const labels: Record<Scenario, string> = {
   login: "Connexion",
   signup: "Inscription",
   reset: "Email de récupération",
+  confirm: "Confirmation d’email",
   connected: "Compte connecté",
   recovery: "Nouveau mot de passe",
   unconfigured: "Non configuré",
@@ -58,6 +64,7 @@ function ReviewAccount() {
     Promise.resolve({ ok: true, message });
   const auth: Auth = {
     configured: scenario !== "unconfigured",
+    googleEnabled: false,
     ready: true,
     user:
       user ?? (["connected", "recovery"].includes(scenario) ? player : null),
@@ -78,6 +85,7 @@ function ReviewAccount() {
     signInWithGoogle: () =>
       result("Aperçu local : aucune connexion Google n’est ouverte."),
     sendPasswordReset: () => result(RESET_MESSAGE),
+    sendConfirmationEmail: () => result(CONFIRMATION_MESSAGE),
     updatePassword: async () => {
       setRecovered(true);
       return result(
@@ -147,7 +155,11 @@ function ReviewAccount() {
             key={scenario}
             auth={auth}
             initialMode={
-              scenario === "signup" || scenario === "reset" ? scenario : "login"
+              scenario === "signup" ||
+              scenario === "reset" ||
+              scenario === "confirm"
+                ? scenario
+                : "login"
             }
             onClose={() => setClosed(true)}
           />

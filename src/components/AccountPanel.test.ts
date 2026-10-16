@@ -9,6 +9,7 @@ function auth(overrides: Partial<Auth> = {}): Auth {
   const success = vi.fn(async () => ({ ok: true, message: "Terminé" }));
   return {
     configured: true,
+    googleEnabled: false,
     ready: true,
     user: null,
     recovery: false,
@@ -19,6 +20,7 @@ function auth(overrides: Partial<Auth> = {}): Auth {
     signIn: success,
     signInWithGoogle: success,
     sendPasswordReset: success,
+    sendConfirmationEmail: success,
     updatePassword: success,
     updateDisplayName: success,
     signOut: success,
@@ -35,7 +37,7 @@ const player: User = {
 };
 function render(
   overrides: Partial<Auth> = {},
-  initialMode?: "login" | "signup" | "reset",
+  initialMode?: "login" | "signup" | "reset" | "confirm",
 ) {
   return renderToStaticMarkup(
     createElement(AccountContent, {
@@ -46,22 +48,37 @@ function render(
   );
 }
 describe("Mon compte : parcours et accessibilité", () => {
-  it("présente Google, email et partie invitée séparée", () => {
+  it("présente l’email et la partie invitée séparée, sans proposer un fournisseur désactivé", () => {
     const html = render();
-    expect(html).toContain("Continuer avec Google");
+    expect(html).not.toContain("Continuer avec Google");
+    expect(html).not.toContain("ou avec votre email");
     expect(html).toContain('type="email"');
     expect(html).toContain('autoComplete="current-password"');
     expect(html).toContain("ni transférée ni fusionnée");
     expect(html).toContain("Continuer en invité sur cet appareil");
     expect(html).toContain('aria-pressed="true"');
+    expect(html).toContain("Email de confirmation non reçu ?");
+  });
+  it("propose Google seulement quand sa configuration est activée", () => {
+    const html = render({ googleEnabled: true });
+    expect(html).toContain("Continuer avec Google");
+    expect(html).toContain("ou avec votre email");
   });
   it("rend la politique et la confirmation de mot de passe à l’inscription", () => {
     const html = render({}, "signup");
     expect(html).toContain('minLength="12"');
-    expect(html).toContain('maxLength="128"');
+    expect(html).not.toContain('maxLength="128"');
+    expect(html).toContain(
+      "Au moins 12 caractères. Choisissez une phrase personnelle.",
+    );
     expect(html).toContain("Confirmer le mot de passe");
     expect(html).toContain("Créer mon compte");
-    expect(html).toContain("facultatif");
+    expect(html).toContain("Une nouvelle partie en ligne.");
+    expect(html).toContain("sans transfert ni fusion");
+    expect(html).not.toContain('autoComplete="nickname"');
+    expect(html).not.toContain("account-separation");
+    expect(html).not.toContain("Mot de passe oublié ?");
+    expect(html).toContain("activé après confirmation");
   });
   it("une configuration absente ne propose aucune fausse connexion", () => {
     const html = render({ configured: false });
@@ -93,6 +110,15 @@ describe("Mon compte : parcours et accessibilité", () => {
     expect(html).not.toContain('type="password"');
     expect(html).toContain("Revenir à la connexion");
   });
+  it("le renvoi de confirmation demande uniquement l’email et permet de revenir à la connexion", () => {
+    const html = render({}, "confirm");
+    expect(html).toContain("Renvoyer l’email de confirmation");
+    expect(html).toContain("J’ai confirmé mon email, me connecter");
+    expect(html).toContain("activer votre compte");
+    expect(html).toContain('type="email"');
+    expect(html).not.toContain('type="password"');
+    expect(html).not.toContain("Continuer avec Google");
+  });
   it("le compte connecté garde un identifiant stable, sans interpoler le profil en HTML", () => {
     const html = render({
       user: {
@@ -103,6 +129,7 @@ describe("Mon compte : parcours et accessibilité", () => {
     expect(html).toContain("account-1");
     expect(html).toContain("a@example.test");
     expect(html).toContain("Reprendre ma partie en ligne");
+    expect(html).toContain('autoComplete="nickname"');
     expect(html).not.toContain("<script>");
     expect(html).toContain("&lt;script&gt;");
   });

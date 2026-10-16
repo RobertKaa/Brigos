@@ -24,7 +24,7 @@ import { PASSWORD_HINT } from "../auth/actions";
 import { Modal } from "./Modal";
 import "./account-panel.css";
 
-type AccountMode = "login" | "signup" | "reset";
+type AccountMode = "login" | "signup" | "reset" | "confirm";
 type Props = { auth: Auth; onClose: () => void };
 const onlineSnapshot = () =>
   typeof navigator === "undefined" || navigator.onLine;
@@ -61,10 +61,12 @@ export function AccountContent({
   );
   const disabled = auth.busy || !online || !auth.ready;
   const recovery = auth.recovery && !!auth.user;
+  const compactIntro = recovery || (!auth.user && mode !== "login");
   useEffect(() => {
     setName(displayName);
     setPassword("");
     setConfirmation("");
+    setShowPassword(false);
     setFeedback(null);
   }, [auth.user?.id, displayName, recovery]);
   useEffect(() => {
@@ -77,16 +79,22 @@ export function AccountContent({
     setMode(next);
     setPassword("");
     setConfirmation("");
+    setShowPassword(false);
     setFeedback(null);
     auth.clearError();
   }
   async function perform(operation: () => Promise<AuthResult>) {
     setFeedback(null);
-    const result = await operation();
-    setFeedback(result);
-    if (result.ok) {
+    try {
+      const result = await operation();
+      setFeedback(result);
+      return result;
+    } finally {
+      // Keep credentials only while editing or sending the form. Failed requests
+      // must not leave a revealed password behind on a shared device either.
       setPassword("");
       setConfirmation("");
+      setShowPassword(false);
     }
   }
   async function submit(event: FormEvent<HTMLFormElement>) {
@@ -101,8 +109,13 @@ export function AccountContent({
     }
     if (recovery) return perform(() => auth.updatePassword(password));
     if (mode === "reset") return perform(() => auth.sendPasswordReset(email));
-    if (mode === "signup")
-      return perform(() => auth.signUp(email, password, name));
+    if (mode === "confirm")
+      return perform(() => auth.sendConfirmationEmail(email));
+    if (mode === "signup") {
+      const result = await perform(() => auth.signUp(email, password, name));
+      if (result.ok) setMode("confirm");
+      return;
+    }
     return perform(() => auth.signIn(email, password));
   }
   const error = feedback?.ok === false ? feedback.message : auth.error;
@@ -119,7 +132,7 @@ export function AccountContent({
             mode === "signup" || recovery ? "new-password" : "current-password"
           }
           minLength={mode === "signup" || recovery ? 12 : undefined}
-          maxLength={mode === "signup" || recovery ? 128 : 1024}
+          maxLength={mode === "signup" || recovery ? undefined : 1024}
           value={password}
           onChange={(event) => setPassword(event.target.value)}
           required
@@ -159,7 +172,6 @@ export function AccountContent({
         type={showPassword ? "text" : "password"}
         autoComplete="new-password"
         minLength={12}
-        maxLength={128}
         value={confirmation}
         onChange={(event) => setConfirmation(event.target.value)}
         required
@@ -184,7 +196,9 @@ export function AccountContent({
   );
 
   return (
-    <div className="account-content">
+    <div
+      className={`account-content${compactIntro ? " account-content-compact" : ""}`}
+    >
       <div className="account-intro">
         <span className="account-emblem" aria-hidden="true">
           {auth.user ? <ShieldCheck size={26} /> : <Cloud size={26} />}
@@ -195,22 +209,38 @@ export function AccountContent({
               ? "Choisir un nouveau mot de passe"
               : auth.user
                 ? "Votre partie, avec vous"
-                : "Retrouvez votre partie partout"}
+                : mode === "signup"
+                  ? "Créer votre compte"
+                  : mode === "confirm"
+                    ? "Confirmer votre email"
+                    : mode === "reset"
+                      ? "Retrouver votre compte"
+                      : "Retrouvez votre partie partout"}
           </h3>
           <p>
-            {auth.user
-              ? "Votre compte possède sa propre progression en ligne. Les actions de jeu nécessitent Internet."
-              : "Un compte ouvre une nouvelle partie en ligne, accessible sur ordinateur et téléphone."}
+            {recovery
+              ? "Choisissez une phrase personnelle. Votre partie invitée reste sur cet appareil."
+              : auth.user
+                ? "Votre compte possède sa propre progression en ligne. Les actions de jeu nécessitent Internet."
+                : mode === "signup"
+                  ? "Une nouvelle partie en ligne. Votre partie invitée reste sur cet appareil, sans transfert ni fusion."
+                  : mode === "confirm"
+                    ? "Ouvrez le lien reçu par email dans ce même navigateur pour activer votre compte, puis connectez-vous. Votre partie invitée reste sur cet appareil."
+                    : mode === "reset"
+                      ? "Recevez un lien pour choisir un nouveau mot de passe. Votre partie invitée reste sur cet appareil."
+                      : "Un compte ouvre une nouvelle partie en ligne, accessible sur ordinateur et téléphone."}
           </p>
         </div>
       </div>
-      <div className="account-separation">
-        <UserRound size={17} aria-hidden="true" />
-        <p>
-          Votre partie invitée reste sur cet appareil. Elle n’est ni transférée
-          ni fusionnée avec le compte.
-        </p>
-      </div>
+      {!compactIntro && (
+        <div className="account-separation">
+          <UserRound size={17} aria-hidden="true" />
+          <p>
+            Votre partie invitée reste sur cet appareil. Elle n’est ni
+            transférée ni fusionnée avec le compte.
+          </p>
+        </div>
+      )}
       {!online && (
         <p className="account-feedback account-feedback-error" role="status">
           Vous êtes hors connexion. Retrouvez Internet pour utiliser votre
@@ -308,7 +338,7 @@ export function AccountContent({
             </div>
           ) : (
             <>
-              {!recovery && mode !== "reset" && (
+              {!recovery && (mode === "login" || mode === "signup") && (
                 <>
                   <div className="account-mode" aria-label="Accès au compte">
                     <button
@@ -328,25 +358,23 @@ export function AccountContent({
                       Créer un compte
                     </button>
                   </div>
-                  <button
-                    type="button"
-                    className="button button-secondary account-google"
-                    disabled={disabled}
-                    onClick={() => void perform(auth.signInWithGoogle)}
-                  >
-                    <LogIn size={18} aria-hidden="true" />
-                    Continuer avec Google
-                  </button>
-                  <div className="account-divider">
-                    <span>ou avec votre email</span>
-                  </div>
+                  {auth.googleEnabled && (
+                    <>
+                      <button
+                        type="button"
+                        className="button button-secondary account-google"
+                        disabled={disabled}
+                        onClick={() => void perform(auth.signInWithGoogle)}
+                      >
+                        <LogIn size={18} aria-hidden="true" />
+                        Continuer avec Google
+                      </button>
+                      <div className="account-divider">
+                        <span>ou avec votre email</span>
+                      </div>
+                    </>
+                  )}
                 </>
-              )}
-              {!recovery && mode === "reset" && (
-                <div className="account-reset-heading">
-                  <h3>Mot de passe oublié</h3>
-                  <p>Recevez un lien pour choisir un nouveau mot de passe.</p>
-                </div>
               )}
               <form
                 className="account-form"
@@ -371,9 +399,15 @@ export function AccountContent({
                     />
                   </div>
                 )}
-                {mode === "signup" && !recovery && nameInput}
-                {(mode !== "reset" || recovery) && passwordInput}
+                {((mode !== "reset" && mode !== "confirm") || recovery) &&
+                  passwordInput}
                 {(mode === "signup" || recovery) && confirmationInput}
+                {mode === "signup" && !recovery && (
+                  <p className="account-form-note">
+                    Votre compte sera activé après confirmation de votre adresse
+                    email.
+                  </p>
+                )}
                 <button
                   type="submit"
                   className="button button-primary"
@@ -387,30 +421,48 @@ export function AccountContent({
                         ? "Créer mon compte"
                         : mode === "reset"
                           ? "Envoyer le lien"
-                          : "Me connecter"}
+                          : mode === "confirm"
+                            ? "Renvoyer l’email de confirmation"
+                            : "Me connecter"}
                   {!auth.busy &&
-                    (mode === "reset" ? (
+                    (mode === "reset" || mode === "confirm" ? (
                       <Mail size={18} aria-hidden="true" />
                     ) : (
                       <LogIn size={18} aria-hidden="true" />
                     ))}
                 </button>
               </form>
-              {!recovery && (
+              {!recovery && mode !== "signup" && (
                 <button
                   type="button"
                   className="account-link"
                   onClick={() =>
-                    changeMode(mode === "reset" ? "login" : "reset")
+                    changeMode(
+                      mode === "reset" || mode === "confirm"
+                        ? "login"
+                        : "reset",
+                    )
                   }
                   disabled={auth.busy}
                 >
-                  {mode === "reset" && (
+                  {(mode === "reset" || mode === "confirm") && (
                     <ArrowLeft size={16} aria-hidden="true" />
                   )}
                   {mode === "reset"
                     ? "Revenir à la connexion"
-                    : "Mot de passe oublié ?"}
+                    : mode === "confirm"
+                      ? "J’ai confirmé mon email, me connecter"
+                      : "Mot de passe oublié ?"}
+                </button>
+              )}
+              {!recovery && mode === "login" && (
+                <button
+                  type="button"
+                  className="account-link"
+                  onClick={() => changeMode("confirm")}
+                  disabled={auth.busy}
+                >
+                  Email de confirmation non reçu ?
                 </button>
               )}
               {!recovery && (

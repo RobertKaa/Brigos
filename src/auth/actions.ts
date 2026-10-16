@@ -2,10 +2,13 @@ import type { SupabaseClient } from "@supabase/supabase-js";
 
 export type AuthResult = { ok: boolean; message: string };
 export const SIGNUP_MESSAGE =
-  "Si cette adresse peut être utilisée, un email de confirmation vous sera envoyé. Consultez aussi les courriers indésirables. Si vous avez déjà un compte, connectez-vous.";
+  "Si cette adresse peut être utilisée, un email de confirmation vous sera envoyé. Confirmez votre email avant de vous connecter. Consultez aussi les courriers indésirables.";
+export const CONFIRMATION_MESSAGE =
+  "Si un compte attend la confirmation de cette adresse, un nouvel email vous sera envoyé. Consultez aussi les courriers indésirables. Vous pouvez vous connecter une fois votre email confirmé.";
 export const RESET_MESSAGE =
-  "Si un compte correspond à cette adresse, un email de récupération vous sera envoyé. Consultez aussi les courriers indésirables.";
-export const PASSWORD_HINT = "Au moins 12 caractères, jusqu’à 128.";
+  "Si un compte correspond à cette adresse, un email de récupération vous sera envoyé. Ouvrez le lien dans ce même navigateur. Consultez aussi les courriers indésirables.";
+export const PASSWORD_HINT =
+  "Au moins 12 caractères. Choisissez une phrase personnelle.";
 
 export function validateEmail(email: string): string | null {
   const value = email.trim();
@@ -14,9 +17,13 @@ export function validateEmail(email: string): string | null {
     : "Saisissez une adresse email valide.";
 }
 export function validatePassword(password: string): string | null {
-  return password.length >= 12 && password.length <= 128
-    ? null
-    : `Choisissez un mot de passe de 12 à 128 caractères.`;
+  if (Array.from(password).length < 12)
+    return "Choisissez un mot de passe d’au moins 12 caractères.";
+  // Supabase Auth's bcrypt provider rejects values above 72 UTF-8 bytes.
+  // Check the exact secret; trimming, normalization or truncation changes it.
+  if (new TextEncoder().encode(password).length > 72)
+    return "Ce mot de passe est trop long. Choisissez une phrase un peu plus courte, en conservant au moins 12 caractères.";
+  return null;
 }
 export function validateDisplayName(name: string): string | null {
   return name.trim().length <= 32 && !/[\u0000-\u001f\u007f]/.test(name)
@@ -140,6 +147,20 @@ export function createAuthActions(
           available.auth.resetPasswordForEmail(email.trim(), { redirectTo }),
         RESET_MESSAGE,
         ["user_not_found"],
+      );
+    },
+    sendConfirmationEmail(email: string) {
+      const validation = validateEmail(email);
+      if (validation) return invalid(validation);
+      return execute(
+        (available) =>
+          available.auth.resend({
+            type: "signup",
+            email: email.trim(),
+            options: { emailRedirectTo: redirectTo },
+          }),
+        CONFIRMATION_MESSAGE,
+        ["user_not_found", "email_already_confirmed"],
       );
     },
     updatePassword(password: string) {

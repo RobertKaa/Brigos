@@ -22,7 +22,7 @@ jobs:
       VITE_SUPABASE_PUBLISHABLE_KEY: ""
       VITE_SUPABASE_ANON_KEY: ""
       VITE_AUTH_REDIRECT_URL: ""
-      VITE_ENABLE_LOCAL_ADMIN: "false"
+      VITE_AUTH_GOOGLE_ENABLED: "false"
     steps:
       - name: Check out the source
         uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6.1.0

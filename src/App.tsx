@@ -47,6 +47,7 @@ import { AppNavigation } from "./components/AppNavigation";
 import { AccountPanel } from "./components/AccountPanel";
 import { useAuth } from "./auth/useAuth";
 import { readAppRoute } from "./navigation";
+import { isLocalAdminEnabled } from "./localAdmin";
 import type { Game } from "./screens/types";
 import "./journey.css";
 
@@ -54,8 +55,6 @@ const Sandbox = lazy(() =>
   import("./screens/Sandbox").then((screen) => ({ default: screen.Sandbox })),
 );
 
-const ADMIN_ENABLED =
-  import.meta.env.DEV || import.meta.env.VITE_ENABLE_LOCAL_ADMIN === "true";
 export default function App() {
   const auth = useAuth();
   const game = useGame({
@@ -100,7 +99,11 @@ export function GameApp({
   game: Game;
   onOpenAccount?: () => void;
 }) {
-  const localAdminEnabled = ADMIN_ENABLED && game.mode !== "connected";
+  const localAdminEnabled = isLocalAdminEnabled({
+    development: import.meta.env.DEV,
+    hostname: window.location.hostname,
+    mode: game.mode,
+  });
   const { theme, preference, setPreference, toggleTheme } = useTheme();
   const [route, setRoute] = useState(() => readAppRoute(location.hash));
   const { view } = route;
@@ -136,10 +139,12 @@ export function GameApp({
       : "full";
   }, [reducedMotion]);
   const admin: AdminAction = (command, message) =>
-    game.localAct?.(
-      (current) => adminCommand(current, command, localAdminEnabled),
-      message,
-    ) ?? Promise.resolve(false);
+    localAdminEnabled && game.localAct
+      ? game.localAct(
+          (current) => adminCommand(current, command, true),
+          message,
+        )
+      : Promise.resolve(false);
   const handleOpen = async (boxId: BoxId, next = false) => {
     const success =
       localAdminEnabled && forcedRarity && game.localAct

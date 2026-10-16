@@ -15,6 +15,20 @@
   padding: 22px 26px 26px;
   min-width: 0;
 }
+.account-content-compact {
+  gap: 12px;
+  padding-top: 18px;
+  padding-bottom: 20px;
+}
+.account-content-compact .account-form {
+  gap: 12px;
+}
+.account-content-compact .account-field {
+  gap: 5px;
+}
+.account-content-compact .account-guest {
+  padding-top: 12px;
+}
 .account-intro {
   display: flex;
   align-items: flex-start;
@@ -30,13 +44,11 @@
   border: 1px solid var(--studio-accent);
   border-radius: 12px 12px 3px 12px;
 }
-.account-intro h3,
-.account-reset-heading h3 {
+.account-intro h3 {
   font-size: 1.3rem;
   line-height: 1.2;
 }
-.account-intro p,
-.account-reset-heading p {
+.account-intro p {
   margin-top: 7px;
   color: var(--muted);
   font-size: 0.875rem;
@@ -124,6 +136,11 @@
   font-size: 0.75rem;
   color: var(--muted);
   line-height: 1.4;
+}
+.account-form-note {
+  color: var(--muted);
+  font-size: 0.8125rem;
+  line-height: 1.5;
 }
 .account-password {
   display: flex;

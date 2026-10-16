@@ -53,6 +53,7 @@ export function useAuth() {
   }
   return {
     configured: authConfigured,
+    googleEnabled: import.meta.env.VITE_AUTH_GOOGLE_ENABLED === "true",
     ...snapshot,
     error: error ?? snapshot.error,
     busy,
@@ -67,6 +68,8 @@ export function useAuth() {
     signInWithGoogle: () => run(actions.signInWithGoogle),
     sendPasswordReset: (email: string) =>
       run(() => actions.sendPasswordReset(email)),
+    sendConfirmationEmail: (email: string) =>
+      run(() => actions.sendConfirmationEmail(email)),
     updatePassword: (password: string) =>
       run(() => actions.updatePassword(password), true),
     updateDisplayName: (name: string) =>
