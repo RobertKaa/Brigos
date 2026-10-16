@@ -4,9 +4,30 @@ Le compte utilise Supabase Auth (Google ou email/mot de passe), PostgreSQL et la
 
 Le déploiement GitHub Pages choisi pour ce premier lancement reste une **démo invitée**, sans configuration de comptes ni paiement ; voir [le déploiement Pages](github-pages.md). Les adresses `https://app.brigo.example/` ci-dessous sont des exemples à remplacer par le futur hébergement de l’application avec comptes.
 
-## Préparer deux projets et les clés
+## Projet Brigo actuel
 
-Créer deux projets Supabase distincts, test et production, en **Central EU (Francfort, `eu-central-1`)**. Déployer d’abord sur test. La région de la base se choisit à la création ; les services et traitements annexes ont leurs propres conditions de résidence. Voir [les régions](https://supabase.com/docs/guides/platform/regions) et [la résidence des données](https://supabase.com/legal/privacy-resources/data-residency-and-transfers-faq).
+La base Brigo est installée dans le [projet Supabase créé pour Brigo](https://supabase.com/dashboard/project/zqhnbygwxfqjtbfeuiyg). État vérifié le **16 octobre 2026** :
+
+| Paramètre | Valeur |
+| --- | --- |
+| Référence du projet | `zqhnbygwxfqjtbfeuiyg` |
+| URL publique de l’API | `https://zqhnbygwxfqjtbfeuiyg.supabase.co` |
+| Région observée | Francfort, `eu-central-1` |
+| Fonction de jeu | `https://zqhnbygwxfqjtbfeuiyg.supabase.co/functions/v1/game` |
+
+La migration `202610160001_brigo_accounts.sql` a été installée dans le SQL Editor du dashboard, dans une transaction. L’historique `supabase_migrations.schema_migrations` a ensuite été créé selon le [DDL officiel de la CLI](https://github.com/supabase/cli/blob/develop/apps/cli/src/command-internal/migration-history.ts) : version `202610160001`, nom `brigo_accounts`, script complet de 10 061 caractères enregistré comme texte, sans réexécuter la migration. Les prochains déploiements CLI doivent retrouver cette version déjà appliquée.
+
+L’audit SQL distant confirme les cinq tables avec RLS, quatre politiques de lecture du propriétaire, aucun droit `anon`/`PUBLIC`, aucune écriture du joueur, quatre droits SELECT du joueur, les deux RPC économiques réservées à `service_role` et le trigger de profil Auth actif.
+
+La fonction `game` est déployée depuis le dashboard à partir du bundle esbuild de l’entrypoint du dépôt. La vérification JWT de la passerelle est désactivée conformément à `config.toml` ; le handler vérifie lui-même les sessions auprès d’Auth. Le secret `BRIGO_ALLOWED_ORIGINS` contient `http://127.0.0.1:5173,http://localhost:5173`. Les contrôles HTTP distants passent : `401` sans session, `401` avec un faux bearer, `204` pour le preflight local et `403` pour une origine externe.
+
+Auth exige la confirmation de l’email, désactive les comptes anonymes et active le changement d’email avec double confirmation. Le minimum de 12 caractères et le changement de mot de passe sécurisé sont enregistrés. Le Site URL est `http://127.0.0.1:5173/` et les deux retours autorisés sont `http://127.0.0.1:5173/#account` et `http://localhost:5173/#account`. Google reste désactivé et le SMTP Resend reste à configurer.
+
+Le CLI local n’est pas lié au projet : aucune authentification CLI par jeton personnel n’a été fournie. Cela n’empêche pas la base et la fonction d’être installées via le dashboard. GitHub Pages reste une démo invitée ; le frontend n’est pas branché, la clé publishable reste vide dans `.env.example`. Aucun compte de test n’a été créé et aucun parcours de compte réel n’a encore été validé.
+
+## Préparer les environnements et les clés
+
+Avant l’ouverture publique des comptes, séparer test et production dans deux projets Supabase distincts, en **Central EU (Francfort, `eu-central-1`)**. Déployer d’abord sur test. La région de la base se choisit à la création ; les services et traitements annexes ont leurs propres conditions de résidence. Voir [les régions](https://supabase.com/docs/guides/platform/regions) et [la résidence des données](https://supabase.com/legal/privacy-resources/data-residency-and-transfers-faq).
 
 Créer une clé **publishable** destinée au navigateur et une clé **secret** pour le serveur. La fonction préfère les dictionnaires `SUPABASE_PUBLISHABLE_KEYS` et `SUPABASE_SECRET_KEYS` injectés par la plateforme (clé `default`). Elle accepte aussi les variables legacy `SUPABASE_ANON_KEY` et `SUPABASE_SERVICE_ROLE_KEY` pour les anciennes stacks locales. La clé secret ne figure dans aucun `VITE_*`, dépôt ou bundle navigateur. Les nouvelles clés ne sont pas des JWT ; l’adaptateur serveur utilise leur en-tête `apikey`. Voir [les clés](https://supabase.com/docs/guides/getting-started/api-keys) et [les secrets injectés](https://supabase.com/docs/guides/functions/secrets).
 
@@ -35,16 +56,24 @@ Pour les emails réels, activer Custom SMTP avec **Resend** : domaine d’expéd
 
 ## Déploiement
 
-Installer le CLI Supabase selon sa documentation, puis, pour **chaque projet** :
+La base et la fonction actuelles ont été installées via le dashboard. Pour les prochaines mises à jour par CLI, installer le CLI Supabase selon sa documentation, s’authentifier, puis lier le projet Brigo et vérifier l’historique :
 
 ```text
 supabase login
-supabase link --project-ref <reference-du-projet>
+supabase link --project-ref zqhnbygwxfqjtbfeuiyg
+supabase migration list --linked
+```
+
+La migration initiale est déjà appliquée et enregistrée dans l’historique distant. Vérifier que la liste affiche `202610160001` localement et à distance avant d’utiliser `db push` ; ne pas la rejouer manuellement. Les mises à jour suivantes ciblent le projet lié ; les secrets et la fonction peuvent aussi nommer explicitement sa référence :
+
+```text
 supabase db push
 npm run server:bundle
-supabase secrets set BRIGO_ALLOWED_ORIGINS=https://app.brigo.example
-supabase functions deploy game
+supabase secrets set BRIGO_ALLOWED_ORIGINS=http://127.0.0.1:5173,http://localhost:5173 --project-ref zqhnbygwxfqjtbfeuiyg
+supabase functions deploy game --project-ref zqhnbygwxfqjtbfeuiyg
 ```
+
+Les origines locales ci-dessus préparent les essais du backend sans activer les comptes sur GitHub Pages. Remplacer les origines lors du choix de l’hébergement des comptes. Pour le second projet, employer sa propre référence et ses propres réglages.
 
 `npm run server:bundle` construit `supabase/functions/game/generated/server.js` depuis le même moteur et les mêmes commandes typées que l’application. Ce fichier est généré et ignoré par Git ; il faut le reconstruire **avant chaque déploiement** de la fonction. Aucun import Node ou React n’entre dans le runtime Deno. Le serveur n’accepte ni import de partie, ni solde, ni tirage fourni par le navigateur, ni commande admin.
 
@@ -54,7 +83,7 @@ En local, `supabase start`, puis créer `supabase/functions/.env` ignoré avec l
 
 ## API et garanties de stockage
 
-Endpoint : `https://<project-ref>.supabase.co/functions/v1/game`.
+Endpoint du projet Brigo : `https://zqhnbygwxfqjtbfeuiyg.supabase.co/functions/v1/game`.
 
 - `GET`, avec bearer utilisateur, retourne `{state, revision, serverTime}`. La création du compte de jeu est atomique et unique. Les 1 200 pièces et trois boîtes de départ ont un reçu et une ligne d’origine dans le journal à la révision **0**.
 - `POST` JSON : `{commandId, expectedRevision, command}`. `commandId` est un UUID neuf pour chaque intention et reste le même pour un nouvel essai réseau de **la même commande et révision**. Les commandes publiques sont celles de `src/game/commands.ts`.
@@ -82,6 +111,8 @@ npm run server:bundle
 
 Les tests `src/server` exécutent la **vraie migration SQL dans PostgreSQL PGlite**, avec rôles `anon`, `authenticated`, `service_role` et `auth.uid()`. Ils couvrent isolation RLS, refus des écritures/RPC clientes, initialisation unique tracée, reçus, concurrence de révisions et rollback du journal. Les tests du handler couvrent origine, jeton, requêtes forgées, limites, migrations, tirage rejoué, conflit et réponse perdue. Les tests métier couvrent les réservations et récompenses.
 
+La vérification locale du 16 octobre 2026 a validé les **2 278 tests**, `npm run check`, `npm run build` et `npm run server:bundle`. Les contrôles distants décrits plus haut valident l’installation et les refus d’accès ; les parcours avec un compte authentifié restent à tester.
+
 Pour vérifier les verrous avec de vraies connexions concurrentes, sur une **base de test isolée déjà migrée**, installer `psql`, fournir `BRIGO_TEST_DATABASE_URL`, définir `BRIGO_RUN_DATABASE_TESTS=1`, puis :
 
 ```text
@@ -98,6 +129,6 @@ Surveiller les erreurs `GAME_SERVICE_FAILURE`, le taux de 401/409/429/503, la la
 
 Le développement peut commencer avec **Free**. Avant les premiers paiements, activer **Pro**, vérifier les quotas et coûts réellement en vigueur, configurer les alertes et le contrôle de dépense. Free peut être mis en pause et ne constitue pas une stratégie de sauvegarde de production. Voir [les tarifs](https://supabase.com/pricing) et [les sauvegardes](https://supabase.com/docs/guides/platform/backups).
 
-Définir une fréquence de sauvegarde/export chiffré et une durée de rétention, puis **tester une restauration dans un projet de test** : utilisateurs Auth, parties, reçus, journal, révisions et ressources réservées doivent correspondre au point restauré. Après restauration, comparer comptes et sommes du journal aux parties, confirmer les politiques RLS et tester une commande sans rejouer un ancien gain. Définir la perte de données tolérable et le temps de remise en service ; la restauration n’a pas été effectuée sans projet Supabase.
+Définir une fréquence de sauvegarde/export chiffré et une durée de rétention, puis **tester une restauration dans un projet de test** : utilisateurs Auth, parties, reçus, journal, révisions et ressources réservées doivent correspondre au point restauré. Après restauration, comparer comptes et sommes du journal aux parties, confirmer les politiques RLS et tester une commande sans rejouer un ancien gain. Définir la perte de données tolérable et le temps de remise en service ; ce test de restauration reste à effectuer.
 
 Les paiements sont un lot distinct. Réserver une table de paiements avec identifiant prestataire unique, montant/devise/produit vérifiés, événements signés côté serveur, crédit en transaction unique et rapprochement/remboursement auditable. Après restauration, rejouer les événements confirmés du prestataire depuis le dernier point cohérent en conservant leur unicité. La page de retour et le navigateur ne créditent jamais le joueur. Aucun prestataire ni paiement actif n’est intégré ici.
