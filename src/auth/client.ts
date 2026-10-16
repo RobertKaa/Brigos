@@ -1,5 +1,6 @@
 import { createClient } from "@supabase/supabase-js";
 import type { SupabaseClient, User } from "@supabase/supabase-js";
+import { authErrorMessage } from "./actions";
 
 export type PublicAuthConfiguration = { url: string; key: string };
 
@@ -46,6 +47,7 @@ export function authRedirectUrl(configuredUrl?: string, currentUrl?: string) {
       if (
         !candidate.username &&
         !candidate.password &&
+        candidate.origin === fallback.origin &&
         (candidate.protocol === "https:" ||
           (local && candidate.protocol === "http:"))
       )
@@ -92,11 +94,15 @@ export function getSupabaseClient(): SupabaseClient | null {
         autoRefreshToken: true,
       },
     });
+    const authClient = client.auth;
     let events = 0;
+    let meaningfulEvents = 0;
     // Register immediately: recovery can happen before React mounts. Never await
     // another Auth call in this callback (the SDK holds its session lock).
-    client.auth.onAuthStateChange((event, session) => {
+    authClient.onAuthStateChange((event, session) => {
       events += 1;
+      if (event === "INITIAL_SESSION" && meaningfulEvents > 0) return;
+      if (event !== "INITIAL_SESSION") meaningfulEvents += 1;
       publish({
         ready: true,
         user: session?.user ?? null,
@@ -106,12 +112,31 @@ export function getSupabaseClient(): SupabaseClient | null {
             !!session &&
             session.user.id === snapshot.user?.id &&
             snapshot.recovery),
-        error: null,
+        // The SDK emits INITIAL_SESSION(null) even when callback initialization
+        // failed. Keep that actionable error until the next real Auth action.
+        error: event === "INITIAL_SESSION" && !session ? snapshot.error : null,
       });
     });
     const initialEvents = events;
-    void client.auth.getSession().then(
-      ({ data, error }) => {
+    const initialMeaningfulEvents = meaningfulEvents;
+    // createClient already starts initialization. Calling this public method
+    // observes the same promise and its callback/PKCE errors, which getSession
+    // alone does not report.
+    void (async () => {
+      let readingInitialSession = false;
+      try {
+        const { error: initializationError } = await authClient.initialize();
+        if (initializationError) {
+          if (meaningfulEvents === initialMeaningfulEvents)
+            publish({
+              ...snapshot,
+              ready: true,
+              error: authErrorMessage(initializationError),
+            });
+          return;
+        }
+        readingInitialSession = true;
+        const { data, error } = await authClient.getSession();
         if (events !== initialEvents) return;
         publish({
           ...snapshot,
@@ -121,17 +146,20 @@ export function getSupabaseClient(): SupabaseClient | null {
             ? "La session n’a pas pu être vérifiée. Réessayez la connexion."
             : null,
         });
-      },
-      () => {
-        if (events === initialEvents)
+      } catch {
+        if (
+          readingInitialSession
+            ? events === initialEvents
+            : meaningfulEvents === initialMeaningfulEvents
+        )
           publish({
             ...snapshot,
             ready: true,
             error:
               "La connexion est indisponible. Vérifiez votre accès Internet.",
           });
-      },
-    );
+      }
+    })();
   }
   return client;
 }

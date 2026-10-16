@@ -57,6 +57,11 @@ export function authErrorMessage(error: unknown): string {
   )
     return "Choisissez un autre mot de passe ou reconnectez-vous avant de réessayer.";
   if (
+    detail.code === "bad_code_verifier" ||
+    detail.name === "AuthPKCEGrantCodeExchangeError"
+  )
+    return "Ce lien ne peut pas être vérifié ici. Demandez un nouvel email depuis ce navigateur et ouvrez le lien dans ce même navigateur.";
+  if (
     ["otp_expired", "flow_state_expired", "flow_state_not_found"].includes(
       String(detail.code),
     )

@@ -19,6 +19,9 @@ function setupSession(initialUser: string | null = null) {
   let onChange: Callback = () => undefined;
   const client = {
     auth: {
+      initialize: vi.fn<() => Promise<{ error: unknown }>>(async () => ({
+        error: null,
+      })),
       onAuthStateChange: vi.fn((callback: Callback) => {
         onChange = callback;
       }),
@@ -35,6 +38,20 @@ function setupSession(initialUser: string | null = null) {
       onChange(event, user ? { user: { id: user } } : null),
   };
 }
+async function flushInitialization() {
+  await Promise.resolve();
+  await Promise.resolve();
+  await Promise.resolve();
+}
+function pendingInitialization() {
+  let resolve!: (result: { error: unknown }) => void;
+  let reject!: (error: unknown) => void;
+  const promise = new Promise<{ error: unknown }>((yes, no) => {
+    resolve = yes;
+    reject = no;
+  });
+  return { promise, resolve, reject };
+}
 
 describe("session Auth partagée", () => {
   it("ne crée aucun client si la configuration est absente", async () => {
@@ -49,7 +66,8 @@ describe("session Auth partagée", () => {
     const auth = await import("./client");
     expect(auth.getSupabaseClient()).toBe(client);
     expect(auth.getSupabaseClient()).toBe(client);
-    await Promise.resolve();
+    await flushInitialization();
+    expect(client.auth.initialize).toHaveBeenCalledTimes(1);
     expect(sdk.createClient).toHaveBeenCalledTimes(1);
     expect(sdk.createClient.mock.calls[0][2]).toMatchObject({
       auth: {
@@ -71,7 +89,7 @@ describe("session Auth partagée", () => {
     const unsubscribe = auth.subscribeAuthSnapshot(notify);
     auth.getSupabaseClient();
     expect(change("PASSWORD_RECOVERY", "recovery-user")).toBeUndefined();
-    await Promise.resolve();
+    await flushInitialization();
     expect(auth.getAuthSnapshot()).toMatchObject({
       user: { id: "recovery-user" },
       recovery: true,
@@ -114,11 +132,125 @@ describe("session Auth partagée", () => {
     );
     const auth = await import("./client");
     auth.getSupabaseClient();
-    await Promise.resolve();
+    await flushInitialization();
     expect(auth.getAuthSnapshot()).toMatchObject({ ready: true, user: null });
     expect(auth.getAuthSnapshot().error).toContain("Internet");
     expect(auth.getAuthSnapshot().error).not.toContain(
       "internal-sensitive-url",
     );
+  });
+  it("annonce un lien expiré et ne charge pas une session nulle après l’échec d’initialisation", async () => {
+    const { client, change } = setupSession();
+    client.auth.initialize.mockResolvedValueOnce({
+      error: {
+        code: "flow_state_expired",
+        message: "https://internal.example/token=secret",
+      },
+    });
+    const auth = await import("./client");
+    auth.getSupabaseClient();
+    await flushInitialization();
+    expect(auth.getAuthSnapshot()).toMatchObject({
+      ready: true,
+      user: null,
+      error:
+        "Ce lien a expiré ou a déjà été utilisé. Demandez un nouvel email.",
+    });
+    expect(client.auth.getSession).not.toHaveBeenCalled();
+    change("INITIAL_SESSION", null);
+    expect(auth.getAuthSnapshot().error).toContain("Ce lien a expiré");
+    change("SIGNED_IN", "new-user");
+    expect(auth.getAuthSnapshot()).toMatchObject({
+      user: { id: "new-user" },
+      error: null,
+    });
+  });
+  it.each(["SIGNED_IN", "SIGNED_OUT", "PASSWORD_RECOVERY"])(
+    "un échec d’initialisation tardif n’écrase pas %s",
+    async (event) => {
+      const { client, change } = setupSession();
+      const initial = pendingInitialization();
+      client.auth.initialize.mockReturnValueOnce(initial.promise);
+      const auth = await import("./client");
+      auth.getSupabaseClient();
+      const user = event === "SIGNED_OUT" ? null : "current-user";
+      change(event, user);
+      initial.resolve({ error: { code: "flow_state_not_found" } });
+      await flushInitialization();
+      expect(auth.getAuthSnapshot()).toMatchObject({
+        ready: true,
+        user: user ? { id: user } : null,
+        error: null,
+        recovery: event === "PASSWORD_RECOVERY",
+      });
+      expect(client.auth.getSession).not.toHaveBeenCalled();
+      change("INITIAL_SESSION", null);
+      expect(auth.getAuthSnapshot()).toMatchObject({
+        user: user ? { id: user } : null,
+        error: null,
+        recovery: event === "PASSWORD_RECOVERY",
+      });
+    },
+  );
+  it("la déconnexion efface aussi l’erreur d’un ancien lien", async () => {
+    const { client, change } = setupSession();
+    client.auth.initialize.mockResolvedValueOnce({
+      error: { code: "otp_expired" },
+    });
+    const auth = await import("./client");
+    auth.getSupabaseClient();
+    await flushInitialization();
+    expect(auth.getAuthSnapshot().error).toContain("expiré");
+    change("SIGNED_OUT", null);
+    expect(auth.getAuthSnapshot()).toMatchObject({
+      ready: true,
+      user: null,
+      error: null,
+    });
+  });
+  it("une promesse d’initialisation rejetée ne révèle aucun détail sensible", async () => {
+    const { client, change } = setupSession();
+    client.auth.initialize.mockRejectedValueOnce(
+      new Error("https://internal.example/secret-token"),
+    );
+    const auth = await import("./client");
+    auth.getSupabaseClient();
+    await flushInitialization();
+    expect(auth.getAuthSnapshot()).toMatchObject({ ready: true, user: null });
+    expect(auth.getAuthSnapshot().error).toContain("Internet");
+    expect(auth.getAuthSnapshot().error).not.toContain("secret-token");
+    expect(client.auth.getSession).not.toHaveBeenCalled();
+    change("INITIAL_SESSION", null);
+    expect(auth.getAuthSnapshot().error).toContain("Internet");
+  });
+  it("explique un lien non vérifiable sans afficher l’erreur du fournisseur", async () => {
+    const { client } = setupSession();
+    client.auth.initialize.mockResolvedValueOnce({
+      error: { code: "bad_code_verifier", message: "internal-secret-verifier" },
+    });
+    const auth = await import("./client");
+    auth.getSupabaseClient();
+    await flushInitialization();
+    expect(auth.getAuthSnapshot().error).toContain(
+      "Demandez un nouvel email depuis ce navigateur",
+    );
+    expect(auth.getAuthSnapshot().error).not.toContain(
+      "internal-secret-verifier",
+    );
+    expect(client.auth.getSession).not.toHaveBeenCalled();
+  });
+  it("une erreur réseau tardive n’écrase pas une nouvelle connexion", async () => {
+    const { client, change } = setupSession();
+    const initial = pendingInitialization();
+    client.auth.initialize.mockReturnValueOnce(initial.promise);
+    const auth = await import("./client");
+    auth.getSupabaseClient();
+    change("SIGNED_IN", "current-user");
+    initial.reject(new TypeError("secret-network-url"));
+    await flushInitialization();
+    expect(auth.getAuthSnapshot()).toMatchObject({
+      user: { id: "current-user" },
+      error: null,
+    });
   });
 });

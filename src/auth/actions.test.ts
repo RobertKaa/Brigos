@@ -243,4 +243,21 @@ describe("comptes : actions Auth", () => {
     expect(result.message).toContain("Internet");
     expect(result.message).not.toContain(secret);
   });
+  it.each([
+    { code: "bad_code_verifier" },
+    { name: "AuthPKCEGrantCodeExchangeError" },
+  ])(
+    "explique comment renouveler un lien ouvert dans un autre navigateur",
+    (error) => {
+      const message = authErrorMessage({
+        ...error,
+        message: "internal-secret-verifier",
+      });
+      expect(message).toContain(
+        "Demandez un nouvel email depuis ce navigateur",
+      );
+      expect(message).toContain("ce même navigateur");
+      expect(message).not.toContain("internal-secret-verifier");
+    },
+  );
 });

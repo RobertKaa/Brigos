@@ -60,11 +60,31 @@ describe("configuration publique Auth", () => {
     expect(
       authRedirectUrl(
         "https://brigo.example/app/?code=stale#boxes",
-        "http://localhost:5173/",
+        "https://brigo.example/game/",
       ),
     ).toBe("https://brigo.example/app/#account");
     expect(
       authRedirectUrl("javascript:alert(1)", "http://localhost:5173/"),
     ).toBe("http://localhost:5173/#account");
+  });
+  it("garde le callback sur l’origine qui détient le vérificateur PKCE", () => {
+    expect(
+      authRedirectUrl(
+        "http://127.0.0.1:5173/",
+        "http://localhost:5173/game/?code=secret#boxes",
+      ),
+    ).toBe("http://localhost:5173/game/#account");
+    expect(
+      authRedirectUrl(
+        "https://brigo.example/app/",
+        "https://demo.example/game/",
+      ),
+    ).toBe("https://demo.example/game/#account");
+    expect(
+      authRedirectUrl(
+        "https://brigo.example/auth/?code=stale#boxes",
+        "https://brigo.example/game/",
+      ),
+    ).toBe("https://brigo.example/auth/#account");
   });
 });
