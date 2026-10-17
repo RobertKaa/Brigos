@@ -1,4 +1,5 @@
 import { spawnSync } from "node:child_process";
+import { copyFile } from "node:fs/promises";
 import { fileURLToPath } from "node:url";
 import { resolve } from "node:path";
 import { build, loadEnv } from "vite";
@@ -40,6 +41,7 @@ if (check.error) throw check.error;
 if (check.status !== 0) process.exit(check.status ?? 1);
 
 await build({ mode: "production", base: "/", envDir: false });
+await copyFile(resolve(root, "scripts/cloudflare-404.html"), resolve(root, "dist/404.html"));
 console.log(
   "Cloudflare bundle prepared for https://brigoslab.com. No upload or deployment.",
 );

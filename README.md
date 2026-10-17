@@ -27,7 +27,7 @@ Les comptes Google et email/mot de passe sont implémentés avec Supabase Auth. 
 
 Pour activer les comptes sur un hébergement d’application adapté, copier `.env.example` vers `.env.local`, renseigner uniquement l’URL et la clé publique Supabase, puis configurer les migrations, Google et SMTP selon [le guide Supabase](docs/supabase.md). La clé secrète, le secret Google et la clé SMTP ne vont jamais dans `VITE_*` ou dans le dépôt. Sans configuration, le mode invité reste fonctionnel. Aucun paiement n’est activé dans ce lot.
 
-Le domaine `brigoslab.com` est détenu par le projet. Les emails de compte Resend sont configurés et un essai réel de confirmation et de connexion a réussi ; voir [les emails](docs/email-delivery.md). Cloudflare Workers Static Assets est retenu pour la version avec comptes, avec déploiement automatique demandé à chaque push sur `main`. `npm run build:cloudflare` construit cette version sans la publier. Voir [la configuration Cloudflare et la bascule DNS](docs/cloudflare.md).
+Le domaine `brigoslab.com` est détenu par le projet. Les emails de compte Resend sont configurés et un essai réel de confirmation et de connexion a réussi ; voir [les emails](docs/email-delivery.md). Cloudflare Pages est retenu pour la version avec comptes, avec déploiement automatique demandé à chaque push sur `main`. `npm run build:cloudflare` construit cette version sans la publier. Voir [la configuration Cloudflare et la bascule DNS](docs/cloudflare.md).
 
 ```sh
 npm run server:bundle

@@ -1,14 +1,5 @@
-name = "brigos"
+name = "brigoslab"
 compatibility_date = "2026-10-17"
-workers_dev = false
-preview_urls = false
-
-# Static hosting only. Auth, PostgreSQL and the game server stay in Supabase.
-[assets]
-directory = "./dist"
-not_found_handling = "none"
-
-# Add the custom-domain route after the DNSSEC migration and zone activation.
-# [[routes]]
-# pattern = "brigoslab.com"
-# custom_domain = true
+# Cloudflare Pages: Git integration publishes main after the CI build succeeds.
+# Auth, PostgreSQL and the game server stay in Supabase.
+pages_build_output_dir = "./dist"
