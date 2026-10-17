@@ -311,7 +311,7 @@ export function OpeningModal({
                   : `${count} pièces de plus pour donner vie à vos projets.`
                 : cascading
                   ? "Les découvertes arrivent, une à une…"
-                  : "Un halo, un indice. Touchez une carte pour découvrir votre Brigo."}
+                  : "Un halo, un indice. Touchez une carte pour découvrir votre pièce."}
             </p>
             {!all && (
               <div
@@ -348,8 +348,8 @@ export function OpeningModal({
                     }
                     aria-label={
                       visible
-                        ? `Brigo ${index + 1} : ${brigo.name}, ${RARITY_INFO[brigo.rarity].name}${drop.isNew ? ", nouvelle découverte" : ", déjà découvert"}`
-                        : `Révéler le Brigo ${index + 1} : halo ${RARITY_INFO[brigo.rarity].name}`
+                        ? `Pièce ${index + 1} : ${brigo.name}, ${RARITY_INFO[brigo.rarity].name}${drop.isNew ? ", nouvelle découverte" : ", déjà découverte"}`
+                        : `Révéler la pièce ${index + 1} : halo ${RARITY_INFO[brigo.rarity].name}`
                     }
                     aria-disabled={visible || busy}
                     onClick={() => reveal(index)}
@@ -363,7 +363,7 @@ export function OpeningModal({
                           <span>{String(index + 1).padStart(2, "0")}</span>
                           <b>{RARITY_INFO[brigo.rarity].symbol}</b>
                         </span>
-                        <span className="opening-card-brand">BRIGO</span>
+                        <span className="opening-card-brand">BRIGOS</span>
                         <CardBackArt />
                         <span className="opening-back-rarity">
                           {RARITY_INFO[brigo.rarity].symbol}{" "}
@@ -410,7 +410,7 @@ export function OpeningModal({
                             {brigo.color.name}
                           </span>
                           <span className="opening-card-edition">
-                            PIÈCE D’INSPIRATION · BRIGO
+                            PIÈCE D’INSPIRATION · BRIGOS
                           </span>
                         </span>
                       )}

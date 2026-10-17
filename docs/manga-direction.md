@@ -1,4 +1,4 @@
-# Direction dessin Brigo
+# Direction dessin Brigos
 
 L’encrage manga s’applique aux pièces elles-mêmes, aux cartes, aux boîtes, aux constructions et au bac à sable 3D. Il reste une création vectorielle et géométrique du projet, sans image de fabricant, modèle importé ou imitation d’un artiste particulier.
 

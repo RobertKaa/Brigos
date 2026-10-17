@@ -99,7 +99,7 @@ export function PlayerProgress({
             <h2 id={headingId}>
               Votre progression<span className="heading-dot">.</span>
             </h2>
-            <p>Construisez, exposez et débloquez les récompenses Brigo.</p>
+            <p>Construisez, exposez et débloquez les récompenses Brigos.</p>
           </div>
           <a href="#workshop" className="text-link">
             À l’atelier <ChevronRight size={15} aria-hidden="true" />

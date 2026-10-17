@@ -386,7 +386,7 @@ describe("sémantique de la bibliothèque", () => {
     expect(html).toContain('aria-label="Format des constructions"');
     expect(html).toContain('aria-label="Filtrer les constructions"');
     expect(html).toContain('aria-label="Rechercher une construction"');
-    expect(html).toContain('placeholder="Nom de plan ou de Brigo…"');
+    expect(html).toContain('placeholder="Nom de plan ou de pièce…"');
     expect(html).toContain('aria-label="Pagination des plans (haut)"');
     expect(html).toContain('aria-label="Pagination des plans (bas)"');
     expect(html).toContain("Intermédiaires · 50 à 899");

@@ -183,7 +183,7 @@ export function GameApp({
       </a>
       <header className="site-header">
         <div className="header-inner">
-          <a href="#boxes" className="brand" aria-label="Brigo, accueil">
+          <a href="#boxes" className="brand" aria-label="Brigos, accueil">
             <BrigoLogo />
           </a>
           <AppNavigation view={view} />
@@ -445,12 +445,12 @@ export function GameApp({
       {helpOpen && (
         <Modal
           title="Guide et réglages"
-          eyebrow="VOTRE ESPACE BRIGO"
+          eyebrow="VOTRE ESPACE BRIGOS"
           onClose={() => setHelpOpen(false)}
         >
           <div className="help-content">
             <details className="guide-details">
-              <summary>Comment jouer à Brigo ?</summary>
+              <summary>Comment jouer à Brigos ?</summary>
               <ol>
                 <li>
                   <span>
@@ -499,7 +499,7 @@ export function GameApp({
                   <div>
                     <h3>Créer librement</h3>
                     <p>
-                      L’onglet Libre ouvre votre espace 3D. Choisissez un Brigo
+                      L’onglet Libre ouvre votre espace 3D. Choisissez une pièce
                       de votre stock, visez une surface et confirmez avec «
                       Poser ici ».
                     </p>

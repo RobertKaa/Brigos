@@ -180,7 +180,7 @@ function ReviewStudio() {
       </div>
       <header className="site-header">
         <div className="header-inner">
-          <a href="#boxes" className="brand" aria-label="Brigo, accueil">
+          <a href="#boxes" className="brand" aria-label="Brigos, accueil">
             <BrigoLogo />
           </a>
           <nav className="main-nav" aria-label="Navigation principale">

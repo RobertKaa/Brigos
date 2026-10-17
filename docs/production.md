@@ -1,6 +1,6 @@
 # Production des constructions
 
-Chaque exemplaire d’une construction réalisée sur plan produit des **pièces de monnaie**, indépendamment des autres exemplaires. Il ne crée aucun Brigo et n’accorde ni XP, ni ouverture de boîte, ni progression quotidienne supplémentaire. Les créations du bac à sable ne produisent pas de monnaie.
+Chaque exemplaire d’une construction réalisée sur plan produit des **pièces de monnaie**, indépendamment des autres exemplaires. Il ne crée aucune pièce de construction et n’accorde ni XP, ni ouverture de boîte, ni progression quotidienne supplémentaire. Les créations du bac à sable ne produisent pas de monnaie.
 
 ## Rendement et temps
 

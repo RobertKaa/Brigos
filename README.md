@@ -1,10 +1,10 @@
-# Brigo
+# Brigos
 
 Jeu de collection et de construction, en français, conçu pour desktop et mobile, avec mode invité local et comptes Supabase optionnels. Version 0.9.
 
 ## Règle permanente d’originalité
 
-Toute évolution doit respecter les droits de LEGO et éviter la copie de formes, constructions, personnages, notices ou visuels de tiers. Les règles applicables aux futures conversations sont enregistrées dans [AGENTS.md](AGENTS.md), avec les sources officielles et les critères de revue dans [la politique d’originalité](docs/originality-policy.md). Les pièces Brigo utilisent des raccords facettés et une illustration originale ; aucun test ne constitue une certification juridique.
+Toute évolution doit respecter les droits de LEGO et éviter la copie de formes, constructions, personnages, notices ou visuels de tiers. Les règles applicables aux futures conversations sont enregistrées dans [AGENTS.md](AGENTS.md), avec les sources officielles et les critères de revue dans [la politique d’originalité](docs/originality-policy.md). Les pièces Brigos utilisent des raccords facettés et une illustration originale ; aucun test ne constitue une certification juridique.
 
 ## Démarrer
 
@@ -43,7 +43,7 @@ Cette commande prépare le moteur partagé pour le déploiement de la fonction S
 - Cinq raretés : Commun, Peu commun, Rare, Épique et Légendaire. La rareté dépend uniquement du modèle, jamais de sa couleur ; les dix couleurs d’un modèle ont la même probabilité.
 - Album avec recherche par forme, dimensions, numéro ou couleur ; filtres de famille, rareté, couleur, possession et doublons ; pagination.
 - **72 plans**, dont **sept constructions à mécanismes**, **20 projets intermédiaires** et trois constructions légendaires de 915 à 3 545 Brigos. Charrette, éclaireur, transporteur, bibliothèque itinérante, coffre, passerelle et pupitre utilisent roues, essieux ou articulations dans des assemblages vérifiés. Les grandes briques sont privilégiées pour les structures ; les petites pièces servent aux détails. Voir les [plans mécaniques](docs/mechanical-library.md), la [bibliothèque intermédiaire](docs/intermediate-library.md), la [revue précédente](docs/construction-review.md) et les [grands projets](docs/legendary-constructions.md).
-- Bibliothèque organisée par format : petits plans de moins de 50 Brigos, intermédiaires de 50 à 899, légendaires à partir de 900. Recherche par nom de plan ou de Brigo utilisé, sans distinction d’accents, filtres de thème et de difficulté, raccourcis vers les plans réalisables et l’objectif suivi, tri par pièces manquantes, quantité ou XP. Les plans et **Mes créations** affichent **12 cartes par page**, avec commandes en haut et en bas, numéros sur desktop et sélecteur sur mobile. Un changement de filtre ou de tri revient à la première page ; la pagination suit les résultats après un changement d’inventaire ou un démontage.
+- Bibliothèque organisée par format : petits plans de moins de 50 Brigos, intermédiaires de 50 à 899, légendaires à partir de 900. Recherche par nom de plan ou de pièce utilisée, sans distinction d’accents, filtres de thème et de difficulté, raccourcis vers les plans réalisables et l’objectif suivi, tri par pièces manquantes, quantité ou XP. Les plans et **Mes créations** affichent **12 cartes par page**, avec commandes en haut et en bas, numéros sur desktop et sélecteur sur mobile. Un changement de filtre ou de tri revient à la première page ; la pagination suit les résultats après un changement d’inventaire ou un démontage.
 - Les quantités nécessaires sont dérivées des placements et orientations qui produisent aussi le dessin. Les tests vérifient les collisions, les attaches par tenons, la connectivité et l’ordre de montage. Il s’agit d’une validation géométrique, sans simulation de charges mécaniques. Les 65 plans ont été revus sous quatre angles : animaux, sapin, voiliers, piano, cascade et plusieurs bâtiments ont été corrigés. Le [compte rendu de la revue](docs/construction-review.md) indique chaque plan conservé ou modifié.
 - Sauvegarde v6 : les créations dont la géométrie ou les matériaux ont changé sont démontées avec restitution exacte de leurs anciens Brigos. Les autres créations, découvertes et récompenses restent conservées. L’XP suit les créations encore exposées et revient après reconstruction. Un changement d’angle de présentation seul conserve la création.
 - Sauvegarde v7 : le carnet et les récompenses quotidiennes sont mémorisés dans un format distinct qui protège les gains déjà réclamés contre les anciens onglets. La migration v6 → v7 conserve toutes les créations et ressources ; aucune géométrie ne change.
@@ -62,9 +62,9 @@ Cette commande prépare le moteur partagé pour le déploiement de la fonction S
 - Enchaînement des boîtes dans une même modale, sélection du type suivant, coût et stock visibles. La grille de cartes et les commandes s’adaptent à la largeur de l’écran.
 - Confettis PixiJS chargés à la demande, option de réduction des animations et son optionnel. Les polices sont embarquées pour fonctionner sans service externe.
 
-## Progression et rendez-vous Brigo
+## Progression et rendez-vous Brigos
 
-L’XP totale est la somme de l’XP des créations actuellement exposées. Chaque exemplaire assemblé apporte la base de sa difficulté, plus **2 XP par Brigo**.
+L’XP totale est la somme de l’XP des créations actuellement exposées. Chaque exemplaire assemblé apporte la base de sa difficulté, plus **2 XP par pièce**.
 
 | Difficulté   | XP de base |
 | ------------ | ---------: |
@@ -75,7 +75,7 @@ L’XP totale est la somme de l’XP des créations actuellement exposées. Chaq
 
 Le seuil du niveau `N` vaut `50 × (N − 1) × N` XP : les niveaux 1 à 5 commencent à 0, 100, 300, 600 et 1 000 XP. Démonter une création retire toute son XP et peut faire redescendre le niveau. La reconstruire restitue cette même XP, sans gain permanent supplémentaire. Les créations déjà assemblées avant la version 0.3 apportent automatiquement leur XP.
 
-Le cadeau Brigo contient **100 pièces de monnaie et 1 boîte Découverte**. Le premier cadeau est disponible immédiatement ; les suivants se renouvellent au changement de jour UTC (heure locale affichée dans le carnet), sans délai glissant de 24 heures ni série à maintenir.
+Le cadeau Brigos contient **100 pièces de monnaie et 1 boîte Découverte**. Le premier cadeau est disponible immédiatement ; les suivants se renouvellent au changement de jour UTC (heure locale affichée dans le carnet), sans délai glissant de 24 heures ni série à maintenir.
 
 Le **Circuit des facettes** est un casse-tête de 16 tuiles à tourner pour relier une entrée à une sortie. Un circuit déterministe différent chaque jour, un indice gratuit et des essais illimités ; sa première résolution récompensée rapporte **150 pièces**. Les trois missions quotidiennes offrent **50 pièces** pour récupérer son cadeau, **100** pour ouvrir deux boîtes offertes ou achetées, **50** pour réussir le circuit, puis **100** de bonus après récupération des trois récompenses. Cela représente **550 pièces brutes et une boîte Découverte par jour**. Depuis zéro, la seconde Découverte coûte 100 pièces : le parcours complet laisse **450 pièces nettes et 20 Brigos**, sans recycler sa collection. Tous les sept cadeaux récupérés, même sur des jours espacés, le passeport offre **300 pièces et une boîte Prisme**, puis recommence. Aucun tampon n’est retiré pendant une absence. Voir [les règles et le budget du carnet](docs/daily-journal.md).
 
@@ -89,9 +89,9 @@ Les récompenses sont à récupérer dans l’interface. Une fois reçues, elles
 
 ## Comptoir et recyclage
 
-La fiche d’un plan incomplet propose un devis pour ses seules pièces manquantes. La commande débite la monnaie et ajoute les références nécessaires à l’inventaire ; les pièces déjà disponibles sont prises en compte. Le recyclage depuis la fiche d’un Brigo transforme ses exemplaires disponibles en monnaie, en conservant toujours au moins un exemplaire de cette référence dans l’inventaire ou dans les créations. Les pièces réservées par une construction ne sont jamais recyclées.
+La fiche d’un plan incomplet propose un devis pour ses seules pièces manquantes. La commande débite la monnaie et ajoute les références nécessaires à l’inventaire ; les pièces déjà disponibles sont prises en compte. Le recyclage depuis la fiche d’une pièce transforme ses exemplaires disponibles en monnaie, en conservant toujours au moins un exemplaire de cette référence dans l’inventaire ou dans les créations. Les pièces réservées par une construction ne sont jamais recyclées.
 
-| Rareté     | Prix au comptoir par Brigo | Monnaie reçue par Brigo recyclé |
+| Rareté     | Prix au comptoir par pièce | Monnaie reçue par pièce recyclée |
 | ---------- | -------------------------: | ------------------------------: |
 | Commun     |                         20 |                               8 |
 | Peu commun |                         35 |                              14 |
@@ -152,7 +152,7 @@ Le contrôle [scripts/review-chest.html](http://127.0.0.1:5173/scripts/review-ch
 
 L’aperçu [scripts/review-studio.html](http://127.0.0.1:5173/scripts/review-studio.html) permet aussi de consulter l’accueil, la collection, l’atelier et les modales avec une partie fictive. Les actions de jeu y sont neutralisées. Le bandeau mesure le temps de rendu React du plan ouvert, sans ajouter de mesure au jeu de production. Le paramètre `?gallery=25#workshop` fournit une galerie de 25 créations pour vérifier sa pagination, sans toucher à la partie. Voir le [contrôle de la refonte v0.6](docs/interface-v06.md) et celui de la [bibliothèque v0.7](docs/intermediate-library.md).
 
-Pour vérifier le parcours complet dans une partie de test isolée : ouvrir une boîte, révéler les dix pièces individuellement, en cascade ou immédiatement, ouvrir la suivante sans fermer la modale, afficher la collection, suivre un plan, parcourir ses étapes et tourner la vue, commander ses pièces manquantes, l’assembler puis le démonter en vérifiant le retrait de son XP. Tester aussi le cadeau Brigo, un défi récompensé, le recyclage d’un doublon et la protection du dernier exemplaire. Vérifier un tirage forcé, un total de probabilités différent de 100 %, un rechargement pendant la révélation, la reprise d’une ancienne boîte de cinq et les vues à 390 et 320 pixels de large. Un profil de navigateur dédié ou une origine différente isole cette partie de test.
+Pour vérifier le parcours complet dans une partie de test isolée : ouvrir une boîte, révéler les dix pièces individuellement, en cascade ou immédiatement, ouvrir la suivante sans fermer la modale, afficher la collection, suivre un plan, parcourir ses étapes et tourner la vue, commander ses pièces manquantes, l’assembler puis le démonter en vérifiant le retrait de son XP. Tester aussi le cadeau Brigos, un défi récompensé, le recyclage d’un doublon et la protection du dernier exemplaire. Vérifier un tirage forcé, un total de probabilités différent de 100 %, un rechargement pendant la révélation, la reprise d’une ancienne boîte de cinq et les vues à 390 et 320 pixels de large. Un profil de navigateur dédié ou une origine différente isole cette partie de test.
 
 ## Limites et sécurité
 
@@ -169,7 +169,7 @@ La progression est propre à cet appareil et à cette origine web. Effacer les d
 - `src/game/catalog.ts` : modèles, couleurs, raretés, boîtes et recettes.
 - `src/game/assemblies.ts`, `assemblies/`, `assemblyValidation.ts` et `geometry.ts` : plans par thème, placements, rotations, géométrie et validation des montages.
 - `src/game/engine.ts` : règles pures, tirages, construction et commandes admin.
-- `src/game/progression.ts` : XP des créations actuelles, niveaux, défis et cadeau Brigo.
+- `src/game/progression.ts` : XP des créations actuelles, niveaux, défis et cadeau Brigos.
 - `src/game/market.ts` et `recycling.ts` : devis des pièces manquantes, commandes et recyclage des doublons.
 - `src/game/production.ts` et `src/components/ProductionPanel.tsx` : rendement quotidien modéré, réserves par exemplaire et récoltes atomiques par pile.
 - `src/game/save.ts`, `legacyRecipes.ts` et `v3RecipeSnapshots.ts` : validation stricte des sauvegardes et instantanés historiques pour migrer les anciens plans.
@@ -177,7 +177,7 @@ La progression est propre à cet appareil et à cette origine web. Effacer les d
 - `src/screens/` : boîtes, collection, atelier et administration.
 - `src/screens/workshopLibrary.ts` et `WorkshopPagination.tsx` : formats, recherche, tri et pagination des plans et des créations.
 - `src/components/BrigoArt.tsx` et `BrigoScene.tsx` : dessin paramétrable des Brigos et scènes isométriques des plans.
-- `src/components/PlayerProgress.tsx` : niveau, progression, rendez-vous Brigo et défis.
+- `src/components/PlayerProgress.tsx` : niveau, progression, rendez-vous Brigos et défis.
 - `src/components/OpeningModal.tsx`, `OpeningChest.tsx` et `openingSession.ts` : présentation du coffre, révélation des cartes et session visuelle indépendante du crédit des pièces.
 - `src/components/PixiSparkles.tsx` : effet d’ouverture optionnel, chargé à la demande.
 - `src/studio-theme.css` : identité carnet manga, palettes jour/nuit et adaptations desktop/mobile.

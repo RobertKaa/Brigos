@@ -172,7 +172,7 @@ export function openBox(
     const pool = BY_RARITY[rarity];
     const brigo = pool[Math.floor(nextRandom(random) * pool.length)];
     if ((inventory[brigo.id] ?? 0) >= MAX_VALUE)
-      throw new GameError("L’inventaire de ce Brigo est plein.");
+      throw new GameError("L’inventaire de cette pièce est plein.");
     drops.push({ brigoId: brigo.id, isNew: !discovered.has(brigo.id) });
     discovered.add(brigo.id);
     inventory[brigo.id] = (inventory[brigo.id] ?? 0) + 1;
@@ -336,7 +336,7 @@ export function dismantle(
   const inventory = { ...collected.inventory };
   for (const [id, count] of Object.entries(construction.pieces)) {
     if ((inventory[id] ?? 0) + count > MAX_VALUE)
-      throw new GameError("L’inventaire de ce Brigo est plein.");
+      throw new GameError("L’inventaire de cette pièce est plein.");
     inventory[id] = (inventory[id] ?? 0) + count;
   }
   return observeProduction(
@@ -404,10 +404,10 @@ function addPieces(
   const inventory = { ...state.inventory };
   const discovered = new Set(state.discovered);
   for (const [id, amount] of Object.entries(pieces)) {
-    if (!BRIGO_BY_ID.has(id)) throw new GameError("Ce Brigo n’existe pas.");
+    if (!BRIGO_BY_ID.has(id)) throw new GameError("Cette pièce n’existe pas.");
     amountValid(amount);
     if ((inventory[id] ?? 0) + amount > MAX_VALUE)
-      throw new GameError("L’inventaire de ce Brigo est plein.");
+      throw new GameError("L’inventaire de cette pièce est plein.");
     inventory[id] = (inventory[id] ?? 0) + amount;
     discovered.add(id);
   }

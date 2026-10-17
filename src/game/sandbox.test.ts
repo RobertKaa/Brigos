@@ -127,7 +127,7 @@ describe("atelier libre et conservation du stock", () => {
         ...CANDIDATE,
         brigoId: "brick-1x1:blue",
       }),
-    ).toThrow("même Brigo");
+    ).toThrow("même pièce");
     expect(state.sandboxProjects![0].placements[0].x).toBe(0);
   });
 

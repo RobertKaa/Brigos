@@ -183,7 +183,7 @@ function ProductionGroupRow({
           !group.ready ||
           game.state.coins + group.ready > MAX_VALUE
         }
-        aria-label={`Récolter ${format(group.ready)} pièce${group.ready > 1 ? "s" : ""} : ${recipe?.name ?? "Création Brigo"}, ${format(group.copies)} exemplaire${group.copies > 1 ? "s" : ""}`}
+        aria-label={`Récolter ${format(group.ready)} pièce${group.ready > 1 ? "s" : ""} : ${recipe?.name ?? "Création Brigos"}, ${format(group.copies)} exemplaire${group.copies > 1 ? "s" : ""}`}
         title={
           group.ready
             ? "Récolter les pièces de tous ces exemplaires"
@@ -199,7 +199,7 @@ function ProductionGroupRow({
         </span>
       </button>
       <div className="production-row-copy">
-        <h3>{recipe?.name ?? "Création Brigo"}</h3>
+        <h3>{recipe?.name ?? "Création Brigos"}</h3>
         <p>
           {format(group.copies)} exemplaire{group.copies > 1 ? "s" : ""}
           <span aria-hidden="true"> · </span>
@@ -231,7 +231,7 @@ function ProductionGroupRow({
           min={0}
           max={group.capacity}
           value={group.ready}
-          aria-label={`Réserve : ${recipe?.name ?? "Création Brigo"}`}
+          aria-label={`Réserve : ${recipe?.name ?? "Création Brigos"}`}
         />
       </div>
     </li>

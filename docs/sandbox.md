@@ -1,6 +1,6 @@
-# Atelier libre Brigo
+# Atelier libre Brigos
 
-Le bac à sable conserve les formes originales Brigo du catalogue. Il ne crée
+Le bac à sable conserve les formes originales Brigos du catalogue. Il ne crée
 aucune pièce gratuite et ne modifie aucun placement ou matériau d’un plan publié.
 
 Chaque création est un projet indépendant, nommé par le joueur et sauvegardé
@@ -10,9 +10,9 @@ contient au plus 500 Brigos ; une partie contient au plus 20 créations libres.
 
 ## Stock et actions
 
-- Poser un Brigo retire immédiatement un exemplaire du stock disponible.
+- Poser une pièce retire immédiatement un exemplaire du stock disponible.
 - Déplacer ou tourner conserve la même référence et ne touche pas au stock.
-- Retirer un Brigo restitue exactement cet exemplaire. Démonter un projet
+- Retirer une pièce restitue exactement cet exemplaire. Démonter un projet
   restitue toutes ses références, avec leurs couleurs d’origine.
 - Les pièces posées sont réservées, au même titre que celles des plans ; elles
   sont absentes du stock disponible pour les autres constructions et le marché.
@@ -35,7 +35,7 @@ la pièce au-dessus de la plus haute enveloppe chevauchant son empreinte.
 L’outil **Poser**, actif par défaut, sépare le ciblage de la sélection. Cliquer
 ou toucher une brique vise son dessus sans sélectionner ni déplacer le support,
 et conserve la référence choisie dans le stock. L’aperçu indique la nouvelle
-position ; **Poser le Brigo** ou Entrée confirme et réserve un seul exemplaire.
+position ; **Poser la pièce** ou Entrée confirme et réserve un seul exemplaire.
 Le ciblage suit la hauteur réelle du support et l’orientation du point de vue.
 
 ## Espace 3D
@@ -47,7 +47,7 @@ avec un seul bouton ou un seul doigt. Sur mobile, deux doigts déplacent la vue
 et le pincement règle le zoom. **Vue du dessus** facilite les alignements ;
 **Recentrer** retrouve l’ensemble de la création après un déplacement.
 
-Un clic ou toucher bref vise le sol ou la vraie surface d’un Brigo. L’aperçu
+Un clic ou toucher bref vise le sol ou la vraie surface d’une pièce. L’aperçu
 reste à cette position pendant qu’on rejoint **Poser ici**, placé directement
 dans la scène. Le clic ne change pas d’outil ; seul Modifier sélectionne une
 pièce. Glissements, gestes à plusieurs doigts et gestes interrompus ne posent
@@ -56,7 +56,7 @@ librement. Le clavier conserve flèches et Entrée, avec F pour recentrer et T
 pour le dessus.
 
 Les maillages procéduraux reprennent les volumes chanfreinés et raccords en
-losange du dessin Brigo existant, y compris les ouvertures d’arches/fenêtres,
+losange du dessin Brigos existant, y compris les ouvertures d’arches/fenêtres,
 roues, essieux et articulations. Aucun modèle ou asset de fabricant n’est
 importé. Les axes du moteur 3D ne changent pas les coordonnées de jeu, les
 rotations ni les références réservées : aucune migration de sauvegarde n’est

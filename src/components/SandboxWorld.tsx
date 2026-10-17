@@ -269,7 +269,7 @@ export const SandboxWorld = memo(function SandboxWorld(
         {navigation === "pan"
           ? "Glissez pour déplacer la vue. Revenez à Tourner pour viser une surface."
           : props.interactionMode === "select"
-            ? "Touchez un Brigo pour le modifier."
+            ? "Touchez une pièce pour la modifier."
             : "Touchez le sol ou une brique pour viser. Confirmez avec Poser ici."}
       </div>
     </div>

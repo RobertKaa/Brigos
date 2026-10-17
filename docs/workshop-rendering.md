@@ -1,4 +1,4 @@
-# Rendu des constructions Brigo
+# Rendu des constructions Brigos
 
 Les aperçus de bibliothèque doivent rester fluides même sur mobile et pour les monuments. Ils utilisent une image du modèle préparée à l’avance, accompagnée d’un décor vectoriel léger. Ne pas réintroduire le dessin de chaque pièce dans toutes les cartes de l’atelier.
 
@@ -22,7 +22,7 @@ Chaque pièce ajoutait plusieurs faces, raccords et hachures au DOM. Le navigate
 - Le thème agit sur le décor vectoriel ; le modèle conserve ses couleurs. Les images préparées ont un fond transparent.
 - Aucun effet de flou ou `drop-shadow` supplémentaire sur les constructions de l’atelier. Leur ombre de contact fait partie du dessin.
 
-Les changements de rendu et de décor ne modifient ni les recettes, ni les références de pièces, ni les sauvegardes. Le nom public est **Brigo** ; les anciennes clés techniques de stockage restent stables.
+Les changements de rendu et de décor ne modifient ni les recettes, ni les références de pièces, ni les sauvegardes. Le nom public est **Brigos** ; les anciennes clés techniques de stockage restent stables.
 
 ## Profondeur aux raccords
 

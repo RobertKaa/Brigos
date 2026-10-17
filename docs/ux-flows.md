@@ -1,4 +1,4 @@
-# Parcours Brigo
+# Parcours Brigos
 
 La navigation garde cinq destinations dans le même ordre sur ordinateur et mobile : **Boîtes, Atelier, Libre, Collection, Quêtes**. Le mode libre possède sa propre entrée ; il n’est plus signalé comme une page de l’Atelier. Le guide et les réglages sont accessibles dans l’en-tête, y compris sur petit écran. Les réglages sont visibles sans dérouler le guide.
 

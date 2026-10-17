@@ -1,4 +1,4 @@
-# Publier la démo Brigo avec GitHub Pages
+# Publier la démo Brigos avec GitHub Pages
 
 Le dépôt est [RobertKaa/Brigos](https://github.com/RobertKaa/Brigos). Son URL Pages prévue est **https://robertkaa.github.io/Brigos/**. La publication est confirmée uniquement après un déploiement réussi et une vérification de cette URL ; ajouter le workflow ne suffit pas.
 
@@ -12,7 +12,7 @@ Cette destination sert à la démo gratuite. [Les limites officielles de GitHub 
 
 1. Publier les sources validées sur la branche `main` du dépôt. Le dépôt est public et sa branche par défaut est `main` lors de la vérification du 16 octobre 2026.
 2. Ouvrir [Settings → Pages](https://github.com/RobertKaa/Brigos/settings/pages), puis choisir **GitHub Actions** dans **Build and deployment → Source**. Un dépôt public permet Pages avec GitHub Free, selon [la documentation de création](https://docs.github.com/en/pages/getting-started-with-github-pages/creating-a-github-pages-site).
-3. Ouvrir [Actions](https://github.com/RobertKaa/Brigos/actions), choisir **Publish Brigo demo to GitHub Pages**, puis relancer le workflow si l’activation est postérieure au premier push. Restreindre l’environnement `github-pages` à `main`.
+3. Ouvrir [Actions](https://github.com/RobertKaa/Brigos/actions), choisir **Publish Brigos demo to GitHub Pages**, puis relancer le workflow si l’activation est postérieure au premier push. Restreindre l’environnement `github-pages` à `main`.
 4. Attendre les deux jobs `build` et `deploy`. Le lien du déploiement apparaît dans l’environnement `github-pages`. Contrôler les cinq destinations, les images et le mode invité sur ordinateur et mobile.
 
 Le workflow utilise Node.js 22, installe le lockfile avec `npm ci --legacy-peer-deps`, puis exécute `npm test`, `npm run check`, `npm run server:bundle` et `npm run build`. Il déduit `VITE_BASE_PATH=/Brigos/` du nom du dépôt et publie seulement `dist` ; le bundle serveur est vérifié mais ne fait pas partie du site. Les actions officielles sont épinglées par SHA. Le build lit le dépôt ; seul le job de déploiement obtient `pages: write` et `id-token: write`, comme requis pour [un workflow Pages](https://docs.github.com/en/pages/getting-started-with-github-pages/using-custom-workflows-with-github-pages).

@@ -363,7 +363,7 @@ export const SandboxScene = memo(function SandboxScene({
     >
       <p id={instructionsId} className="sandbox-scene-instructions">
         {interactionMode === "place"
-          ? `Touchez le plateau ou un Brigo posé pour positionner le curseur${stackAutomatically ? " au-dessus" : " sur le plan actif"}, puis utilisez Placer. Au clavier, les flèches déplacent le curseur et Entrée place la pièce.`
+          ? `Touchez le plateau ou une pièce posée pour positionner le curseur${stackAutomatically ? " au-dessus" : " sur le plan actif"}, puis utilisez Placer. Au clavier, les flèches déplacent le curseur et Entrée place la pièce.`
           : "Touchez une pièce posée pour la sélectionner et la modifier. Au clavier, les flèches déplacent le curseur et Entrée confirme la modification."}
       </p>
       <svg

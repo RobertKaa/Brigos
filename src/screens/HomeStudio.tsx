@@ -95,14 +95,14 @@ export function Home({
   return (
     <div className="home-studio boxes-flow">
       <div className="studio-journal-line" aria-hidden="true">
-        <span>LE JOURNAL BRIGO</span>
+        <span>LE JOURNAL BRIGOS</span>
         <span>COLLECTIONNER · ASSEMBLER · IMAGINER</span>
         <span>VOL. 01 / L’IMAGINATION EN PIÈCES</span>
       </div>
       <div className="page-intro boxes-intro">
         <div>
           <span className="eyebrow">
-            <i /> LE COMPTOIR BRIGO
+            <i /> LE COMPTOIR BRIGOS
           </span>
           <h1>Ouvrir une boîte.</h1>
           <p>
@@ -379,7 +379,7 @@ export function Home({
       >
         <div className="section-heading">
           <div>
-            <span className="eyebrow">L’ALBUM BRIGO</span>
+            <span className="eyebrow">L’ALBUM BRIGOS</span>
             <h2 id="studio-recent-heading">
               {recentIds.length
                 ? "Vos dernières trouvailles."

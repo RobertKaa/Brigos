@@ -24,6 +24,6 @@ Le format de sauvegarde reste v5 avec `planRevision: 1`. Une ouverture historiqu
 - TypeScript et build de production validés.
 - `npm audit` : aucune vulnérabilité signalée, dépendances de développement comprises.
 - Consultation visuelle à 1280 et 1460 px sur desktop, 320 et 390 px sur mobile. Débordements de l’introduction de l’album et des onglets admin corrigés à 320 px.
-- Fiches Brigo, probabilités, grand plan légendaire et administration vérifiés sur mobile. Coffre, cascade, révélation immédiate, enchaînement, reprise de cinq cartes et animations réduites vérifiés sur données fictives. Dix cartes révélées et focus conservé sur la première carte confirmés dans le navigateur.
+- Fiches Brigos, probabilités, grand plan légendaire et administration vérifiés sur mobile. Coffre, cascade, révélation immédiate, enchaînement, reprise de cinq cartes et animations réduites vérifiés sur données fictives. Dix cartes révélées et focus conservé sur la première carte confirmés dans le navigateur.
 
 Les aperçus `scripts/review-opening.html` et `scripts/review-studio.html` utilisent les vrais composants avec des données fictives, sans lecture ni écriture de sauvegarde. Ils sont réservés au développement et exclus du build principal. Le serveur existant a été conservé pendant les vérifications.

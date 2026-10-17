@@ -126,9 +126,9 @@ export function Sandbox({ game }: { game: Game }) {
   const issue = waitingForSelection
     ? "Choisissez une pièce posée sur le terrain pour la modifier."
     : !activeBrigo
-      ? "Choisissez un Brigo dans votre stock."
+      ? "Choisissez une pièce dans votre stock."
       : !selected && available < 1
-        ? "Ce Brigo est épuisé. Choisissez une autre pièce ou retirez-en une du projet."
+        ? "Cette pièce est épuisée. Choisissez une autre pièce ou retirez-en une du projet."
         : !selected && placements.length >= SANDBOX_MAX_PLACEMENTS
           ? `Ce projet a atteint ses ${SANDBOX_MAX_PLACEMENTS} Brigos. Retirez une pièce pour continuer.`
           : automatic && autoHeight === null
@@ -215,7 +215,7 @@ export function Sandbox({ game }: { game: Game }) {
           projectId: project.id,
           placementId: selected.id,
         },
-        "Brigo remis dans votre stock.",
+        "Pièce remise dans votre stock.",
       )
     ) {
       setSelectedId(null);
@@ -243,7 +243,7 @@ export function Sandbox({ game }: { game: Game }) {
       <label className="sandbox-search">
         <Search size={16} aria-hidden="true" />
         <input
-          aria-label="Chercher un Brigo dans le stock"
+          aria-label="Chercher une pièce dans le stock"
           placeholder="Une forme, une couleur…"
           maxLength={100}
           value={query}
@@ -314,7 +314,7 @@ export function Sandbox({ game }: { game: Game }) {
           <Layers3 size={26} aria-hidden="true" />
           <p>
             {stockCount
-              ? "Aucun Brigo ne correspond à ces filtres."
+              ? "Aucune pièce ne correspond à ces filtres."
               : "Vos Brigos disponibles apparaîtront ici. Ouvrez une boîte pour commencer."}
           </p>
           {!stockCount && <a href="#boxes">Découvrir les boîtes</a>}
@@ -530,7 +530,7 @@ export function Sandbox({ game }: { game: Game }) {
                 <p className="sandbox-canvas-hint">
                   <MousePointer2 size={15} aria-hidden="true" />{" "}
                   {interactionMode === "place"
-                    ? "Visez une surface, vérifiez l’aperçu, puis posez votre Brigo."
+                    ? "Visez une surface, vérifiez l’aperçu, puis posez votre pièce."
                     : "Sélectionnez une brique pour la déplacer ou la remettre en stock."}{" "}
                   <span className="sandbox-desktop-hint">
                     Glisser : tourner · Molette : zoomer · Maj + glisser :
@@ -567,7 +567,7 @@ export function Sandbox({ game }: { game: Game }) {
                       {activeBrigo?.model.name ??
                         (waitingForSelection
                           ? "Sélectionnez une pièce"
-                          : "Choisissez un Brigo")}
+                          : "Choisissez une pièce")}
                     </h2>
                     <p>
                       {activeBrigo
@@ -652,7 +652,7 @@ export function Sandbox({ game }: { game: Game }) {
                     Hauteur
                     <input
                       type="number"
-                      aria-label="Hauteur du Brigo"
+                      aria-label="Hauteur de la pièce"
                       min={0}
                       max={SANDBOX_MAX_HEIGHT - 1}
                       value={candidate?.z ?? height}
@@ -709,10 +709,10 @@ export function Sandbox({ game }: { game: Game }) {
                       <Plus size={19} aria-hidden="true" />
                     )}
                     {selected
-                      ? "Déplacer le Brigo"
+                      ? "Déplacer la pièce"
                       : waitingForSelection
                         ? "Choisir une pièce posée"
-                        : "Poser le Brigo"}
+                        : "Poser la pièce"}
                   </button>
                   {selected && (
                     <button

@@ -155,7 +155,7 @@ function ReviewAccount() {
       {!closed && (
         <Modal
           title="Mon compte"
-          eyebrow="Votre espace Brigo"
+          eyebrow="Votre espace Brigos"
           onClose={() => setClosed(true)}
           className="account-panel"
         >

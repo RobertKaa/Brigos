@@ -29,7 +29,7 @@ export function BrigoCard({
     >
       <div className="brigo-card-image">
         <span className="brigo-card-print" aria-hidden="true">
-          BRIGO
+          BRIGOS
         </span>
         <span className="catalog-number">
           #{String(brigo.number).padStart(3, "0")}

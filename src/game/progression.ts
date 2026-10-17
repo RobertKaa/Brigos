@@ -37,7 +37,7 @@ export interface XpContribution {
 }
 
 function rankForLevel(level: number): string {
-  if (level >= 15) return "Maître Brigo";
+  if (level >= 15) return "Maître Brigos";
   if (level >= 10) return "Grand architecte";
   if (level >= 6) return "Architecte";
   if (level >= 3) return "Bâtisseur";

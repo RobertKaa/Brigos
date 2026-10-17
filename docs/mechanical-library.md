@@ -1,7 +1,7 @@
 # Constructions à mécanismes
 
 La bibliothèque compte désormais **72 plans**. Les sept ajouts utilisent les
-roues, essieux et articulations Brigo dans des assemblages originaux, conçus
+roues, essieux et articulations Brigos dans des assemblages originaux, conçus
 indépendamment sans reproduction de set, notice, photographie ou création de
 tiers. Les anciennes recettes restent inchangées.
 

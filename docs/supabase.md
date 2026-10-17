@@ -1,12 +1,12 @@
-# Comptes et progression serveur Brigo
+# Comptes et progression serveur Brigos
 
 Le compte utilise Supabase Auth (Google ou email/mot de passe), PostgreSQL et la fonction Edge `game`. La partie invitée garde ses anciens identifiants IndexedDB/localStorage. Un compte démarre une **nouvelle partie serveur**, sans importation ni fusion avec une partie locale. Le compte connecté exige Internet ; une réponse incertaine ne devient jamais un gain local.
 
-Le frontend local est relié au projet Brigo par `.env.local`, fichier ignoré par Git qui contient uniquement les paramètres publics du client. L’inscription, la connexion, le renvoi de confirmation et la récupération du mot de passe sont implémentés. Le déploiement GitHub Pages choisi pour ce premier lancement reste une **démo invitée**, sans configuration de comptes ni paiement ; voir [le déploiement Pages](github-pages.md). Les adresses `https://app.brigo.example/` ci-dessous sont des exemples à remplacer par le futur hébergement de l’application avec comptes.
+Le frontend local est relié au projet Brigos par `.env.local`, fichier ignoré par Git qui contient uniquement les paramètres publics du client. L’inscription, la connexion, le renvoi de confirmation et la récupération du mot de passe sont implémentés. Le déploiement GitHub Pages choisi pour ce premier lancement reste une **démo invitée**, sans configuration de comptes ni paiement ; voir [le déploiement Pages](github-pages.md). Les adresses `https://app.brigo.example/` ci-dessous sont des exemples à remplacer par le futur hébergement de l’application avec comptes.
 
-## Projet Brigo actuel
+## Projet Brigos actuel
 
-La base Brigo est installée dans le [projet Supabase créé pour Brigo](https://supabase.com/dashboard/project/zqhnbygwxfqjtbfeuiyg). État vérifié le **16 octobre 2026** :
+La base Brigos est installée dans le [projet Supabase créé pour Brigos](https://supabase.com/dashboard/project/zqhnbygwxfqjtbfeuiyg). État vérifié le **16 octobre 2026** :
 
 | Paramètre | Valeur |
 | --- | --- |
@@ -52,7 +52,7 @@ Ajouter les origines de test réellement utilisées, sans joker global en produc
 
 Activer les inscriptions email, **Confirm email**, le changement d’email avec double confirmation et le changement de mot de passe sécurisé ; minimum de longueur réglé à **12**. Le serveur refuse les comptes anonymes et les sessions sans email confirmé. Le client utilise le flux PKCE ; l’inscription seule ne donne pas accès à la partie serveur. L’interface permet de renvoyer le lien de confirmation puis de se connecter après vérification.
 
-Supabase Auth stocke un **hachage bcrypt avec un sel aléatoire**, jamais le mot de passe en clair. Les tables Brigo ne stockent aucun mot de passe ni hachage ; le hachage reste dans `auth.users.encrypted_password`. Un administrateur disposant de l’accès SQL au schéma Auth peut lire ce hachage, ce qui ne permet pas de récupérer directement le mot de passe. Ne jamais exposer le schéma Auth, une clé secret/service_role ou des journaux de mots de passe au navigateur. Voir [la sécurité des mots de passe](https://supabase.com/docs/guides/auth/password-security).
+Supabase Auth stocke un **hachage bcrypt avec un sel aléatoire**, jamais le mot de passe en clair. Les tables Brigos ne stockent aucun mot de passe ni hachage ; le hachage reste dans `auth.users.encrypted_password`. Un administrateur disposant de l’accès SQL au schéma Auth peut lire ce hachage, ce qui ne permet pas de récupérer directement le mot de passe. Ne jamais exposer le schéma Auth, une clé secret/service_role ou des journaux de mots de passe au navigateur. Voir [la sécurité des mots de passe](https://supabase.com/docs/guides/auth/password-security).
 
 La version Auth observée, **v2.197.0**, refuse un mot de passe dépassant **72 octets UTF-8** : sa validation compare `len(password)` à 72 et son implémentation passe les octets directement à bcrypt, sans préhachage. La création et le nouveau mot de passe demandent au moins **12 points de code Unicode** dans le client et respectent ce plafond de 72 octets. Les accents et emojis occupent plusieurs octets ; une limite de 72 caractères HTML ne suffit pas. Refuser une valeur trop longue avec une explication, sans la tronquer, retirer ses espaces ou la normaliser. Ne pas réappliquer le minimum de création à la connexion des comptes existants. Voir [la validation Auth v2.197.0](https://github.com/supabase/auth/blob/v2.197.0/internal/api/password.go), [le hachage de cette version](https://github.com/supabase/auth/blob/v2.197.0/internal/crypto/password.go) et [la limite bcrypt](https://pkg.go.dev/golang.org/x/crypto/bcrypt#GenerateFromPassword).
 
@@ -62,13 +62,13 @@ Le client observe aussi les erreurs d’initialisation du SDK pour expliquer un 
 
 Pour activer Google ultérieurement, créer un client OAuth web dans Google Cloud, configurer l’écran de consentement et les origines JavaScript du site. Dans Google, autoriser l’URI de rappel **Supabase**, `https://<project-ref>.supabase.co/auth/v1/callback`, puis renseigner client ID et secret dans le provider Google du dashboard Supabase. Le secret Google reste dans Supabase. Publier le consentement pour sortir des seuls comptes de test, puis activer `VITE_AUTH_GOOGLE_ENABLED=true` après vérification. Voir [Google avec Supabase](https://supabase.com/docs/guides/auth/social-login/auth-google).
 
-Pour les emails réels, activer Custom SMTP avec **Resend** : domaine d’expédition possédé et vérifié, enregistrements DNS fournis par Resend, expéditeur `Brigo <comptes@votre-domaine>`, hôte `smtp.resend.com`, port `465`, utilisateur `resend`, mot de passe = clé API Resend. Garder les clés SMTP hors du frontend. Désactiver le suivi des liens des emails d’authentification et vérifier confirmation/récupération sur téléphone. Le domaine reste à fournir ; GitHub Pages seul ne fournit pas de domaine d’envoi. L’offre Resend gratuite inclut actuellement 3 000 emails par mois et 100 par jour ; vérifier les limites avant l’ouverture. Voir [Resend SMTP pour Supabase](https://resend.com/docs/send-with-supabase-smtp), [le domaine requis](https://resend.com/docs/dashboard/domains/introduction), [les tarifs Resend](https://resend.com/pricing) et [les limites SMTP Supabase](https://supabase.com/docs/guides/auth/auth-smtp).
+Pour les emails réels, activer Custom SMTP avec **Resend** : domaine d’expédition possédé et vérifié, enregistrements DNS fournis par Resend, expéditeur `Brigos <comptes@votre-domaine>`, hôte `smtp.resend.com`, port `465`, utilisateur `resend`, mot de passe = clé API Resend. Garder les clés SMTP hors du frontend. Désactiver le suivi des liens des emails d’authentification et vérifier confirmation/récupération sur téléphone. Le domaine reste à fournir ; GitHub Pages seul ne fournit pas de domaine d’envoi. L’offre Resend gratuite inclut actuellement 3 000 emails par mois et 100 par jour ; vérifier les limites avant l’ouverture. Voir [Resend SMTP pour Supabase](https://resend.com/docs/send-with-supabase-smtp), [le domaine requis](https://resend.com/docs/dashboard/domains/introduction), [les tarifs Resend](https://resend.com/pricing) et [les limites SMTP Supabase](https://supabase.com/docs/guides/auth/auth-smtp).
 
 Choisir un hébergement d’application avant d’exposer les formulaires de compte : GitHub Pages déconseille les transactions sensibles comprenant l’envoi de mots de passe et exclut l’hébergement d’une activité commerciale. **Cloudflare Pages** prend en charge les dépôts publics et privés et constitue une option gratuite pour ce frontend avec Supabase ; Cloudflare recommande désormais **Workers** pour les nouveaux projets. Le choix et la configuration de cet hébergement restent à faire. Voir [les règles GitHub Pages](https://docs.github.com/en/pages/getting-started-with-github-pages/github-pages-limits), [les limites Pages](https://developers.cloudflare.com/pages/platform/limits/) et [la recommandation Cloudflare](https://developers.cloudflare.com/pages/).
 
 ## Déploiement
 
-La base et la fonction actuelles ont été installées via le dashboard. Pour les prochaines mises à jour par CLI, installer le CLI Supabase selon sa documentation, s’authentifier, puis lier le projet Brigo et vérifier l’historique :
+La base et la fonction actuelles ont été installées via le dashboard. Pour les prochaines mises à jour par CLI, installer le CLI Supabase selon sa documentation, s’authentifier, puis lier le projet Brigos et vérifier l’historique :
 
 ```text
 supabase login
@@ -95,7 +95,7 @@ En local, `supabase start`, puis créer `supabase/functions/.env` ignoré avec l
 
 ## API et garanties de stockage
 
-Endpoint du projet Brigo : `https://zqhnbygwxfqjtbfeuiyg.supabase.co/functions/v1/game`.
+Endpoint du projet Brigos : `https://zqhnbygwxfqjtbfeuiyg.supabase.co/functions/v1/game`.
 
 - `GET`, avec bearer utilisateur, retourne `{state, revision, serverTime}`. La création du compte de jeu est atomique et unique. Les 1 200 pièces et trois boîtes de départ ont un reçu et une ligne d’origine dans le journal à la révision **0**.
 - `POST` JSON : `{commandId, expectedRevision, command}`. `commandId` est un UUID neuf pour chaque intention et reste le même pour un nouvel essai réseau de **la même commande et révision**. Les commandes publiques sont celles de `src/game/commands.ts`.
@@ -110,7 +110,7 @@ Tables : `brigo_profiles` (UUID, pseudo facultatif borné), `brigo_games` (JSONB
 
 Le commit verrouille la ligne de partie, recherche le reçu **après** le verrou, contrôle la révision attendue et écrit état + reçu + journal dans la même transaction. Une erreur annule l’ensemble. Un double clic, deux appareils ou une réponse perdue après commit ne dépensent/créditent jamais deux fois. Les migrations des anciennes parties serveur passent par le moteur existant, avec commit CAS et journal privé ; les clés invitées historiques restent inchangées.
 
-Les reçus et le journal ne sont pas purgés automatiquement : cela préserve l’idempotence. Surveiller leur croissance et définir une politique d’archivage qui conserve les identifiants de commandes avant d’en réduire la rétention. La suppression du compte Auth entraîne la suppression de ses lignes Brigo ; aucun parcours de suppression de compte n’est ajouté dans ce lot.
+Les reçus et le journal ne sont pas purgés automatiquement : cela préserve l’idempotence. Surveiller leur croissance et définir une politique d’archivage qui conserve les identifiants de commandes avant d’en réduire la rétention. La suppression du compte Auth entraîne la suppression de ses lignes Brigos ; aucun parcours de suppression de compte n’est ajouté dans ce lot.
 
 ## Vérifier et exploiter
 

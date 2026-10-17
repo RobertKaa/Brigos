@@ -47,7 +47,7 @@ export function orderRecipeParts(
   const discovered = new Set(state.discovered);
   for (const [id, amount] of Object.entries(quote.pieces)) {
     if ((inventory[id] ?? 0) + amount > MAX_VALUE)
-      throw new GameError("L’inventaire de ce Brigo est plein.");
+      throw new GameError("L’inventaire de cette pièce est plein.");
     inventory[id] = (inventory[id] ?? 0) + amount;
     discovered.add(id);
   }

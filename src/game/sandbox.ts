@@ -70,7 +70,7 @@ export function sandboxPlacementIssue(
   ignoreId?: string,
 ): string | null {
   if (!candidate || !BRIGO_BY_ID.has(candidate.brigoId))
-    return "Ce Brigo n’existe pas.";
+    return "Cette pièce n’existe pas.";
   if (!rotations.includes(candidate.rotation))
     return "Choisissez une rotation de 0, 90, 180 ou 270 degrés.";
   if (![candidate.x, candidate.y, candidate.z].every(Number.isSafeInteger))
@@ -82,7 +82,7 @@ export function sandboxPlacementIssue(
     box.maxX > SANDBOX_GRID_SIZE ||
     box.maxY > SANDBOX_GRID_SIZE
   )
-    return `Le Brigo doit rester dans le plateau de ${SANDBOX_GRID_SIZE} × ${SANDBOX_GRID_SIZE}.`;
+    return `La pièce doit rester dans le plateau de ${SANDBOX_GRID_SIZE} × ${SANDBOX_GRID_SIZE}.`;
   if (box.minZ < 0 || box.maxZ > SANDBOX_MAX_HEIGHT)
     return `La création doit rester entre 0 et ${SANDBOX_MAX_HEIGHT} en hauteur.`;
   for (const piece of placements) {
@@ -94,7 +94,7 @@ export function sandboxPlacementIssue(
       overlaps(box.minY, box.maxY, other.minY, other.maxY) &&
       overlaps(box.minZ, box.maxZ, other.minZ, other.maxZ)
     )
-      return "Cet emplacement est déjà occupé par un autre Brigo.";
+      return "Cet emplacement est déjà occupé par une autre pièce.";
   }
   return null;
 }
@@ -173,7 +173,7 @@ function returnedInventory(
     const available = inventory[piece.brigoId] ?? 0;
     if (available >= MAX_VALUE)
       throw new GameError(
-        "L’inventaire de ce Brigo est plein. Aucun changement n’a été appliqué.",
+        "L’inventaire de cette pièce est plein. Aucun changement n’a été appliqué.",
       );
     inventory[piece.brigoId] = available + 1;
   }
@@ -228,7 +228,7 @@ export function placeSandboxBrigo(
   if (issue) throw new GameError(issue);
   const available = state.inventory[candidate.brigoId] ?? 0;
   if (!Number.isSafeInteger(available) || available < 1)
-    throw new GameError("Ce Brigo n’est plus disponible dans votre stock.");
+    throw new GameError("Cette pièce n’est plus disponible dans votre stock.");
   const inventory = { ...state.inventory };
   if (available === 1) delete inventory[candidate.brigoId];
   else inventory[candidate.brigoId] = available - 1;
@@ -259,9 +259,9 @@ export function moveSandboxBrigo(
   const project = findProject(state, projectId);
   const placement = project.placements.find((item) => item.id === placementId);
   if (!placement)
-    throw new GameError("Ce Brigo n’est plus dans votre création.");
+    throw new GameError("Cette pièce n’est plus dans votre création.");
   if (candidate.brigoId !== placement.brigoId)
-    throw new GameError("Un déplacement doit conserver le même Brigo.");
+    throw new GameError("Un déplacement doit conserver la même pièce.");
   const issue = sandboxPlacementIssue(
     project.placements,
     candidate,
@@ -293,7 +293,7 @@ export function removeSandboxBrigo(
   const project = findProject(state, projectId);
   const placement = project.placements.find((item) => item.id === placementId);
   if (!placement)
-    throw new GameError("Ce Brigo n’est plus dans votre création.");
+    throw new GameError("Cette pièce n’est plus dans votre création.");
   const inventory = returnedInventory(state, [placement]);
   return {
     ...updateProject(state, {
@@ -376,7 +376,7 @@ export function parseSandboxProjects(value: unknown): SandboxProject[] {
     for (const rawPlacement of item.placements) {
       const piece = record(rawPlacement);
       const placementId = identifier(piece.id);
-      if (placementIds.has(placementId)) return fail("avec Brigo en double");
+      if (placementIds.has(placementId)) return fail("avec pièce en double");
       placementIds.add(placementId);
       const candidate = {
         brigoId: piece.brigoId,

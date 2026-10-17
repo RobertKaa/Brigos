@@ -1,8 +1,8 @@
-# Originalité des créations Brigo
+# Originalité des créations Brigos
 
 Règle de projet fixée le 15 octobre 2026, à appliquer dans toutes les évolutions et conversations. Les consignes exécutables figurent dans `AGENTS.md` à la racine.
 
-Brigo développe son propre univers de pièces et de constructions illustrées. L'objectif est de prévenir la copie et la confusion avec les produits LEGO, y compris lorsque les pièces sont dessinées ou générées plutôt que photographiées.
+Brigos développe son propre univers de pièces et de constructions illustrées. L'objectif est de prévenir la copie et la confusion avec les produits LEGO, y compris lorsque les pièces sont dessinées ou générées plutôt que photographiées.
 
 ## Sources officielles consultées
 
@@ -12,11 +12,11 @@ Brigo développe son propre univers de pièces et de constructions illustrées. 
 
 Ces sources décrivent la position de LEGO ; elles ne déterminent pas seules le droit applicable à chaque forme et à chaque pays. Une ressemblance précise exige une analyse adaptée. Le projet choisit donc volontairement une conception indépendante et plus prudente.
 
-## Grammaire visuelle Brigo
+## Grammaire visuella pièce
 
 - Pièces à arêtes chanfreinées, raccords bas en losange et traits d'encre ; pas de matrice de boutons cylindriques caractéristiques.
 - Roues facettées à moyeu étoilé, essieux et articulations dessinés pour cet univers ; aucune référence de pièce d'un fabricant.
-- Cartes de collection à cadres imprimés, trames et symboles de rareté ; boîtes et marque propres à Brigo.
+- Cartes de collection à cadres imprimés, trames et symboles de rareté ; boîtes et marque propres à Brigos.
 - Constructions originales accompagnées de décors dessinés selon leur thème. Aucune reproduction de set ou de notice existante.
 - Les dimensions et noms techniques historiques dans les sauvegardes servent au moteur virtuel et ne promettent aucune compatibilité avec un produit physique.
 

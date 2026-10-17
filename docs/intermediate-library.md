@@ -72,7 +72,7 @@ quatre orientations. Ces contrôles géométriques ne simulent pas la résistanc
 des matériaux ou l’équilibre mécanique d’un objet réel.
 
 L’XP conserve la règle existante : base liée à la difficulté plus 2 XP par
-Brigo, uniquement tant que la création est assemblée. Les tests construisent,
+pièce, uniquement tant que la création est assemblée. Les tests construisent,
 exportent, réimportent puis démontent chacun des nouveaux modèles : les
 références exactes sont restituées et toute son XP est retirée.
 

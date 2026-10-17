@@ -22,7 +22,7 @@ export function recycleBrigos(
   amount: number,
 ): GameState {
   const brigo = BRIGO_BY_ID.get(brigoId);
-  if (!brigo) throw new GameError("Ce Brigo n’existe pas.");
+  if (!brigo) throw new GameError("Cette pièce n’existe pas.");
   if (!Number.isSafeInteger(amount) || amount < 1 || amount > 100_000)
     throw new GameError("Saisissez un entier entre 1 et 100000.");
   if (amount > recyclableCount(state, brigoId))

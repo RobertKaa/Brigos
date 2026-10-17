@@ -279,7 +279,7 @@ export function Workshop({
                     changes: { query: event.target.value },
                   })
                 }
-                placeholder="Nom de plan ou de Brigo…"
+                placeholder="Nom de plan ou de pièce…"
                 aria-label="Rechercher une construction"
               />
             </label>
@@ -537,7 +537,7 @@ export function Workshop({
                               Prêt à construire
                             </>
                           ) : (
-                            `Encore ${count(missing)} Brigo${missing > 1 ? "s" : ""} à trouver`
+                            `Encore ${count(missing)} pièce${missing > 1 ? "s" : ""} à trouver`
                           )}
                         </span>
                         <button

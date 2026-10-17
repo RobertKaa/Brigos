@@ -4,7 +4,7 @@
 
 La v8 ajoute les projets libres et leurs placements exacts. Les sauvegardes antérieures reçoivent une liste vide ; leurs ressources, plans assemblés, récompenses, activités et pièces restent identiques. Le format 8 exige ce champ et protège les réservations contre les anciennes applications qui ignoreraient les projets libres. La révision IndexedDB refuse également une écriture obsolète depuis un autre onglet.
 
-Un Brigo placé est retiré de l’inventaire disponible. Le retrait d’un placement ou le démontage du projet restitue exactement sa référence et sa couleur ; un déplacement ne modifie jamais la quantité. Les validations portent sur les références découvertes, noms, identifiants, rotations, positions, chevauchements et limites de projets/pièces. La limite d’import passe à 3 Mo pour accueillir les projets bornés, sans changer la structure des constructions sur plan. Voir [docs/sandbox.md](sandbox.md).
+Une pièce placée est retirée de l’inventaire disponible. Le retrait d’un placement ou le démontage du projet restitue exactement sa référence et sa couleur ; un déplacement ne modifie jamais la quantité. Les validations portent sur les références découvertes, noms, identifiants, rotations, positions, chevauchements et limites de projets/pièces. La limite d’import passe à 3 Mo pour accueillir les projets bornés, sans changer la structure des constructions sur plan. Voir [docs/sandbox.md](sandbox.md).
 
 ## Carnet quotidien / sauvegarde v7
 
@@ -100,7 +100,7 @@ propriétés reconnues du schéma sont réutilisées.
   les plans publiés ne changent pas.
 - Une ouverture déjà enregistrée conserve exactement ses cinq ou dix cartes.
   L’import et la reprise ne complètent jamais une ancienne boîte et ne
-  créditent aucun Brigo supplémentaire. Le parseur n’accepte que ces deux
+  créditent aucune pièce supplémentaire. Le parseur n’accepte que ces deux
   tailles, contrôle chaque référence et chaque booléen, puis vérifie que
   l’ouverture en cours correspond exactement à son entrée d’historique.
 - L’historique peut mélanger des boîtes de cinq et de dix. Une ancienne

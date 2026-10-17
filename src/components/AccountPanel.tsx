@@ -486,7 +486,7 @@ export function AccountPanel({ auth, onClose }: Props) {
   return (
     <Modal
       title="Mon compte"
-      eyebrow="Votre espace Brigo"
+      eyebrow="Votre espace Brigos"
       onClose={onClose}
       className="account-panel"
     >

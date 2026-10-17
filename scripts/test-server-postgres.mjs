@@ -94,7 +94,7 @@ try {
   assert.equal(final.state.coins, 1200);
   assert.equal(final.revision, 2);
   console.log(
-    "Brigo PostgreSQL: simultaneous spend, simultaneous retry and row locks passed.",
+    "Brigos PostgreSQL: simultaneous spend, simultaneous retry and row locks passed.",
   );
 } finally {
   await query(`delete from auth.users where id = '${user}';`);

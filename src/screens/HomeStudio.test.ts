@@ -65,7 +65,7 @@ function press(props: ComponentProps<typeof Home>, labelOrClass: string) {
 describe("home actions and recommendations", () => {
   it("explains the ten-piece box, cost, reserve and chances before opening", () => {
     const view = renderHome();
-    expect(view).toContain("LE JOURNAL BRIGO");
+    expect(view).toContain("LE JOURNAL BRIGOS");
     expect(view).not.toMatch(/Brigo Club|BRIGO CLUB/);
     expect(view).toContain(`${BOX_DROP_COUNT} BRIGOS / BOÎTE`);
     expect(view).toContain("Aucune monnaie dépensée");

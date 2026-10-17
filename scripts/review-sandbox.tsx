@@ -126,7 +126,7 @@ function ReviewSandbox() {
           <a
             href="#sandbox"
             className="brand"
-            aria-label="Brigo, essai du bac à sable"
+            aria-label="Brigos, essai du bac à sable"
           >
             <BrigoLogo />
           </a>

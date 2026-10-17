@@ -1,4 +1,4 @@
-# Carnet Brigo — direction visuelle v0.9
+# Carnet Brigos — direction visuelle v0.9
 
 Livraison du 15 octobre 2026. Cette direction s'appuie sur les créations indépendantes décrites dans [la politique d'originalité](originality-policy.md) et sur les règles permanentes de `AGENTS.md`.
 

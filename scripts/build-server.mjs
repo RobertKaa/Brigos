@@ -20,4 +20,4 @@ await build({
   sourcemap: false,
   minify: true,
 });
-console.log("Brigo : moteur serveur préparé pour Supabase Edge Functions.");
+console.log("Brigos : moteur serveur préparé pour Supabase Edge Functions.");

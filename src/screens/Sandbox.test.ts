@@ -91,7 +91,7 @@ describe("écran de construction libre", () => {
     expect(html).not.toContain("sandbox-scene-viewport");
     expect(html).not.toContain("sandbox-scene-zoom");
     expect(html).not.toContain('aria-label="Tourner le point de vue"');
-    expect(html).toContain("Poser le Brigo");
+    expect(html).toContain("Poser la pièce");
     expect(html).toContain('aria-label="Poser des Brigos" aria-pressed="true"');
     expect(html).toContain(
       'aria-label="Modifier une pièce" aria-pressed="false"',
@@ -128,7 +128,7 @@ describe("écran de construction libre", () => {
     expect(html).not.toContain('class="sandbox-stock-piece');
     expect(html).toContain('href="#boxes"');
     expect(html).toContain("1 / 500 BRIGOS POSÉS");
-    expect(html).toContain("Choisissez un Brigo dans votre stock.");
+    expect(html).toContain("Choisissez une pièce dans votre stock.");
     expect(vi.mocked(SandboxWorld).mock.calls.at(-1)?.[0]).toMatchObject({
       candidate: null,
       candidateValid: false,

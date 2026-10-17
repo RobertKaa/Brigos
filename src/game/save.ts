@@ -161,7 +161,7 @@ const inventory = (value: unknown): Record<string, number> =>
   Object.fromEntries(
     Object.entries(record(value))
       .map(([id, count]) => {
-        if (!BRIGO_BY_ID.has(id)) return fail("Brigo inconnu");
+        if (!BRIGO_BY_ID.has(id)) return fail("pièce inconnue");
         return [id, integer(count)];
       })
       .filter(([, count]) => (count as number) > 0),
@@ -184,7 +184,7 @@ function opening(value: unknown): Opening {
   const drops = sourceDrops.map((value) => {
     const drop = record(value);
     if (typeof drop.brigoId !== "string" || !BRIGO_BY_ID.has(drop.brigoId))
-      return fail("Brigo inconnu");
+      return fail("pièce inconnue");
     return { brigoId: drop.brigoId, isNew: boolean(drop.isNew) };
   });
   if (
@@ -295,7 +295,7 @@ export function parseSaveResult(
   const preferences = record(data.preferences);
   const discovered = array(data.discovered, BRIGO_BY_ID.size).map((id) => {
     if (typeof id !== "string" || !BRIGO_BY_ID.has(id))
-      return fail("Brigo découvert inconnu");
+      return fail("pièce découverte inconnue");
     return id;
   });
   if (new Set(discovered).size !== discovered.length)

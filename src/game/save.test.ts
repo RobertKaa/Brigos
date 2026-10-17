@@ -207,7 +207,7 @@ describe("sauvegardes et import sécurisé", () => {
       '"inventory":{}',
       '"inventory":{"__proto__":{"polluted":true}}',
     );
-    expect(() => importSave(text)).toThrow("Brigo inconnu");
+    expect(() => importSave(text)).toThrow("pièce inconnue");
     expect(({} as Record<string, unknown>).polluted).toBeUndefined();
   });
   it("rejette les découvertes en double et les inventaires qui ne figurent pas dans l’album", () => {

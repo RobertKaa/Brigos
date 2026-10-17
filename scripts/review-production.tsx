@@ -116,7 +116,7 @@ function ReviewProduction() {
           <a
             href="#workshop"
             className="brand"
-            aria-label="Brigo, essai des récoltes"
+            aria-label="Brigos, essai des récoltes"
           >
             <BrigoLogo />
           </a>

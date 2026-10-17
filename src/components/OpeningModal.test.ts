@@ -48,7 +48,7 @@ describe("plateau de découvertes accessible", () => {
       const markup = renderOpening(count);
       expect(markup).not.toContain("CLUB");
       expect(
-        markup.match(/aria-label="Révéler le Brigo \d+ : halo [^"]+"/g),
+        markup.match(/aria-label="Révéler la pièce \d+ : halo [^"]+"/g),
       ).toHaveLength(count);
       expect(markup).toContain(
         `aria-label="Les ${count} Brigos de cette boîte"`,
@@ -81,7 +81,7 @@ describe("plateau de découvertes accessible", () => {
     for (const [index, rarity] of RARITIES.entries()) {
       expect(markup).toContain(`reveal-card rarity-${rarity} is-hidden`);
       expect(markup).toContain(
-        `aria-label="Révéler le Brigo ${index + 1} : halo ${RARITY_INFO[rarity].name}"`,
+        `aria-label="Révéler la pièce ${index + 1} : halo ${RARITY_INFO[rarity].name}"`,
       );
       expect(markup).toContain(RARITY_INFO[rarity].symbol);
     }

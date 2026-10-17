@@ -640,7 +640,7 @@ export function createBrigoMeshLibrary() {
 
   return {
     create(brigo: Brigo, options: Options = {}): THREE.Group {
-      if (disposed) throw new Error("La bibliothèque 3D Brigo est fermée.");
+      if (disposed) throw new Error("La bibliothèque 3D Brigos est fermée.");
       const { model } = brigo;
       const key = [
         model.id,

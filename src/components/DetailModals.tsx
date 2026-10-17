@@ -53,7 +53,7 @@ export function BrigoDetail({
   return (
     <Modal
       title={brigo.model.name}
-      eyebrow={`BRIGO #${String(brigo.number).padStart(3, "0")}`}
+      eyebrow={`BRIGOS #${String(brigo.number).padStart(3, "0")}`}
       onClose={onClose}
     >
       <div className={`detail-art rarity-${brigo.rarity}`}>
@@ -106,7 +106,7 @@ export function BrigoDetail({
           à cette forme, identique dans toutes ses couleurs.
           {brigo.model.shape === "cone" &&
             (brigo.model.studs
-              ? " Cette pièce archivée possède des raccords Brigo facettés sur son sommet. Ses flancs restent lisses."
+              ? " Cette pièce archivée possède des raccords Brigos facettés sur son sommet. Ses flancs restent lisses."
               : " Sa pointe est lisse : aucune pièce ne s’attache au-dessus.")}
         </p>
         <div className="detail-variants">
@@ -144,7 +144,7 @@ export function BrigoDetail({
             onClick={() =>
               void admin(
                 { type: "piece", brigoId: brigo.id, amount: 1 },
-                "Un Brigo ajouté à votre inventaire.",
+                "Une pièce ajoutée à votre inventaire.",
               )
             }
           >

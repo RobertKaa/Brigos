@@ -200,7 +200,7 @@ export function Collection({
             <Search size={20} aria-hidden="true" />
             <input
               type="search"
-              aria-label="Rechercher un Brigo"
+              aria-label="Rechercher une pièce"
               placeholder="Forme, couleur ou numéro…"
               value={query}
               maxLength={100}

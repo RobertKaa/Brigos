@@ -253,14 +253,14 @@ export function AdminPanel({
           >
             <h3>
               <Layers3 size={18} />
-              Un Brigo en particulier
+              Une pièce en particulier
             </h3>
             <p>
               Pour tester une variante ou compléter une construction précise.
             </p>
             <div className="form-row piece-admin-row">
               <label>
-                Rechercher un Brigo
+                Rechercher une pièce
                 <input
                   type="search"
                   placeholder="Ex. Brique, Menthe…"
@@ -277,7 +277,7 @@ export function AdminPanel({
                 />
               </label>
               <label>
-                Brigo ciblé
+                Pièce ciblée
                 <select
                   value={pieceId}
                   onChange={(event) => setPieceId(event.target.value)}
@@ -312,7 +312,7 @@ export function AdminPanel({
               disabled={disabled || !pieceId}
             >
               <Plus size={16} />
-              Ajouter ce Brigo
+              Ajouter cette pièce
             </button>
           </form>
           <form
@@ -444,7 +444,7 @@ export function AdminPanel({
               Probabilités par boîte
             </h3>
             <p>
-              Chaque pourcentage s’applique à un Brigo. Le total doit être égal
+              Chaque pourcentage s’applique à une pièce. Le total doit être égal
               à 100 %.
             </p>
             <label>
@@ -565,7 +565,7 @@ export function AdminPanel({
             </h3>
             <p>
               Exportez votre progression avant un test ou importez une
-              sauvegarde Brigo. L’import remplacera la partie sur cet appareil
+              sauvegarde Brigos. L’import remplacera la partie sur cet appareil
               après confirmation.
             </p>
             <div className="action-group">

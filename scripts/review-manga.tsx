@@ -42,7 +42,7 @@ function MangaReview() {
           <a
             href="#pieces"
             className="brand"
-            aria-label="Brigo, étude du dessin"
+            aria-label="Brigos, étude du dessin"
           >
             <BrigoLogo />
           </a>
@@ -73,7 +73,7 @@ function MangaReview() {
           <div>
             <span className="eyebrow">
               <i />
-              LES FACETTES BRIGO
+              LES FACETTES BRIGOS
             </span>
             <h1>De la couleur. Du caractère.</h1>
             <p>Volumes chanfreinés, fermoirs losange et traits à l’encre.</p>

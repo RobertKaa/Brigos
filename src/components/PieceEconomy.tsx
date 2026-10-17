@@ -22,7 +22,7 @@ export function RecyclePanel({ brigo, game }: { brigo: Brigo; game: Game }) {
         Une seconde vie pour vos doublons
       </h3>
       <p>
-        {value} pièces par exemplaire. Un Brigo de cette référence reste dans
+        {value} pièces par exemplaire. Une pièce de cette référence reste dans
         votre collection ou dans une création.
       </p>
       <div className="recycle-controls">
@@ -90,8 +90,8 @@ export function RecipeOrder({
         Compléter ce plan
       </h3>
       <p>
-        Complétez ce plan avec ses {quote.count} Brigo
-        {quote.count > 1 ? "s" : ""} manquant{quote.count > 1 ? "s" : ""}. Les
+        Complétez ce plan : {quote.count} pièce
+        {quote.count > 1 ? "s" : ""} manquante{quote.count > 1 ? "s" : ""}. Les
         exemplaires déjà disponibles sont déduits.
       </p>
       <div className="order-price">

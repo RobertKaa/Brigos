@@ -239,7 +239,7 @@ export function DailyJournal({ game }: { game: Game }) {
               if (blocked || !gift.available || giftCapacity) return;
               void act(
                 { type: "claim-visit" },
-                `Cadeau Brigo reçu : ${gift.rewardLabel}.`,
+                `Cadeau Brigos reçu : ${gift.rewardLabel}.`,
               );
             }}
           >

@@ -396,7 +396,7 @@ describe("plateau libre isométrique", () => {
     expect(html).toContain("Plateau de 24 par 24, 500 Brigos posés");
     expect(html).toContain("les flèches");
     expect(html).toContain('data-interaction-mode="place"');
-    expect(html).toContain("un Brigo posé");
+    expect(html).toContain("une pièce posée");
     expect(html).toContain("au-dessus");
   });
 
