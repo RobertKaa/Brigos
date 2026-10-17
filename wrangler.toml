@@ -1,5 +1,0 @@
-name = "brigoslab"
-compatibility_date = "2026-10-17"
-# Cloudflare Pages: Git integration publishes main after the CI build succeeds.
-# Auth, PostgreSQL and the game server stay in Supabase.
-pages_build_output_dir = "./dist"

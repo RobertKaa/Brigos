@@ -17,7 +17,6 @@ L’application GitHub **Cloudflare Workers and Pages** est limitée au seul dé
 | Déploiement | Intégration Git native de Cloudflare Pages |
 | `SKIP_DEPENDENCY_INSTALL` | `true` |
 | Node | `22.23.1` via `.node-version` |
-| Wrangler | `4.151.1`, version exacte et lockfile |
 | Autres branches / previews | Désactivées |
 
 Les variables publiques de build nécessaires sont `VITE_SUPABASE_URL=https://zqhnbygwxfqjtbfeuiyg.supabase.co` et `VITE_SUPABASE_PUBLISHABLE_KEY` (clé publique du projet). Ne jamais ajouter de clé serveur Supabase, mot de passe SMTP ou clé Resend. Un test ou build échoué empêche le déploiement et conserve la dernière version active. La liaison n’est confirmée qu’après un build Cloudflare réussi depuis un commit poussé sur `main`.
@@ -26,7 +25,7 @@ Les variables publiques de build nécessaires sont `VITE_SUPABASE_URL=https://zq
 
 Configurer `.env.local` ignoré avec les valeurs publiques de `.env.example`, puis exécuter `npm run ci:cloudflare`. Cette commande teste, vérifie TypeScript et construit sans publier. `build:cloudflare` impose le mode production, le projet Supabase attendu, la base `/` et le retour `https://brigoslab.com/#account`. Seuls les paramètres publics nécessaires sont conservés. Google et Admin restent absents.
 
-`wrangler.toml` décrit le projet Pages `brigoslab` et sa sortie `dist`. La première publication fournit `https://brigoslab.pages.dev/`. Rattacher le domaine `brigoslab.com` dans **Custom domains** après la migration DNS. Désactiver les builds de preview des autres branches dans les réglages Pages. L’adresse temporaire ne doit être utilisée pour les comptes qu’après autorisation explicite de son callback et de son origine dans Supabase.
+La configuration native Pages du tableau de bord définit le projet `brigoslab`, sa sortie `dist`, les variables publiques et les branches. Les builds des autres branches sont désactivés. Le fichier Wrangler préparatoire a été retiré : Pages l’utilisait comme source de vérité et ignorait les variables du tableau de bord. La publication fournit `https://brigoslab.pages.dev/`. Le callback exact de cette adresse, celui du domaine final et les deux retours locaux sont autorisés dans Supabase. Site URL est actuellement `https://brigoslab.pages.dev/`. Les mêmes quatre origines sont autorisées par le backend ; aucune origine générique n’est acceptée. Rattacher `brigoslab.com` après la migration DNS et modifier Site URL à cette occasion.
 
 La navigation utilise les fragments (`#boxes`, `#account`, etc.). Le build copie `scripts/cloudflare-404.html` dans `dist/404.html` pour qu’une ressource inconnue reste une 404 au lieu d’un repli SPA en 200. Cette page est propre au build Cloudflare. `public/_headers` ajoute les protections HTTP et interdit l’intégration dans une iframe.
 
@@ -34,7 +33,7 @@ La navigation utilise les fragments (`#boxes`, `#account`, etc.). Le build copie
 
 La zone gratuite est créée dans Cloudflare, compte `550b3b8e2afe8c52a2f934c336003c93`, en attente d’activation. Les 13 entrées OVH ont été importées hors SOA et anciens NS. Les MX OVH, le SPF et les quatre entrées Resend sont conservés. `ftp`, `rsend.auth` et `send.auth` restent en **DNS only**. Les serveurs attribués sont `aida.ns.cloudflare.com` et `ian.ns.cloudflare.com`.
 
-Les serveurs actifs restent `dns103.ovh.net` et `ns103.ovh.net` pendant la transition. Après confirmation explicite de l’utilisateur, OVH a accepté le 17 octobre vers **03:02 CEST** la désactivation de l’ancienne chaîne DNSSEC. L’interface affiche **En cours de désactivation** et annonce environ 24 heures. Le DS OVH (clé 57016, algorithme 8, digest type 2) a un TTL de **86400 secondes**. Ne pas changer les NS tant que le retrait du DS n’est pas effectif et que les anciens caches ne sont pas expirés. Le délai de sécurité commence au retrait effectivement observé du DS, pas au clic dans le manager.
+Les serveurs actifs restent `dns103.ovh.net` et `ns103.ovh.net` pendant la transition. Après confirmation explicite de l’utilisateur, OVH a accepté le 17 octobre vers **03:02 CEST** la désactivation de l’ancienne chaîne DNSSEC. Le retrait du DS OVH (clé 57016, algorithme 8, digest type 2) est vérifié au registre à **03:10:25 CEST**. Son ancien TTL vaut **86400 secondes** : attendre au moins le **18 octobre 2026 à 03:11, heure de Paris**, avant de changer les NS. Le délai de sécurité commence au retrait observé du DS, pas au clic dans le manager. Cloudflare refuse encore le domaine racine tant que la zone n’est pas active.
 
 Les sauvegardes et preuves sont ignorées par Git dans `.artifacts/cloudflare/` : `brigoslab.com-before.zone`, `brigoslab.com-cloudflare.zone`, `dns-verification.json` et captures. DKIM, CNAME Resend, DMARC, MX et TXT ont été comparés aux deux serveurs Cloudflare attribués : 12 comparaisons réussies avant migration.
 
