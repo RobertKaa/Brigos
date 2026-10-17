@@ -132,9 +132,11 @@ describe("illustrations imprimées originales et légères", () => {
       expect(view).toContain('aria-hidden="true"');
       expect(view).toContain('focusable="false"');
       expect(view).toContain('data-art-style="manga-ink"');
-      expect(view).not.toMatch(
-        /<image\b|<filter\b|<pattern\b|href=|src=|Club|CLUB/,
-      );
+      expect(view).not.toMatch(/<filter\b|<pattern\b|src=|Club|CLUB/);
+      expect(view.match(/<image\b/g)).toHaveLength(1);
+      expect(view.match(/href="[^"]+"/g)).toEqual([
+        expect.stringMatching(/^href="data:image\/svg\+xml,/),
+      ]);
       // All accents and hatching share paths: no per-dot or per-line SVG trees.
       expect(view.match(/<(?:path|text|g|svg)\b/g)!.length).toBeLessThan(40);
     },
@@ -149,7 +151,12 @@ describe("illustrations imprimées originales et légères", () => {
     expect(view).toContain('class="card-back-art fixture-card-back"');
     expect(view).toContain('aria-hidden="true"');
     expect(view).toContain('focusable="false"');
-    expect(view).not.toMatch(/<image\b|<filter\b|id=|url\(|href=|<text\b/);
+    expect(view).not.toMatch(/<filter\b|id=|url\(|<text\b/);
+    expect(view).toContain('data-brand-mark="built-brigos"');
+    expect(view.match(/<image\b/g)).toHaveLength(1);
+    expect(view.match(/href="[^"]+"/g)).toEqual([
+      expect.stringMatching(/^href="data:image\/svg\+xml,/),
+    ]);
     expect(view.match(/<path\b/g)!.length).toBeLessThan(12);
   });
 });

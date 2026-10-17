@@ -172,6 +172,7 @@ function geometry(
   brigo: Brigo,
   transform: Transform,
   showStud: (center: Point3) => boolean = () => true,
+  projectPoint: (point: Point3) => Point = project,
 ): Primitive[] {
   const { width: w, depth: d, height: h, shape } = brigo.model;
   const color = brigo.color.hex;
@@ -190,7 +191,7 @@ function geometry(
     closed = true,
   ) => {
     const transformed = vertices.map(transform);
-    const points = transformed.map(project);
+    const points = transformed.map(projectPoint);
     const n =
       closed && vertices.length > 2 ? normal(transformed) : point(0, 0, 0);
     const faceArea =
@@ -773,9 +774,16 @@ function bounds(primitives: Primitive[], padding: number) {
   };
 }
 
-export function brigoGeometry(brigo: Brigo, rotation: Rotation = 0) {
-  const primitives = geometry(brigo, (p) =>
-    rotateModelPoint(brigo.model, p, rotation),
+export function brigoGeometry(
+  brigo: Brigo,
+  rotation: Rotation = 0,
+  projectPoint: (point: Point3) => Point = project,
+) {
+  const primitives = geometry(
+    brigo,
+    (p) => rotateModelPoint(brigo.model, p, rotation),
+    undefined,
+    projectPoint,
   );
   return { primitives, ...bounds(primitives, 9) };
 }

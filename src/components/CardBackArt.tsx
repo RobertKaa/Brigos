@@ -1,4 +1,6 @@
-/** Original manga print emblem: cut facets, broken frames and local ink hatching. */
+import { BrigoLogo } from "./BrigoLogo";
+
+/** The built B inside the original manga frame and local ink accents. */
 export function CardBackArt({ className = "" }: { className?: string }) {
   return (
     <svg
@@ -24,14 +26,9 @@ export function CardBackArt({ className = "" }: { className?: string }) {
         fill="currentColor"
         opacity=".22"
       />
-      <path d="m32 45 28-17 28 17-28 17Z" fill="currentColor" />
-      <path d="m32 56 23 14v26L32 82Z" fill="currentColor" />
-      <path d="m65 70 23-14v26L65 96Z" fill="currentColor" />
-      <path d="m47 45 13-8 13 8-13 8Z" fill="var(--card-back-ink, #262527)" />
-      <path
-        d="m39 74 9 5m-9 1 9 5m-9 1 9 5m23-13 10-6m-10 12 10-6m-10 12 10-6"
-        stroke="var(--card-back-ink, #262527)"
-        strokeWidth="1.4"
+      <BrigoLogo
+        variant="mark"
+        position={{ x: 31, y: 27, width: 58, height: 70 }}
       />
       <path
         d="M5 50 1 48m118 30-5-3M16 18l9 8m70 75 10 9M15 109l9-9m72-75 9-9M37 10l-8 5m62 96-8 5"

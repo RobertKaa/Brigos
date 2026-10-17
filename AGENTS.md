@@ -4,6 +4,12 @@ Ces règles s'appliquent à tout le projet et à toutes les conversations future
 
 Le nom officiel du site et de son univers est **Brigos**. Employer « Brigos » dans tous les textes, logos, cartes et métadonnées publics ; ne pas ajouter « Club ». Conserver les anciens identifiants techniques de stockage pour protéger les sauvegardes existantes.
 
+Le mot-symbole s’écrit **Brigos**, avec seulement la première lettre en majuscule. Dans le logo complet de l’en-tête, le symbole tient lieu de B et précède uniquement « rigos » : ne pas afficher un second B typographique.
+
+Le symbole est un B construit avec les vraies pièces Brigos, leurs chanfreins et raccords losange. Réutiliser ce même assemblage pour tous les logos, cartes et icônes. Préparer son dessin avec `node scripts/export-brand-assets.mjs` après une modification ; ne pas charger le moteur de construction dans chaque logo, ni agrandir l’en-tête pour son affichage.
+
+Les modifications restent locales par défaut. Ne pas pousser sans demande explicite de publication de l’utilisateur. Chaque push sur `main` doit déclencher la vérification puis le déploiement automatique sur Cloudflare ; ne pas remplacer cette liaison par des publications manuelles régulières. Garder GitHub Pages actif jusqu’à sa désactivation par l’utilisateur.
+
 - Toujours penser à l'UI/UX, à l'harmonie du design et à l'ergonomie.
 - Vérifier systématiquement les versions desktop et mobile, la navigation clavier, les contrastes et les préférences de réduction des animations.
 - Préserver des parcours directs et une hiérarchie claire : navigation Boîtes / Atelier / Libre / Collection / Quêtes, action principale avant promotions et statistiques, détails avancés à la demande. Suivre [les parcours UI/UX](docs/ux-flows.md).

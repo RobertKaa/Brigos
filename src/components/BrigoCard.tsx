@@ -2,6 +2,7 @@ import { LockKeyhole } from "lucide-react";
 import type { Brigo } from "../game/catalog";
 import { RARITY_INFO } from "../game/catalog";
 import { BrigoArt } from "./BrigoArt";
+import { BrigoLogo } from "./BrigoLogo";
 import "./brigo-card.css";
 
 export function BrigoCard({
@@ -29,7 +30,7 @@ export function BrigoCard({
     >
       <div className="brigo-card-image">
         <span className="brigo-card-print" aria-hidden="true">
-          BRIGOS
+          <BrigoLogo variant="wordmark" tone="mono" />
         </span>
         <span className="catalog-number">
           #{String(brigo.number).padStart(3, "0")}

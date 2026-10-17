@@ -12,7 +12,7 @@ Brigos développe son propre univers de pièces et de constructions illustrées.
 
 Ces sources décrivent la position de LEGO ; elles ne déterminent pas seules le droit applicable à chaque forme et à chaque pays. Une ressemblance précise exige une analyse adaptée. Le projet choisit donc volontairement une conception indépendante et plus prudente.
 
-## Grammaire visuella pièce
+## Grammaire visuelle Brigos
 
 - Pièces à arêtes chanfreinées, raccords bas en losange et traits d'encre ; pas de matrice de boutons cylindriques caractéristiques.
 - Roues facettées à moyeu étoilé, essieux et articulations dessinés pour cet univers ; aucune référence de pièce d'un fabricant.
@@ -29,3 +29,5 @@ Ces sources décrivent la position de LEGO ; elles ne déterminent pas seules le
 5. Remplacer l'élément si une ressemblance problématique reste inexpliquée, et consigner toute incertitude concrète.
 
 La refonte du 15 octobre remplace la représentation des connecteurs cylindriques par des raccords facettés, sans changer les identifiants ni les placements des plans publiés. Les tests empêchent le retour accidentel des anciens dessins de connecteurs. Ils ne peuvent pas certifier l'absence de toute atteinte à des droits ; ne jamais présenter leur succès comme une validation juridique.
+
+Le logo du 17 octobre est une lettre B assemblée indépendamment avec 13 pièces existantes du catalogue Brigos. Ses placements et couleurs sont définis dans `src/components/brigoMonogram.ts`, sans modèle, photographie ou emblème de tiers. Il reprend les chanfreins et raccords bas en losange de notre dessin. La politique [Fair Play officielle](https://www.lego.com/en-us/legal/notices-and-policies/fair-play) a été relue pour cette création ; cela ne constitue pas une validation juridique du logo.

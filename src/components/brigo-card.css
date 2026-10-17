@@ -73,6 +73,10 @@
   color: var(--card-art-ink);
   line-height: 1.2;
 }
+.brigo-card.collectible-card .brigo-card-print .brigo-logo {
+  width: 42px;
+  height: 16px;
+}
 .brigo-card.collectible-card .catalog-number {
   top: 8px;
   left: 58px;
@@ -217,6 +221,10 @@
   }
   .brigo-card.collectible-card .brigo-card-print {
     font-size: 0.52rem;
+  }
+  .brigo-card.collectible-card .brigo-card-print .brigo-logo {
+    width: 36px;
+    height: 14px;
   }
   .brigo-card.collectible-card .catalog-number {
     left: 53px;

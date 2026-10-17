@@ -7,6 +7,7 @@ dist/
 test-results/
 playwright-report/
 .artifacts/
+.wrangler/
 *.log
 supabase/functions/game/generated/
 supabase/.temp/

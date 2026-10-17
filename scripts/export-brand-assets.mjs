@@ -13,6 +13,13 @@ const server = await createServer({
   appType: "custom",
 });
 try {
+  const { prepareBrigoMonogram } = await server.ssrLoadModule(
+    "/src/components/brigoMonogram.ts",
+  );
+  await fs.writeFile(
+    path.join(root, "src/components/brigo-monogram.json"),
+    `${JSON.stringify(prepareBrigoMonogram())}\n`,
+  );
   const { BrigoLogo, BrigoAppIcon } = await server.ssrLoadModule(
     "/src/components/BrigoLogo.tsx",
   );
