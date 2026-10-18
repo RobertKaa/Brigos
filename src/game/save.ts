@@ -29,6 +29,7 @@ import { V5_RECIPE_SNAPSHOTS } from "./v5RecipeSnapshots";
 import { CURRENT_SAVE_VERSION } from "./releaseVersion";
 import { parseEngagement } from "./engagement";
 import { parseSandboxProjects } from "./sandbox";
+import { emptyFreeGallery, parseFreeGallery } from "./freeGallery";
 import {
   observeProduction,
   parseProduction,
@@ -251,7 +252,8 @@ export function parseSaveResult(
     data.version !== 7 &&
     data.version !== 8 &&
     data.version !== 9 &&
-    data.version !== 10
+    data.version !== 10 &&
+    data.version !== 11
   )
     return fail("version non prise en charge");
   if ((data.version as number) > CURRENT_SAVE_VERSION)
@@ -267,7 +269,8 @@ export function parseSaveResult(
       data.version === 7 ||
       data.version === 8 ||
       data.version === 9 ||
-      data.version === 10) &&
+      data.version === 10 ||
+      data.version === 11) &&
       data.planRevision !== 1)
   )
     return fail("révision de plans non prise en charge");
@@ -282,6 +285,17 @@ export function parseSaveResult(
       : parseSandboxProjects(data.sandboxProjects ?? []);
   if (data.version < 8 && sandboxProjects.length)
     return fail("créations libres incompatibles avec cette ancienne version");
+  if (data.version >= 11 && data.freeGallery === undefined)
+    return fail("galerie libre manquante");
+  const freeGallery = parseFreeGallery(
+    data.freeGallery === undefined ? emptyFreeGallery() : data.freeGallery,
+    sandboxProjects,
+  );
+  if (
+    data.version < 11 &&
+    (freeGallery.exhibits.length || freeGallery.featuredProjectId !== null)
+  )
+    return fail("galerie libre incompatible avec cette ancienne version");
   if (data.version < 9 && data.production !== undefined) {
     const legacyProduction = record(data.production);
     if (
@@ -405,6 +419,7 @@ export function parseSaveResult(
     inventory: parsedInventory,
     discovered,
     sandboxProjects,
+    ...(CURRENT_SAVE_VERSION >= 11 ? { freeGallery } : {}),
     constructions: constructions.filter(
       (built) => !revisedRecipes.has(built.recipeId),
     ),

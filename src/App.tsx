@@ -1,4 +1,4 @@
-import { lazy, Suspense, useEffect, useState } from "react";
+import { lazy, Suspense, useEffect, useMemo, useState } from "react";
 import {
   Check,
   CircleHelp,
@@ -13,6 +13,7 @@ import {
   Sparkles,
   Sun,
   UserRound,
+  Users,
   X,
 } from "lucide-react";
 import {
@@ -46,17 +47,33 @@ import { useTheme } from "./useTheme";
 import { AppNavigation } from "./components/AppNavigation";
 import { AccountPanel } from "./components/AccountPanel";
 import { useAuth } from "./auth/useAuth";
-import { readAppRoute } from "./navigation";
+import { appRouteHref, isInformationView, readAppRoute } from "./navigation";
+import { LegalNotice } from "./screens/LegalNotice";
+import { Contact } from "./screens/Contact";
+import { Faq } from "./screens/Faq";
 import { isLocalAdminEnabled } from "./localAdmin";
 import type { Game } from "./screens/types";
+import { createCommunityApi } from "./community";
+import type { CommunityApi } from "./community";
 import "./journey.css";
+import "./screens/community.css";
 
 const Sandbox = lazy(() =>
-  import("./screens/Sandbox").then((screen) => ({ default: screen.Sandbox })),
+  import("./screens/FreeMode").then((screen) => ({ default: screen.FreeMode })),
 );
+const Community = lazy(() =>
+  import("./screens/Community").then((screen) => ({
+    default: screen.Community,
+  })),
+);
+const guestCommunity = createCommunityApi(null);
 
 export default function App() {
   const auth = useAuth();
+  const communityApi = useMemo(
+    () => createCommunityApi(auth.user?.id ?? null),
+    [auth.user?.id],
+  );
   const game = useGame({
     userId: auth.user?.id ?? null,
     authReady: auth.ready,
@@ -71,6 +88,7 @@ export default function App() {
       <GameApp
         key={auth.user?.id ?? "local"}
         game={game}
+        communityApi={communityApi}
         onOpenAccount={() => setAccountOpen(true)}
       />
       {accountOpen && (
@@ -95,9 +113,11 @@ export default function App() {
 export function GameApp({
   game,
   onOpenAccount,
+  communityApi = guestCommunity,
 }: {
   game: Game;
   onOpenAccount?: () => void;
+  communityApi?: CommunityApi;
 }) {
   const localAdminEnabled = isLocalAdminEnabled({
     development: import.meta.env.DEV,
@@ -107,6 +127,11 @@ export function GameApp({
   const { theme, preference, setPreference, toggleTheme } = useTheme();
   const [route, setRoute] = useState(() => readAppRoute(location.hash));
   const { view } = route;
+  const informationView = isInformationView(view);
+  const [returnToGame, setReturnToGame] = useState("#boxes");
+  useEffect(() => {
+    if (!isInformationView(route.view)) setReturnToGame(appRouteHref(route));
+  }, [route]);
   const [selectedBox, setSelectedBox] = useState<BoxId>("discovery");
   const [adminOpen, setAdminOpen] = useState(false);
   const [helpOpen, setHelpOpen] = useState(false);
@@ -310,8 +335,27 @@ export function GameApp({
         id="main-content"
         tabIndex={-1}
         className="main-content"
-        aria-busy={!game.ready}
+        aria-busy={!informationView && view !== "community" && !game.ready}
       >
+        {!informationView && view !== "community" && (
+          <nav className="community-entry" aria-label="Découvrir les joueurs">
+            <a href="#community">
+              <Users size={17} aria-hidden="true" />
+              Galeries des joueurs
+            </a>
+          </nav>
+        )}
+        {view === "community" && (
+          <Suspense fallback={<p role="status">Les galeries se préparent…</p>}>
+            <Community
+              game={game}
+              route={route}
+              api={communityApi}
+              signedIn={game.mode === "connected"}
+              onOpenAccount={onOpenAccount}
+            />
+          </Suspense>
+        )}
         {view === "boxes" && (
           <Home
             game={game}
@@ -334,11 +378,20 @@ export function GameApp({
           />
         )}
         {view === "journal" && <Journal game={game} />}
+        {view === "mentions-legales" && (
+          <LegalNotice returnHref={returnToGame} />
+        )}
+        {view === "contact" && <Contact />}
+        {view === "faq" && <Faq returnHref={returnToGame} />}
         {view === "sandbox" && (
           <Suspense
             fallback={<p role="status">L’espace de construction se prépare…</p>}
           >
-            <Sandbox game={game} />
+            <Sandbox
+              game={game}
+              view={route.sandboxView}
+              projectId={route.sandboxProjectId}
+            />
           </Suspense>
         )}
       </main>
@@ -349,6 +402,23 @@ export function GameApp({
           </span>
           À chaque pièce, une nouvelle idée.
         </span>
+        <nav className="footer-links" aria-label="Informations du site">
+          <a
+            href="#mentions-legales"
+            aria-current={view === "mentions-legales" ? "page" : undefined}
+          >
+            Mentions légales
+          </a>
+          <a href="#faq" aria-current={view === "faq" ? "page" : undefined}>
+            FAQ
+          </a>
+          <a
+            href="#contact"
+            aria-current={view === "contact" ? "page" : undefined}
+          >
+            Contact
+          </a>
+        </nav>
         <span className="save-status">
           <Check size={13} />
           {!game.ready
@@ -405,43 +475,46 @@ export function GameApp({
           }}
         />
       )}
-      {game.ready && game.state.pendingOpening && (
-        <OpeningModal
-          opening={game.state.pendingOpening}
-          reducedMotion={reducedMotion}
-          busy={game.busy}
-          coins={game.state.coins}
-          boxes={game.state.boxes}
-          persistent={game.persistent}
-          onOpenNext={(id) => void handleOpen(id, true)}
-          goal={
-            goalRecipe && goalProgress
-              ? {
-                  name: goalRecipe.name,
-                  available: goalProgress.available,
-                  total: goalProgress.total,
-                  completed: goalProgress.completed,
-                  onView: () => {
-                    void game
-                      .act({ type: "finish-opening" })
-                      .then((success) => {
-                        if (success) {
-                          location.hash = "workshop";
-                          setRecipeId(goalRecipe.id);
-                        }
-                      });
-                  },
-                }
-              : undefined
-          }
-          onClose={closeOpening}
-          onCollection={() => {
-            void game.act({ type: "finish-opening" }).then((success) => {
-              if (success) location.hash = "collection";
-            });
-          }}
-        />
-      )}
+      {!informationView &&
+        view !== "community" &&
+        game.ready &&
+        game.state.pendingOpening && (
+          <OpeningModal
+            opening={game.state.pendingOpening}
+            reducedMotion={reducedMotion}
+            busy={game.busy}
+            coins={game.state.coins}
+            boxes={game.state.boxes}
+            persistent={game.persistent}
+            onOpenNext={(id) => void handleOpen(id, true)}
+            goal={
+              goalRecipe && goalProgress
+                ? {
+                    name: goalRecipe.name,
+                    available: goalProgress.available,
+                    total: goalProgress.total,
+                    completed: goalProgress.completed,
+                    onView: () => {
+                      void game
+                        .act({ type: "finish-opening" })
+                        .then((success) => {
+                          if (success) {
+                            location.hash = "workshop";
+                            setRecipeId(goalRecipe.id);
+                          }
+                        });
+                    },
+                  }
+                : undefined
+            }
+            onClose={closeOpening}
+            onCollection={() => {
+              void game.act({ type: "finish-opening" }).then((success) => {
+                if (success) location.hash = "collection";
+              });
+            }}
+          />
+        )}
       {helpOpen && (
         <Modal
           title="Guide et réglages"

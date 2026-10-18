@@ -255,7 +255,7 @@ describe("validation et migration des marqueurs de production", () => {
     const legacy = { ...state, version: 8, production: undefined };
     const now = START + CYCLE * 50;
     const migrated = parseSaveResult(legacy, now).state;
-    expect(migrated.version).toBe(10);
+    expect(migrated.version).toBe(createGame().version);
     expect(migrated.constructions).toEqual(state.constructions);
     expect(migrated.inventory).toEqual(state.inventory);
     expect(getProduction(migrated, now).totalReady).toBe(0);

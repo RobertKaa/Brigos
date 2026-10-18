@@ -95,6 +95,8 @@ En local, `supabase start`, puis créer `supabase/functions/.env` ignoré avec l
 
 ## API et garanties de stockage
 
+La communauté utilise une RPC PostgreSQL distincte et des projections volontairement publiées, sans ouvrir la lecture des parties. La migration `202610180001_brigo_community` est appliquée depuis le 18 octobre 2026. Ses limites, ses contrôles RLS, sa vérification serveur et la procédure de modération sont décrits dans [Galeries et profils de joueurs](community.md). Publier l’interface v11 avant la mise à jour du moteur de jeu v11.
+
 Endpoint du projet Brigos : `https://zqhnbygwxfqjtbfeuiyg.supabase.co/functions/v1/game`.
 
 - `GET`, avec bearer utilisateur, retourne `{state, revision, serverTime}`. La création du compte de jeu est atomique et unique. Les 1 200 pièces et trois boîtes de départ ont un reçu et une ligne d’origine dans le journal à la révision **0**.

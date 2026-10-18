@@ -3,6 +3,7 @@ import { GameError, MAX_VALUE } from "./engine";
 import type { GameState } from "./engine";
 import { rotatedSize } from "./geometry";
 import type { Rotation } from "./geometry";
+import { withoutFreeExhibit } from "./freeGallery";
 
 export const SANDBOX_GRID_SIZE = 24;
 export const SANDBOX_MAX_HEIGHT = 36;
@@ -296,11 +297,18 @@ export function removeSandboxBrigo(
     throw new GameError("Cette pièce n’est plus dans votre création.");
   const inventory = returnedInventory(state, [placement]);
   return {
-    ...updateProject(state, {
-      ...project,
-      placements: project.placements.filter((item) => item.id !== placementId),
-      updatedAt: updatedAt(project, nowMs),
-    }),
+    ...updateProject(
+      project.placements.length === 1
+        ? withoutFreeExhibit(state, projectId)
+        : state,
+      {
+        ...project,
+        placements: project.placements.filter(
+          (item) => item.id !== placementId,
+        ),
+        updatedAt: updatedAt(project, nowMs),
+      },
+    ),
     inventory,
   };
 }
@@ -311,7 +319,7 @@ export function deleteSandboxProject(
   const project = findProject(state, projectId);
   const inventory = returnedInventory(state, project.placements);
   return {
-    ...state,
+    ...withoutFreeExhibit(state, projectId),
     inventory,
     sandboxProjects: (state.sandboxProjects ?? []).filter(
       (item) => item.id !== projectId,

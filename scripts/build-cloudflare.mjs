@@ -9,6 +9,13 @@ process.env.NODE_ENV = "production";
 const environment = loadEnv("production", root, "VITE_");
 const url = environment.VITE_SUPABASE_URL?.trim();
 const key = environment.VITE_SUPABASE_PUBLISHABLE_KEY?.trim();
+const contactSiteKey =
+  environment.VITE_CONTACT_TURNSTILE_SITE_KEY?.trim() ?? "";
+if (contactSiteKey && !/^[A-Za-z0-9_-]{20,100}$/.test(contactSiteKey)) {
+  throw new Error(
+    "The contact form requires a valid public Turnstile site key.",
+  );
+}
 
 // This release targets the existing Brigos project, with a public browser key.
 if (url !== "https://zqhnbygwxfqjtbfeuiyg.supabase.co") {
@@ -29,6 +36,7 @@ Object.assign(process.env, {
   VITE_AUTH_REDIRECT_URL: "https://brigoslab.com/#account",
   VITE_AUTH_GOOGLE_ENABLED: "false",
   VITE_BASE_PATH: "/",
+  VITE_CONTACT_TURNSTILE_SITE_KEY: contactSiteKey,
 });
 
 process.chdir(root);
@@ -41,7 +49,10 @@ if (check.error) throw check.error;
 if (check.status !== 0) process.exit(check.status ?? 1);
 
 await build({ mode: "production", base: "/", envDir: false });
-await copyFile(resolve(root, "scripts/cloudflare-404.html"), resolve(root, "dist/404.html"));
+await copyFile(
+  resolve(root, "scripts/cloudflare-404.html"),
+  resolve(root, "dist/404.html"),
+);
 console.log(
   "Cloudflare bundle prepared for https://brigoslab.com. No upload or deployment.",
 );

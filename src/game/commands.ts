@@ -42,6 +42,13 @@ import {
   SANDBOX_MAX_NAME_LENGTH,
 } from "./sandbox";
 import type { SandboxCandidate } from "./sandbox";
+import {
+  exposeSandboxProject,
+  featureFreeExhibit,
+  galleryPresentation,
+  withoutFreeExhibit,
+} from "./freeGallery";
+import type { ExhibitPresentation } from "./freeGallery";
 
 export type GameCommand =
   | { type: "open-box" | "open-next-box"; boxId: BoxId }
@@ -68,6 +75,13 @@ export type GameCommand =
       candidate: SandboxCandidate;
     }
   | { type: "remove-brigo"; projectId: string; placementId: string }
+  | ({
+      type: "expose-project";
+      projectId: string;
+      name: string;
+    } & ExhibitPresentation)
+  | { type: "remove-exhibit"; projectId: string }
+  | { type: "feature-exhibit"; projectId: string | null }
   | { type: "preferences"; sound?: boolean; reducedMotion?: boolean };
 
 export interface Snapshot {
@@ -245,8 +259,39 @@ export function parseGameCommand(value: unknown): GameCommand {
         name: projectName(data.name),
       };
     case "delete-project":
+    case "remove-exhibit":
       fields(data, ["type", "projectId"]);
       return { type, projectId: identifier(data.projectId) };
+    case "expose-project": {
+      fields(data, [
+        "type",
+        "projectId",
+        "name",
+        "description",
+        "rotation",
+        "backgroundId",
+      ]);
+      let presentation: ExhibitPresentation;
+      try {
+        presentation = galleryPresentation(
+          data as unknown as ExhibitPresentation,
+        );
+      } catch {
+        return fail();
+      }
+      return {
+        type,
+        projectId: identifier(data.projectId),
+        name: projectName(data.name),
+        ...presentation,
+      };
+    }
+    case "feature-exhibit":
+      fields(data, ["type", "projectId"]);
+      return {
+        type,
+        projectId: data.projectId === null ? null : identifier(data.projectId),
+      };
     case "place-brigo":
       fields(data, ["type", "projectId", "candidate"]);
       return {
@@ -376,6 +421,21 @@ export function applyGameCommand(
       break;
     case "delete-project":
       next = deleteSandboxProject(state, parsed.projectId);
+      break;
+    case "expose-project":
+      next = exposeSandboxProject(
+        state,
+        parsed.projectId,
+        parsed.name,
+        parsed,
+        nowMs,
+      );
+      break;
+    case "remove-exhibit":
+      next = withoutFreeExhibit(state, parsed.projectId);
+      break;
+    case "feature-exhibit":
+      next = featureFreeExhibit(state, parsed.projectId);
       break;
     case "place-brigo":
       next = placeSandboxBrigo(

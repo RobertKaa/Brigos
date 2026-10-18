@@ -38,7 +38,7 @@ describe("migration v9 vers les cadences v10", () => {
     const now = START + DAY / 2;
     const migrated = parseSaveResult(source, now).state;
     const row = getProduction(migrated, now).rows[0];
-    expect(migrated.version).toBe(10);
+    expect(migrated.version).toBe(createGame().version);
     expect(migrated.coins).toBe(source.coins);
     expect(migrated.inventory).toEqual(source.inventory);
     expect(migrated.constructions).toEqual(source.constructions);

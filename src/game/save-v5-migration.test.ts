@@ -73,8 +73,9 @@ function historicalSave(recipeId: string) {
     },
     recipe,
   ).pieces;
+  const { freeGallery: _futureGallery, ...historicalDefaults } = createGame();
   return {
-    ...createGame(),
+    ...historicalDefaults,
     version: 5 as const,
     planRevision: 1 as const,
     coins: 2437,

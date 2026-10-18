@@ -179,7 +179,7 @@ describe("persistance et conservation de la production", () => {
     const [a, b] = await Promise.all([first.load(), second.load()]);
     expect(a).toEqual(b);
     expect(a.revision).toBe(6);
-    expect(a.state.version).toBe(10);
+    expect(a.state.version).toBe(CURRENT_SAVE_VERSION);
     expect(a.state.coins).toBe(legacy.coins);
     expect(getProduction(a.state).totalReady).toBe(2);
     expect(a.state.production!.entries[id].bankedCoins).toBe(2);

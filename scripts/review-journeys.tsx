@@ -11,6 +11,11 @@ import {
 import { syncEngagement } from "../src/game/engagement";
 import { applyGameCommand } from "../src/game/commands";
 import { RECIPE_BY_ID } from "../src/game/catalog";
+import { createSandboxProject, placeSandboxBrigo } from "../src/game/sandbox";
+import {
+  exposeSandboxProject,
+  featureFreeExhibit,
+} from "../src/game/freeGallery";
 import type { Game } from "../src/screens/types";
 import type { Notice } from "../src/game/useGame";
 import "@fontsource-variable/dm-sans";
@@ -51,6 +56,47 @@ if (new URLSearchParams(location.search).get("empty") !== "1") {
       ),
     },
   });
+  if (initial.version >= 11) {
+    const pieces = [
+      { brigoId: "plate-4x4:ivory", x: 10, y: 10, z: 0, rotation: 0 as const },
+      { brigoId: "brick-2x2:coral", x: 10, y: 10, z: 1, rotation: 0 as const },
+      { brigoId: "brick-2x2:coral", x: 12, y: 10, z: 1, rotation: 0 as const },
+      { brigoId: "slope-2x2:coral", x: 10, y: 10, z: 4, rotation: 0 as const },
+      { brigoId: "slope-2x2:coral", x: 12, y: 10, z: 4, rotation: 0 as const },
+      { brigoId: "round-2x2:green", x: 10, y: 12, z: 1, rotation: 0 as const },
+    ];
+    for (const brigoId of new Set(pieces.map((piece) => piece.brigoId)))
+      initial = adminCommand(
+        initial,
+        { type: "piece", brigoId, amount: 20 },
+        true,
+      );
+    initial = createSandboxProject(initial, "Le petit belvédère", now);
+    const id = initial.sandboxProjects!.at(-1)!.id;
+    for (const piece of pieces)
+      initial = placeSandboxBrigo(initial, id, piece, now);
+    initial = featureFreeExhibit(
+      exposeSandboxProject(
+        initial,
+        id,
+        "Le petit belvédère",
+        {
+          description: "Un abri corail posé au bord du jardin.",
+          rotation: 0,
+          backgroundId: "paper",
+        },
+        now,
+      ),
+      id,
+    );
+    initial = createSandboxProject(initial, "Le jardin à inventer", now);
+    initial = placeSandboxBrigo(
+      initial,
+      initial.sandboxProjects!.at(-1)!.id,
+      { brigoId: "round-2x2:green", x: 11, y: 11, z: 0, rotation: 0 },
+      now,
+    );
+  }
 }
 initial = syncEngagement(initial, initial);
 

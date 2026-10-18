@@ -15,3 +15,8 @@ secure_password_change = true
 # The handler verifies every bearer token with Auth /user, supporting signing-key rotation.
 verify_jwt = false
 entrypoint = "./functions/game/index.ts"
+
+[functions.contact]
+# Public contact form: checks origin, payload and a single-use Turnstile token in code.
+verify_jwt = false
+entrypoint = "./functions/contact/index.ts"

@@ -23,6 +23,7 @@ import type { EngagementState } from "./engagement";
 import type { SandboxProject } from "./sandbox";
 import { collectProduction, observeProduction } from "./production";
 import type { ProductionState } from "./production";
+import type { FreeGalleryState } from "./freeGallery";
 
 export interface Drop {
   brigoId: string;
@@ -42,7 +43,7 @@ export interface Construction {
   pieces: Record<string, number>;
 }
 export interface GameState {
-  version: 5 | 6 | 7 | 8 | 9 | 10;
+  version: 5 | 6 | 7 | 8 | 9 | 10 | 11;
   planRevision: 1;
   coins: number;
   boxes: Record<BoxId, number>;
@@ -63,6 +64,8 @@ export interface GameState {
   sandboxProjects?: SandboxProject[];
   /** Optional for retained snapshots, initialized without retroactive rewards. */
   production?: ProductionState;
+  /** Optional only for snapshots retained before the personal gallery. */
+  freeGallery?: FreeGalleryState;
 }
 export class GameError extends Error {}
 export const MAX_VALUE = 10_000_000;
@@ -79,6 +82,9 @@ export const createGame = (): GameState => ({
   discovered: [],
   constructions: [],
   sandboxProjects: [],
+  ...(CURRENT_SAVE_VERSION >= 11
+    ? { freeGallery: { exhibits: [], featuredProjectId: null } }
+    : {}),
   production: { observedAt: 0, entries: {} },
   history: [],
   pendingOpening: null,

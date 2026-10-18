@@ -1181,7 +1181,7 @@ export type ConstructionPreviewAsset = {
 };
 
 // Increment after changing piece drawing rules, then regenerate preview assets.
-const CONSTRUCTION_RENDERER_VERSION = "manga-6";
+export const CONSTRUCTION_RENDERER_VERSION = "manga-6";
 const fingerprints = new WeakMap<object, string>();
 export function constructionPreviewFingerprint(recipeId: string) {
   const recipe = RECIPE_BY_ID.get(recipeId);

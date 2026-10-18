@@ -1,4 +1,5 @@
 import { useMemo, useRef, useState } from "react";
+import type { Ref } from "react";
 import {
   ArrowLeft,
   Box,
@@ -57,11 +58,25 @@ export function sandboxPalette(
   );
 }
 
-export function Sandbox({ game }: { game: Game }) {
+export function Sandbox({
+  game,
+  initialProjectId,
+  onExpose,
+  titleRef,
+  onProjectDeleted,
+  onProjectChanged,
+}: {
+  game: Game;
+  initialProjectId?: string;
+  onExpose?: (projectId: string) => void;
+  titleRef?: Ref<HTMLHeadingElement>;
+  onProjectDeleted?: () => void;
+  onProjectChanged?: (projectId: string) => void;
+}) {
   const { state, act, ready, busy } = game;
   const projects = state.sandboxProjects ?? [];
   const [projectId, setProjectId] = useState<string | null>(
-    () => projects[0]?.id ?? null,
+    () => initialProjectId ?? projects[0]?.id ?? null,
   );
   const project = projects.find((item) => item.id === projectId) ?? projects[0];
   const [newName, setNewName] = useState("");
@@ -145,6 +160,7 @@ export function Sandbox({ game }: { game: Game }) {
 
   function changeProject(id: string) {
     setProjectId(id);
+    if (id) onProjectChanged?.(id);
     setInteractionMode("place");
     setSelectedId(null);
     setDeleting(false);
@@ -231,6 +247,7 @@ export function Sandbox({ game }: { game: Game }) {
       )
     ) {
       changeProject("");
+      onProjectDeleted?.();
     }
   }
 
@@ -356,7 +373,9 @@ export function Sandbox({ game }: { game: Game }) {
           <span className="eyebrow">
             <i /> CONSTRUCTION LIBRE
           </span>
-          <h1>À vous d’inventer la suite.</h1>
+          <h1 ref={titleRef} tabIndex={-1}>
+            À vous d’inventer la suite.
+          </h1>
           <p>
             Explorez votre création en 3D, sous tous les angles. Chaque pièce
             posée est prise dans votre stock et vous revient quand vous la
@@ -443,6 +462,20 @@ export function Sandbox({ game }: { game: Game }) {
               <Layers3 size={15} aria-hidden="true" />{" "}
               {stockCount.toLocaleString("fr-FR")} en stock
             </span>
+            {onExpose && (
+              <button
+                type="button"
+                className="sandbox-secondary"
+                disabled={locked || !placements.length}
+                onClick={() => onExpose(project.id)}
+              >
+                {state.freeGallery?.exhibits.some(
+                  (item) => item.projectId === project.id,
+                )
+                  ? "Actualiser l’exposition"
+                  : "Exposer cette création"}
+              </button>
+            )}
             <span className="sandbox-save-status" role="status">
               <Check size={15} aria-hidden="true" />{" "}
               {busy
@@ -797,8 +830,8 @@ export function Sandbox({ game }: { game: Game }) {
                     <div className="sandbox-delete-confirm">
                       <p>
                         Démonter « {project.name} » ? Ses {placements.length}{" "}
-                        Brigos retourneront dans votre stock. Le projet sera
-                        supprimé.
+                        Brigos retourneront dans votre stock. Son exposition
+                        sera retirée de la galerie. Le projet sera supprimé.
                       </p>
                       <button
                         type="button"

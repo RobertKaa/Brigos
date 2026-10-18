@@ -10,4 +10,5 @@ playwright-report/
 .wrangler/
 *.log
 supabase/functions/game/generated/
+supabase/functions/contact/generated/
 supabase/.temp/

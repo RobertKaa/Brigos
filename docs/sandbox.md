@@ -8,6 +8,43 @@ avec sa liste de références exactes, positions entières et rotations par quar
 de tour. Le plateau mesure 24 × 24 unités, pour 36 unités de hauteur. Une création
 contient au plus 500 Brigos ; une partie contient au plus 20 créations libres.
 
+## Galerie personnelle
+
+L’exposition personnelle reste privée. Le lien **Partager avec les joueurs** mène au profil communautaire, où chaque publication est volontaire. La consultation et le partage ne changent jamais l’inventaire, les réservations ou l’économie. Retirer une exposition ou supprimer son projet retire aussi son partage côté serveur. Voir [les galeries communautaires](community.md).
+
+`#sandbox` ouvre **Ma galerie** et liste tous les projets existants, même s’ils
+ne sont pas encore exposés. **Reprendre** mène au bon projet avec
+`#sandbox?view=build&project=<identifiant>`. **Construire** conserve l’accès direct
+à l’éditeur. Un projet absent revient à la galerie au lieu d’ouvrir un autre
+projet. **Nouvelle création** enregistre un nouveau projet puis ouvre son éditeur.
+
+**Exposer** demande au moins un Brigo, un titre de 1 à 48 caractères, une
+description facultative de 240 caractères et un angle par quart de tour.
+Les fonds Papier et Nuit d’encre sont disponibles. La présentation est
+enregistrée avec le renommage du projet dans une même commande `expose-project`.
+L’interface attend sa confirmation avant de fermer le dialogue. Une erreur
+conserve la saisie et Échap annule sans changement.
+
+Chaque exposition référence le projet, sans nouvelle réservation. Une seule
+exposition peut être en vedette. Retirer une exposition conserve la construction ;
+démonter le projet ou enlever son dernier Brigo retire aussi son exposition et
+sa vedette, dans la même transaction que la restitution. Un dépassement de
+capacité annule tout. Une modification géométrique affiche « À actualiser » ;
+un changement de titre ne modifie pas l’empreinte.
+
+La sauvegarde v11 ajoute `freeGallery`, avec `exhibits` et `featuredProjectId`.
+Les créations et les compteurs v10 restent inchangés. La galerie initiale est
+vide ; les projets historiques restent visibles, à exposer par le joueur.
+Voir [les migrations](save-migrations.md). Les défis et le partage décrits dans
+[la conception](free-mode-evolution.md) restent des étapes suivantes.
+
+La grille emploie une seule image SVG locale par construction, avec symboles
+réutilisés, dérivée des vrais maillages Brigos. Les noms et descriptions n’entrent
+jamais dans ce SVG. Le cache garde au plus 20 aperçus et 16 Mo de chaînes ; aucun
+canvas 3D n’est monté dans la galerie. La 3D n’est chargée que dans l’éditeur.
+`scripts/review-journeys.html#sandbox` utilise les composants et commandes réels
+avec deux projets fictifs en mémoire, sans accéder à la sauvegarde du joueur.
+
 ## Stock et actions
 
 - Poser une pièce retire immédiatement un exemplaire du stock disponible.

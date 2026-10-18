@@ -7,6 +7,7 @@ import {
 import { createGame } from "../game/engine";
 import type { GameState } from "../game/engine";
 import type { Snapshot } from "../game/commands";
+import { createSandboxProject, placeSandboxBrigo } from "../game/sandbox";
 
 const USER = "10000000-0000-4000-8000-000000000001";
 const NOW = Date.parse("2026-10-16T10:00:00.000Z");
@@ -225,6 +226,50 @@ describe("authenticated server game boundary", () => {
     expect(
       (await post({ type: "create-project", name: "Autre" }, 0, id)).status,
     ).toBe(409);
+  });
+  it("persists a private exhibition once, replays its receipt and rejects another user's project", async () => {
+    const { post, repository } = setup();
+    const brigoId = "brick-1x1:coral";
+    let state = createSandboxProject(
+      { ...createGame(), inventory: { [brigoId]: 1 }, discovered: [brigoId] },
+      "Mon jardin",
+      NOW,
+    );
+    const projectId = state.sandboxProjects![0].id;
+    state = placeSandboxBrigo(
+      state,
+      projectId,
+      { brigoId, x: 1, y: 1, z: 0, rotation: 0 },
+      NOW,
+    );
+    repository.games.set(USER, {
+      state,
+      revision: 0,
+      serverTime: new Date(NOW).toISOString(),
+    });
+    const command = {
+      type: "expose-project",
+      projectId,
+      name: "Jardin corail",
+      description: "Personnel",
+      rotation: 90,
+      backgroundId: "ink",
+    };
+    const commandId = crypto.randomUUID();
+    const first = await post(command, 0, commandId);
+    expect(first.status).toBe(200);
+    const body = await first.json();
+    expect(body.state.freeGallery.exhibits).toHaveLength(1);
+    expect(body.state.inventory).toEqual(state.inventory);
+    expect(body.state.coins).toBe(state.coins);
+    const repeated = await (await post(command, 0, commandId)).json();
+    expect(repeated.replayed).toBe(true);
+    expect(repository.commits).toBe(1);
+    expect(
+      (await post({ ...command, projectId: "other-user-project" }, 1)).status,
+    ).toBe(422);
+    expect(repository.commits).toBe(1);
+    expect((await post({ ...command, coins: 999 }, 1)).status).toBe(400);
   });
   it("never spends twice when requests compete at the same revision", async () => {
     const { get, post, repository } = setup();

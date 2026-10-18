@@ -1,5 +1,26 @@
 # Versions des plans et sauvegardes
 
+## Galerie personnelle du mode Libre en v11
+
+La v11 ajoute seulement `freeGallery: { exhibits, featuredProjectId }`. Les
+formats antérieurs reçoivent une galerie vide ; leurs projets restent visibles
+dans Libre. Aucune pièce, monnaie, construction, production, XP ou récompense
+n’est créée, démontée ou réinitialisée. Les compteurs v10 sont conservés tels quels.
+La version est activée après installation des parseurs, commandes et tests.
+
+Les expositions sont bornées à 20 identifiants uniques de projets non vides.
+Le parseur vérifie angles, fonds locaux autorisés, description, empreinte bornée
+et appartenance de la vedette à la galerie. Une ancienne version transportant
+une galerie non vide est refusée ; les lecteurs v10 refusent la v11. La migration
+est persistée une seule fois avec la révision IndexedDB ou serveur, y compris
+en cas de chargements concurrents. Aucun identifiant historique ne change.
+
+Exposer/actualiser, masquer et mettre en vedette utilisent `game.act` et sa
+frontière de commandes stricte. Le renommage fait partie de la transaction
+d’exposition. Les actions de retrait de la dernière pièce et de démontage
+nettoient les références de galerie seulement si la restitution réussit.
+L’export/import conserve présentation et vedette, sans inclure les aperçus dérivés.
+
 ## Bac à sable / sauvegarde v8
 
 La v8 ajoute les projets libres et leurs placements exacts. Les sauvegardes antérieures reçoivent une liste vide ; leurs ressources, plans assemblés, récompenses, activités et pièces restent identiques. Le format 8 exige ce champ et protège les réservations contre les anciennes applications qui ignoreraient les projets libres. La révision IndexedDB refuse également une écriture obsolète depuis un autre onglet.

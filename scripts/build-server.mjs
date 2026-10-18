@@ -21,3 +21,19 @@ await build({
   minify: true,
 });
 console.log("Brigos : moteur serveur préparé pour Supabase Edge Functions.");
+await mkdir(
+  new URL("../supabase/functions/contact/generated/", import.meta.url),
+  { recursive: true },
+);
+await build({
+  entryPoints: ["src/server/contactService.ts"],
+  outfile: "supabase/functions/contact/generated/contact.js",
+  bundle: true,
+  platform: "neutral",
+  format: "esm",
+  target: "es2022",
+  minify: true,
+});
+console.log(
+  "Brigos : formulaire de contact préparé pour Supabase Edge Functions.",
+);

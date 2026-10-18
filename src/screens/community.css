@@ -1,0 +1,416 @@
+.community h1,
+.community h2,
+.community h3,
+.community p,
+.community a {
+  overflow-wrap: anywhere;
+}
+.community-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: 24px;
+}
+.community-heading h1 {
+  font-size: 38px;
+  margin: 8px 0 10px;
+}
+.community-heading p,
+.community-profile p {
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.7;
+}
+.community-heading > a {
+  flex-shrink: 0;
+}
+.community .free-tabs {
+  gap: 24px;
+}
+.community-notice {
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 14px 18px;
+  background: var(--studio-surface-alt);
+  margin-bottom: 20px;
+  font-size: 14px;
+  line-height: 1.6;
+}
+.community-notice button {
+  margin-top: 10px;
+}
+.community-loading {
+  padding: 40px 0;
+  color: var(--muted);
+}
+.community-search {
+  margin-bottom: 24px;
+  max-width: 680px;
+}
+.community label {
+  font-size: 14px;
+  line-height: 1.5;
+  font-weight: 600;
+}
+.community-search > div {
+  display: flex;
+  gap: 10px;
+  margin-top: 8px;
+}
+.community-creations {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 22px;
+}
+.community-creation-card {
+  min-width: 0;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--studio-surface);
+  overflow: hidden;
+}
+.community-creation-card > a:first-child {
+  display: block;
+}
+.community-preview {
+  min-width: 0;
+}
+.community .free-detail-copy h2 {
+  font-size: 32px;
+}
+.community .free-detail > .community-preview .free-art {
+  border: 1px solid var(--line);
+  border-radius: 12px;
+}
+.community-creation-card > a:first-child:focus-visible {
+  outline-offset: -4px;
+}
+.community-preview .free-art {
+  aspect-ratio: 4/3;
+  min-height: 0;
+}
+.community-card-copy {
+  padding: 18px 18px 12px;
+}
+.community-card-copy h3 {
+  font-size: 22px;
+}
+.community-card-copy p {
+  color: var(--muted);
+  font-size: 12px;
+  margin-top: 8px;
+}
+.community-card-author {
+  padding: 10px 18px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 14px;
+  font-weight: 600;
+  min-height: 44px;
+}
+.community-card-author:hover,
+.community-player-card:hover {
+  background: var(--studio-surface-alt);
+}
+.community-players {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+.community-player-card {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--studio-surface);
+  padding: 20px;
+  min-width: 0;
+}
+.community-player-card > div {
+  flex: 1;
+  min-width: 0;
+}
+.community-player-card h2 {
+  font-size: 24px;
+}
+.community-player-card p {
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--muted);
+  margin: 6px 0;
+}
+.community-avatar {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 60px;
+  height: 60px;
+  flex-shrink: 0;
+  border-radius: 16px;
+  border: 1px solid var(--line);
+}
+.community-avatar .brigo-logo {
+  width: 40px;
+  height: 46px;
+}
+.community-avatar-coral {
+  background: #f1d4c8;
+}
+.community-avatar-mint {
+  background: #d2e6d5;
+}
+.community-avatar-gold {
+  background: #eddfb8;
+}
+.community-profile {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  border-bottom: 1px solid var(--line);
+  padding: 18px 0 26px;
+  margin-bottom: 22px;
+}
+.community-profile > div {
+  flex: 1;
+  min-width: 0;
+}
+.community-profile h2 {
+  font-size: 34px;
+  margin: 6px 0 8px;
+}
+.community-profile .community-avatar {
+  width: 84px;
+  height: 84px;
+}
+.community-profile .brigo-logo {
+  width: 56px;
+  height: 64px;
+}
+.community-section-title {
+  font-size: 26px;
+  margin: 24px 0;
+}
+.community-pager {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin: 26px 0;
+  font-size: 13px;
+  color: var(--muted);
+}
+.community-pager a {
+  color: var(--ink);
+}
+.community-author {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding-block: 8px;
+}
+.community-author small {
+  display: block;
+  color: var(--muted);
+  margin-top: 6px;
+  font-size: 12px;
+}
+.community-profile-form {
+  padding: 26px;
+  background: var(--studio-surface);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  max-width: 760px;
+}
+.community-profile-form h2 {
+  font-size: 28px;
+  margin-bottom: 10px;
+}
+.community-profile-form fieldset {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+  border: 0;
+  margin: 22px 0 0;
+  padding: 0;
+}
+.community-profile-form label:not(.community-consent) {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.community-consent {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  grid-column: 1/-1;
+  cursor: pointer;
+  min-height: 44px;
+}
+.community-consent input {
+  flex-shrink: 0;
+  margin: 2px 0;
+}
+.community-profile-form fieldset > p {
+  grid-column: 1/-1;
+}
+.community-profile-form fieldset > button {
+  justify-self: start;
+}
+.community-publications {
+  margin-top: 34px;
+}
+.community-publications > h2 {
+  font-size: 28px;
+  margin-bottom: 10px;
+}
+.community-publications > p {
+  margin-bottom: 20px;
+  max-width: 78ch;
+}
+.community-publication {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  align-items: center;
+  border-block-end: 1px solid var(--line);
+  padding: 20px 0;
+}
+.community-publication > div:first-child {
+  min-width: 0;
+}
+.community-publication h3 {
+  font-size: 22px;
+  margin-bottom: 8px;
+}
+.community-publication-actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.community-report {
+  display: grid;
+  gap: 20px;
+  padding: 24px;
+}
+.community-report p {
+  font-size: 14px;
+  line-height: 1.7;
+  color: var(--muted);
+}
+.community-report label {
+  display: grid;
+  gap: 8px;
+}
+.community-entry {
+  display: flex;
+  justify-content: flex-end;
+  padding: 0 0 18px;
+}
+.community-entry a {
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 600;
+  font-size: 14px;
+}
+.community-entry a:hover {
+  text-decoration: underline;
+}
+@media (max-width: 900px) {
+  .community-creations {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .community-players {
+    grid-template-columns: 1fr;
+  }
+  .community-publication {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 14px;
+  }
+}
+@media (max-width: 600px) {
+  .community-heading {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .community-heading h1 {
+    font-size: 32px;
+  }
+  .community-creations {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+  .community-search > div {
+    flex-wrap: wrap;
+  }
+  .community-search input {
+    flex: 1 1 160px;
+  }
+  .community-search button {
+    flex: 1 1 auto;
+  }
+  .community-profile {
+    flex-wrap: wrap;
+    gap: 14px;
+  }
+  .community-profile h2 {
+    font-size: 28px;
+  }
+  .community-profile .community-avatar {
+    width: 60px;
+    height: 60px;
+  }
+  .community-profile .brigo-logo {
+    width: 40px;
+    height: 46px;
+  }
+  .community-profile > button {
+    margin-left: 74px;
+  }
+  .community-profile-form {
+    padding: 20px 16px;
+  }
+  .community-profile-form fieldset {
+    grid-template-columns: 1fr;
+  }
+  .community-player-card {
+    padding: 16px;
+    gap: 12px;
+  }
+  .community-player-card .community-avatar {
+    width: 48px;
+    height: 52px;
+    border-radius: 12px;
+  }
+  .community-pager {
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+  .community-pager a {
+    padding-inline: 10px;
+  }
+  .community-pager > span:empty {
+    display: none;
+  }
+  .community-entry {
+    padding-bottom: 12px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .community * {
+    scroll-behavior: auto;
+    animation: none;
+    transition: none;
+  }
+}
+:root[data-motion="reduced"] .community * {
+  scroll-behavior: auto;
+  animation: none;
+  transition: none;
+}
